@@ -4,16 +4,17 @@
 <!--<![endif]-->
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- META TAGS -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puzzle</title>
-  <!-- Style Sheet-->
-  <link rel="stylesheet" id="bootstrap-css-css" href="/css/back/bootstrap5152.css" type="text/css" media="all">
-  <link rel="stylesheet" id="responsive-css-css" href="/css/back/responsive5152.css" type="text/css" media="all">
-  <link rel="stylesheet" id="pretty-photo-css-css" href="/css/back/prettyPhotoaeb9.css" type="text/css" media="all">
-  <link rel="stylesheet" id="main-css-css" href="/css/back/main5152.css" type="text/css" media="all">
 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- META TAGS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <!-- Style Sheet-->
+    <link rel="stylesheet" id="bootstrap-css-css" href="/css/back/bootstrap5152.css" type="text/css" media="all">
+    <link rel="stylesheet" id="responsive-css-css" href="/css/back/responsive5152.css" type="text/css" media="all">
+    <link rel="stylesheet" id="pretty-photo-css-css" href="/css/back/prettyPhotoaeb9.css" type="text/css" media="all">
+    <link rel="stylesheet" id="main-css-css" href="/css/back/main5152.css" type="text/css" media="all">
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
   <style>
     .link {
       fill: none;
@@ -52,6 +53,8 @@
 
 </head>
 
+
+
 <body>
 
 <!-- Start of Header -->
@@ -69,7 +72,7 @@
       <nav class="main-nav">
         <div class="menu-top-menu-container">
           <ul id="menu-top-menu" class="clearfix">
-            <li><a href="#">主页</a></li>
+            <li><a href="http://localhost:8080">主页</a></li>
             <li><a href="#about">论文</a></li>
             <li><a href="#contact">联系</a></li>
           </ul>
@@ -84,17 +87,19 @@
 
 <!-- Start of Search Wrapper -->
 <div class="search-area-wrapper">
-  <div class="search-area container">
+  <div class="search-area container" style="text-align:center">
     <h3 class="search-header">魔镜魔镜，他是谁？</h3>
     <p class="search-tag-line">If you have any question you can ask below or enter what you are looking for!</p>
 
-    <form id="search-form" class="search-form clearfix" >
-      <input type="hidden" name="csrfmiddlewaretoken" value="dcsMIBjbHLlFcnfaL1IZfywlgbefWnIqlTjZ0goxoUX5zqyTGZF0UlsFzKO1KyzR">
-      <input class="search-term required" type="text" name="entity" placeholder="输入您的问题" title="* Please enter a search term!">
-      <input class="search-btn" type="submit" value="提问！">
-      <div id="search-error-container"></div>
-    </form>
+      <form id="search-form" class="search-form clearfix" method="post" action="http://localhost:8080/display" autocomplete="off" novalidate="novalidate">
+          <input type="hidden" name="csrfmiddlewaretoken" value="dcsMIBjbHLlFcnfaL1IZfywlgbefWnIqlTjZ0goxoUX5zqyTGZF0UlsFzKO1KyzR">
+          <input class="search-term required" type="text" id="s" name="question" placeholder="输入您的问题" title="* Please enter a search term!">
+          <input class="search-btn" type="submit" value="提问！">
+          <div id="search-error-container"></div>
+      </form>
+
   </div>
+
 </div>
 <!-- End of Search Wrapper -->
 
@@ -114,101 +119,16 @@
     </section>
 </aside>
 
-<div id="display_window" class="span8 page-content">
+<div class="span8 page-content" id="display">
 
-    <!--<article class="type-page hentry clearfix">-->
-        <!--<h1 class="post-title">-->
-            <!--<a>医疗问答告诉您：</a>-->
-        <!--</h1>-->
-        <!--<hr>-->
-        <!--<p id="question" class="article-test" style="text-indent:2em;">-->
-            <!--女性怀了怎么办-->
-        <!--</p>-->
-        <!--<pre id="answer" class="article-test" style="text-indent:2em;">            对不起，我们没有从知识库中找到您的问题答案。对您想了解的病症等信息作更细致的描述或许会帮助我们解答您的问题。-->
-    <!--</pre>-->
-    <!--</article>-->
 </div>
+
+
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
     // http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
-    var links = [{
-        source: "同花顺",
-        target: "IFIND",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "手机金融信息服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "互联网金融信息服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "网上行情交易系统",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "金融资讯及数据服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "互联网金融",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "金融服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "金融信息服务",
-        type: "resolved",
-        rela: "上位产品"
-    }, {
-        source: "同花顺",
-        target: "金融信息服务",
-        type: "resolved",
-        rela: "上位产品"
-    }, {
-        source: "同花顺",
-        target: "金融信息服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "金融信息服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "互联网金融信息服务",
-        type: "resolved",
-        rela: "主营产品"
-    }, {
-        source: "同花顺",
-        target: "移动互联网",
-        type: "resolved",
-        rela: "上游"
-    }, {
-        source: "同花顺",
-        target: "互联网金融服务",
-        type: "resolved",
-        rela: "下位产品"
-    }, {
-        source: "同花顺",
-        target: "综合金融服务",
-        type: "resolved",
-        rela: "下位产品"
-    }];
-
+    var links = "searchLinkTarget";
     var nodes = {};
 
     links.forEach(function(link) {
@@ -220,19 +140,23 @@
             });
     });
 
-    var width = 800,
-        height = 500;
+    var width = 860,
+        height = 600;
+
+   if(links.length > 30 ) {
+       height = 800;
+   }
 
     var force = d3.layout.force() //layout将json格式转化为力学图可用的格式
         .nodes(d3.values(nodes)) //设定节点数组
         .links(links) //设定连线数组
         .size([width, height]) //作用域的大小
         .linkDistance(180) //连接线长度
-        .charge(-1000) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
+        .charge(-1500) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
         .on("tick", tick) //指时间间隔，隔一段时间刷新一次画面
         .start(); //开始转换
 
-    var svg = d3.select(document.getElementById("display_window")).append("svg")
+    var svg = d3.select("#display").append("svg")
         .attr("width", width)
         .attr("height", height);
 
@@ -285,7 +209,7 @@
             }
         })
         .style("stroke", function(d) {
-            var lineColor;
+            var lineColor = "#B43232";
             //根据关系的不同设置线条颜色
             if (d.rela == "上位产品" || d.rela == "上游" || d.rela == "下位产品") {
                 lineColor = "#A254A2";
@@ -330,23 +254,23 @@
         .data(force.nodes()) //表示使用force.nodes数据
         .enter().append("circle")
         .style("fill", function(node) {
-            var color; //圆圈背景色
+            var color = "#F9EBF9"; //圆圈背景色
             var link = links[node.index];
-            if (node.name == link.source.name && link.rela == "主营产品") {
-                color = "#F6E8E9";
-            } else {
-                color = "#F9EBF9";
-            }
+//            if (node.name == link.source.name && link.rela == "主营产品") {
+//                color = "#F6E8E9";
+//            } else {
+//                color = "#F9EBF9";
+//            }
             return color;
         })
         .style('stroke', function(node) {
-            var color; //圆圈线条的颜色
+            var color = "#A254A2"; //圆圈线条的颜色
             var link = links[node.index];
-            if (node.name == link.source.name && link.rela == "主营产品") {
-                color = "#B43232";
-            } else {
-                color = "#A254A2";
-            }
+//            if (node.name == link.source.name && link.rela == "主营产品") {
+//                color = "#B43232";
+//            } else {
+//                color = "#A254A2";
+//            }
             return color;
         })
         .attr("r", 28) //设置圆圈半径
@@ -376,9 +300,10 @@
     circle.append("svg:title")
         .text(function(node) {
             var link = links[node.index];
-            if (node.name == link.source.name && link.rela == "主营产品") {
-                return "双击可查看详情"
-            }
+            return "双击可查看详情"
+//            if (node.name == link.source.name && link.rela == "主营产品") {
+//                return "双击可查看详情"
+//            }
         });
     /* 矩形
      var rect=svg.append("rect")
@@ -400,13 +325,13 @@
         .attr("dy", ".35em")
         .attr("text-anchor", "middle") //在圆圈中加上数据
         .style('fill', function(node) {
-            var color; //文字颜色
+            var color="#A254A2"; //文字颜色
             var link = links[node.index];
-            if (node.name == link.source.name && link.rela == "主营产品") {
-                color = "#B43232";
-            } else {
-                color = "#A254A2";
-            }
+//            if (node.name == link.source.name && link.rela == "主营产品") {
+//                color = "#B43232";
+//            } else {
+//                color = "#A254A2";
+//            }
             return color;
         }).attr('x', function(d) {
             // console.log(d.name+"---"+ d.name.length);
@@ -525,41 +450,11 @@
     }
 </script>
 
-
-<!-- <br>
-<br>
-<aside class="span4 page-sidebar">
-
-    <section class="widget">
-        <div class="support-widget">
-            <h3 class="title">医疗知识QA</h3>
-            <br>
-            <p class="intro" style="text-indent:2em;">提供基础的知识注解，为大家提供医疗知识的服务。</p>
-            <br>
-            <p class="intro">code by 医疗问答小组</p>
-        </div>
-    </section>
-</aside> -->
-
-<!-- <div class="span8 page-content">
-
-    <article class="type-page hentry clearfix">
-        <h1 class="post-title">
-            <a>医疗问答告诉您：</a>
-        </h1>
-        <hr>
-        <p id="question" class="article-test" style="text-indent:2em;">
-            女性怀了怎么办
-        </p>
-        <pre id="answer" class="article-test" style="text-indent:2em;">            对不起，我们没有从知识库中找到您的问题答案。对您想了解的病症等信息作更细致的描述或许会帮助我们解答您的问题。
-    </pre>
-    </article>
-</div> -->
-
-
-
-
-
+<script>
+    if(links == null){
+        alert("找不到");
+    }
+</script>
 
 
 </body>

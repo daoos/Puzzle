@@ -3,6 +3,7 @@ package com.knowledge.graph.controller;
 import com.knowledge.graph.model.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -31,8 +32,9 @@ public class controller {
         return "index";
     }
 
-    @RequestMapping("/display")
-    public String display(Model model) {
-        return "display";
-    }
+//    @RequestMapping("/display")
+//    public String display(Model model) {
+//        return "display";
+//    }
+
 }
