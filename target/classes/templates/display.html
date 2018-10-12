@@ -91,7 +91,7 @@
     <h3 class="search-header">魔镜魔镜，他是谁？</h3>
     <p class="search-tag-line">If you have any question you can ask below or enter what you are looking for!</p>
 
-      <form id="search-form" class="search-form clearfix" method="post" action="http://localhost:8080/display" autocomplete="off" novalidate="novalidate">
+      <form id="search-form" class="search-form clearfix" method="post" action="/display" autocomplete="off" novalidate="novalidate">
           <input type="hidden" name="csrfmiddlewaretoken" value="dcsMIBjbHLlFcnfaL1IZfywlgbefWnIqlTjZ0goxoUX5zqyTGZF0UlsFzKO1KyzR">
           <input class="search-term required" type="text" id="s" name="question" placeholder="输入您的问题" title="* Please enter a search term!">
           <input class="search-btn" type="submit" value="提问！">
@@ -110,11 +110,11 @@
 
     <section class="widget">
         <div class="support-widget">
-            <h3 class="title">医疗知识QA</h3>
+            <h3 class="title">实体知识QA</h3>
             <br>
-            <p class="intro" style="text-indent:2em;">提供基础的知识注解，为大家提供医疗知识的服务。</p>
+            <p class="intro" style="text-indent:2em;">输入某个实体名字，返回知识图谱实体信息可视化内容</p>
             <br>
-            <p class="intro">code by 医疗问答小组</p>
+            <p class="intro">code by BestOreo</p>
         </div>
     </section>
 </aside>
@@ -127,7 +127,6 @@
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-    // http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
     var links = "searchLinkTarget";
     var nodes = {};
 

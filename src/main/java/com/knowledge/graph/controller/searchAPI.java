@@ -4,6 +4,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +49,14 @@ public class searchAPI {
         String entity=request.getParameter("question");
         String fp = "";
         try {
-            fp=readFileToString("src/main/resources/templates/display.html");
+            Resource resource = new ClassPathResource("/templates/display.html");
+            BufferedReader in = new BufferedReader(new InputStreamReader(resource.getInputStream()));
+            StringBuffer buffer = new StringBuffer();
+            String line = " ";
+            while ((line = in.readLine()) != null) {
+                buffer.append(line+"\n");
+            }
+            fp =  buffer.toString();
             String res = searchEntityString(entity);
             fp = fp.replace("\"searchLinkTarget\"",res);
         }catch (Exception e){
@@ -74,6 +83,16 @@ public class searchAPI {
         return jsonarray;
     }
 
+    @GetMapping("/search/entity/dbread/{entity}")
+    public JSONArray searchEntityforDB(@PathVariable String entity){
+        try {
+            JSONArray jsonarray = JSONArray.fromObject(searchEntityString(entity));
+            return jsonarray;
+        }catch (Exception e){
+            return JSONArray.fromObject("[{result:\'None\'}]");
+        }
+    }
+
     @GetMapping("/search/entity/string/{entity}")
     public String searchEntityString(@PathVariable String entity){
         JSONObject json = searchAll(entity).getJSONObject("data");
@@ -89,10 +108,18 @@ public class searchAPI {
                 res += "{source: \"" + entity + "\",target:\"" + target + "\",type:\"resolved\",rela: \"" + relationship + "\"}";
             }
         }
+
+        //add description
+        if(res.length() > 1){
+            res += ",";
+        }
+        res += "{source: \"" + entity + "\",target:\"" + json.getString("desc") + "\",type:\"desc\",rela: \"desc\"}";
         res+="]";
         res = res.replace(",,",",");
         return res;
     }
+
+
 
     public String readInputStream(InputStream inputStream) throws IOException {
         byte[] buffer = new byte[1024];
