@@ -10,7 +10,7 @@ import os, argparse, time, random
 from model import BiLSTM_CRF
 from utils import str2bool, get_logger, get_entity
 from data import read_corpus, read_dictionary, tag2label, random_embedding
-
+import json
 app = Flask(__name__)
 
 
@@ -89,16 +89,36 @@ saver.restore(sess, ckpt_file)
 @app.route('/ner/<name>')
 def hello_world(name=None):
     print('============= demo =============')
+    retrunjson = {"PER":"","LOC":"","ORG":""}
     print(name)
     demo_sent = name
     demo_sent = list(demo_sent.strip())
     demo_data = [(demo_sent, ['O'] * len(demo_sent))]
     tag = model.demo_one(sess, demo_data)
     PER, LOC, ORG = get_entity(tag, demo_sent)
-    return 'PER: {}\nLOC: {}\nORG: {}'.format(PER, LOC, ORG)
-
-
+    for i in PER:
+        if len(retrunjson["PER"]) != 0:
+            retrunjson["PER"] += ";"+i
+        else:
+            retrunjson["PER"] = i
     
+    for i in LOC:
+        if len(retrunjson["LOC"]) != 0:
+            retrunjson["LOC"] += ";"+i
+        else:
+            retrunjson["LOC"] = i
+
+    for i in ORG:
+        if len(retrunjson["ORG"]) != 0:
+            retrunjson["ORG"] += ";"+i
+        else:
+            retrunjson["ORG"] = i
+
+    # return json.dump(retrunjson)
+    print(retrunjson)
+    return json.dumps(retrunjson,ensure_ascii=False)
+        
+    # return 'PER: {}\nLOC: {}\nORG: {}'.format(PER, LOC, ORG)
 
 
 if __name__ == "__main__":

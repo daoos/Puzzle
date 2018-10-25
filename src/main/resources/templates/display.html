@@ -106,18 +106,18 @@
 
 <br>
 <br>
-<aside class="span4 page-sidebar">
+<!--<aside class="span4 page-sidebar">-->
 
-    <section class="widget">
-        <div class="support-widget">
-            <h3 class="title">实体知识QA</h3>
-            <br>
-            <p class="intro" style="text-indent:2em;">输入某个实体名字，返回知识图谱实体信息可视化内容</p>
-            <br>
-            <p class="intro">code by BestOreo</p>
-        </div>
-    </section>
-</aside>
+    <!--<section class="widget">-->
+        <!--<div class="support-widget">-->
+            <!--<h3 class="title">实体知识QA</h3>-->
+            <!--<br>-->
+            <!--<p class="intro" style="text-indent:2em;">输入某个实体名字，返回知识图谱实体信息可视化内容</p>-->
+            <!--<br>-->
+            <!--<p class="intro">code by BestOreo</p>-->
+        <!--</div>-->
+    <!--</section>-->
+<!--</aside>-->
 
 <div class="span8 page-content" id="display">
 
@@ -139,11 +139,10 @@
             });
     });
 
-    var width = 860,
+    var width = document.body.clientWidth,
         height = 600;
-
-   if(links.length > 30 ) {
-       height = 800;
+   if(links.length > 50 ) {
+       height += 15*(links.length-50);
    }
 
     var force = d3.layout.force() //layout将json格式转化为力学图可用的格式

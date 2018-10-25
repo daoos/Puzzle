@@ -17,18 +17,18 @@ public class controller {
 
     @RequestMapping("/")
     public String index(Model model) {
-        Person person1 = new Person("长相思", 18);
-        Person person2 = new Person("花似伊", 19);
-        Person person3 = new Person("柳似伊", 20);
-        Person person4 = new Person("柳似伊", 20);
-
-        List<Person> people = new ArrayList<>();
-        people.add(person1);
-        people.add(person2);
-        people.add(person3);
-        people.add(person4);
-
-        model.addAttribute("people", people);
+//        Person person1 = new Person("长相思", 18);
+//        Person person2 = new Person("花似伊", 19);
+//        Person person3 = new Person("柳似伊", 20);
+//        Person person4 = new Person("柳似伊", 20);
+//
+//        List<Person> people = new ArrayList<>();
+//        people.add(person1);
+//        people.add(person2);
+//        people.add(person3);
+//        people.add(person4);
+//
+//        model.addAttribute("people", people);
         return "index";
     }
 

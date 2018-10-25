@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Iterator;
 
 /**
  * Created by geshuaiqi on 2018/9/30.
@@ -25,10 +24,10 @@ public class searchAPI {
     String baseURL = "https://api.ownthink.com/kg/knowledge?entity=";
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    public String search(String entity){
+    public String crawl(URL url){
         String res="None";
         try {
-            URL url = new URL( baseURL + java.net.URLEncoder.encode(entity, "utf-8"));
+
             HttpURLConnection conn = (HttpURLConnection)url.openConnection();
             //设置超时间为3秒
             conn.setConnectTimeout(3*1000);
@@ -43,11 +42,24 @@ public class searchAPI {
         return res;
     }
 
+
+    public String search(String entity){
+        String res = "";
+        try{
+            URL url = new URL( baseURL + java.net.URLEncoder.encode(entity, "utf-8"));
+            res = crawl(url);
+        }catch (Exception e) {
+            logger.error("通过url地址获取文本内容失败 Exception：" + e);
+        }
+        return res;
+
+    }
+
 //    @RequestMapping("/search/view")
     @RequestMapping("/display")
     public String test(HttpServletRequest request){
-        String entity=request.getParameter("question");
-        String fp = "";
+        String content=request.getParameter("question");
+        String html = "";
         try {
             Resource resource = new ClassPathResource("/templates/display.html");
             BufferedReader in = new BufferedReader(new InputStreamReader(resource.getInputStream()));
@@ -56,16 +68,16 @@ public class searchAPI {
             while ((line = in.readLine()) != null) {
                 buffer.append(line+"\n");
             }
-            fp =  buffer.toString();
-            String res = searchEntityString(entity);
-            fp = fp.replace("\"searchLinkTarget\"",res);
+            html =  buffer.toString();
+            String res = searchEntities(content);
+            html = html.replace("\"searchLinkTarget\"",res);
         }catch (Exception e){
-            if(entity != null) {
-                fp = fp.replace("\"searchLinkTarget\"", "null");
+            if(content != null) {
+                html = html.replace("\"searchLinkTarget\"", "null");
             }
             logger.error("read fail");
         }finally {
-            return fp;
+            return html;
         }
 
     }
@@ -119,6 +131,60 @@ public class searchAPI {
         return res;
     }
 
+    public String searchEntities(@PathVariable String content){
+        String[] demo = NERProcessing(content);
+        String res = "[";
+        for(int index=0;index<demo.length;index++) {
+            String entity = demo[index];
+            JSONObject json = searchAll(entity).getJSONObject("data");
+            String[] jsonlist = json.getString("avp").replace("\"", "").replace("[", "").replace("]", "").split(",");
+            for (int i = 0; i < jsonlist.length; i += 2) {
+                if (res.length() > 1) {
+                    res += ",";
+                }
+                String target = jsonlist[i + 1];
+                String relationship = jsonlist[i];
+                if (target.contains(entity) == false) {
+                    res += "{source: \"" + entity + "\",target:\"" + target + "\",type:\"resolved\",rela: \"" + relationship + "\"}";
+                }
+            }
+            //add description
+            if (res.length() > 1) {
+                res += ",";
+            }
+            res += "{source: \"" + entity + "\",target:\"" + json.getString("desc") + "\",type:\"desc\",rela: \"desc\"}";
+        }
+        res+="]";
+        res = res.replace(",,",",");
+        return res;
+    }
+
+    private String[] NERProcessing(String content){
+        String baseURL = "http://127.0.0.1:5000/ner/";
+        String res = "";
+        try{
+            URL url = new URL( baseURL + java.net.URLEncoder.encode(content, "utf-8"));
+            res = crawl(url);
+        }catch (Exception e) {
+            logger.error("通过url地址获取文本内容失败 Exception：" + e);
+        }
+        JSONObject json_res = JSONObject.fromObject(res);
+        String[] personlist = json_res.getString("PER").split(";");
+        String[] loclist =  json_res.getString("LOC").split(";");
+        String[] orglist =  json_res.getString("ORG").split(";");
+        String[] list = new String[personlist.length+orglist.length+loclist.length];
+        int count=0;
+        for(int i=0;i<personlist.length;i++){
+            list[count++] = personlist[i];
+        }
+        for(int i=0;i<loclist.length;i++){
+            list[count++] = personlist[i];
+        }
+        for(int i=0;i<orglist.length;i++){
+            list[count++] = personlist[i];
+        }
+        return list;
+    }
 
 
     public String readInputStream(InputStream inputStream) throws IOException {
@@ -146,6 +212,7 @@ public class searchAPI {
     }
 
     public static void main(String[]args){
+        new searchAPI().NERProcessing("刘备和毛泽东率领三十万大军");
     }
 
 
