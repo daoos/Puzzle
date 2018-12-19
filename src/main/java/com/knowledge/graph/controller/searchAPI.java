@@ -37,7 +37,7 @@ public class searchAPI {
             InputStream inputStream = conn.getInputStream();
             res = readInputStream(inputStream);
         } catch (Exception e) {
-            logger.error("通过url地址获取文本内容失败 Exception：" + e);
+            logger.error("crawl: 通过url地址获取文本内容失败 Exception：" + e);
         }
         return res;
     }
@@ -49,7 +49,7 @@ public class searchAPI {
             URL url = new URL( baseURL + java.net.URLEncoder.encode(entity, "utf-8"));
             res = crawl(url);
         }catch (Exception e) {
-            logger.error("通过url地址获取文本内容失败 Exception：" + e);
+            logger.error("search: 通过url地址获取文本内容失败 Exception：" + e);
         }
         return res;
 
@@ -166,7 +166,7 @@ public class searchAPI {
             URL url = new URL( baseURL + java.net.URLEncoder.encode(content, "utf-8"));
             res = crawl(url);
         }catch (Exception e) {
-            logger.error("通过url地址获取文本内容失败 Exception：" + e);
+            logger.error("NERProcessing: 通过url地址获取文本内容失败 Exception：" + e);
         }
         JSONObject json_res = JSONObject.fromObject(res);
         String[] personlist = json_res.getString("PER").split(";");

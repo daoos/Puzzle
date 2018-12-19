@@ -573,3 +573,37 @@
 2018-10-24 23:00:12,044:INFO: 127.0.0.1 - - [24/Oct/2018 23:00:12] "GET /ner/%E6%9D%8E%E4%B8%96%E6%B0%91%E5%BE%88%E7%AC%A8%EF%BC%8C%E4%BD%86%E6%98%AF%E5%94%90%E6%9C%9D%E5%BE%88%E6%A3%92 HTTP/1.1" 200 -
 2018-10-24 23:00:35,477:INFO: 127.0.0.1 - - [24/Oct/2018 23:00:35] "GET /ner/%E5%94%90%E6%9C%9D%E6%89%80%E6%9C%89%E7%9A%87%E5%B8%9D%E4%B8%AD%EF%BC%8C%E6%9D%8E%E4%B8%96%E6%B0%91%E6%98%AF%E6%9C%80%E6%A3%92%E7%9A%84 HTTP/1.1" 200 -
 2018-10-24 23:00:35,477:INFO: 127.0.0.1 - - [24/Oct/2018 23:00:35] "GET /ner/%E5%94%90%E6%9C%9D%E6%89%80%E6%9C%89%E7%9A%87%E5%B8%9D%E4%B8%AD%EF%BC%8C%E6%9D%8E%E4%B8%96%E6%B0%91%E6%98%AF%E6%9C%80%E6%A3%92%E7%9A%84 HTTP/1.1" 200 -
+2018-12-18 20:27:58,931:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1539974818', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='demo', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2018-12-18 20:28:00,036:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 20:28:00,036:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 20:28:00,388:INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-12-18 20:28:00,388:INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-12-18 20:28:00,390:INFO:  * Restarting with stat
+2018-12-18 20:28:00,390:INFO:  * Restarting with stat
+2018-12-18 20:28:07,301:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1539974818', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='demo', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2018-12-18 20:28:08,574:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 20:28:08,574:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 20:28:08,938:WARNING:  * Debugger is active!
+2018-12-18 20:28:08,938:WARNING:  * Debugger is active!
+2018-12-18 20:28:09,007:INFO:  * Debugger PIN: 100-236-757
+2018-12-18 20:28:09,007:INFO:  * Debugger PIN: 100-236-757
+2018-12-18 20:28:09,109:INFO: 127.0.0.1 - - [18/Dec/2018 20:28:09] "GET /ner/%E5%88%98%E5%A4%87%E7%8E%87%E9%A2%86%E4%B8%89%E5%8D%81%E4%B8%87%E5%A4%A7%E5%86%9B HTTP/1.1" 200 -
+2018-12-18 20:28:09,109:INFO: 127.0.0.1 - - [18/Dec/2018 20:28:09] "GET /ner/%E5%88%98%E5%A4%87%E7%8E%87%E9%A2%86%E4%B8%89%E5%8D%81%E4%B8%87%E5%A4%A7%E5%86%9B HTTP/1.1" 200 -
+2018-12-18 20:28:09,286:INFO: 127.0.0.1 - - [18/Dec/2018 20:28:09] "GET /favicon.ico HTTP/1.1" 404 -
+2018-12-18 20:28:09,286:INFO: 127.0.0.1 - - [18/Dec/2018 20:28:09] "GET /favicon.ico HTTP/1.1" 404 -
+2018-12-18 20:28:16,306:INFO: 127.0.0.1 - - [18/Dec/2018 20:28:16] "GET /ner/%E6%9B%B9%E6%93%8D HTTP/1.1" 200 -
+2018-12-18 20:28:16,306:INFO: 127.0.0.1 - - [18/Dec/2018 20:28:16] "GET /ner/%E6%9B%B9%E6%93%8D HTTP/1.1" 200 -
+2018-12-18 21:00:05,962:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1539974818', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='demo', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2018-12-18 21:00:07,099:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 21:00:07,099:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 21:00:07,552:INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-12-18 21:00:07,552:INFO:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-12-18 21:00:07,554:INFO:  * Restarting with stat
+2018-12-18 21:00:07,554:INFO:  * Restarting with stat
+2018-12-18 21:00:14,402:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1539974818', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='demo', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2018-12-18 21:00:16,079:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 21:00:16,079:INFO: Restoring parameters from ./data_path_save/1539974818/checkpoints/model-5544
+2018-12-18 21:00:16,463:WARNING:  * Debugger is active!
+2018-12-18 21:00:16,463:WARNING:  * Debugger is active!
+2018-12-18 21:00:16,493:INFO:  * Debugger PIN: 100-236-757
+2018-12-18 21:00:16,493:INFO:  * Debugger PIN: 100-236-757
