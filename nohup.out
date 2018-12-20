@@ -1,0 +1,45 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.5.RELEASE)
+
+2018-12-19 17:39:25.056  INFO 69695 --- [           main] c.k.graph.GraduatedesignApplication      : Starting GraduatedesignApplication v0.0.1-SNAPSHOT on dhcp-128-189-239-6.ubcsecure.wireless.ubc.ca with PID 69695 (/Users/geshuaiqi/githubproject/Puzzle/target/graduation.jar started by geshuaiqi in /Users/geshuaiqi/githubproject/Puzzle)
+2018-12-19 17:39:25.060  INFO 69695 --- [           main] c.k.graph.GraduatedesignApplication      : No active profile set, falling back to default profiles: default
+2018-12-19 17:39:25.167  INFO 69695 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@59690aa4: startup date [Wed Dec 19 17:39:25 PST 2018]; root of context hierarchy
+2018-12-19 17:39:27.022  INFO 69695 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2018-12-19 17:39:27.062  INFO 69695 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-19 17:39:27.062  INFO 69695 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-19 17:39:27.076  INFO 69695 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/geshuaiqi/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-19 17:39:27.183  INFO 69695 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-19 17:39:27.183  INFO 69695 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2019 ms
+2018-12-19 17:39:27.275  INFO 69695 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-19 17:39:27.281  INFO 69695 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-19 17:39:27.281  INFO 69695 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-19 17:39:27.282  INFO 69695 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-19 17:39:27.282  INFO 69695 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-19 17:39:27.510  INFO 69695 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-19 17:39:27.719  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@59690aa4: startup date [Wed Dec 19 17:39:25 PST 2018]; root of context hierarchy
+2018-12-19 17:39:27.821  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.knowledge.graph.controller.controller.index(org.springframework.ui.Model)
+2018-12-19 17:39:27.826  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/display]}" onto public java.lang.String com.knowledge.graph.controller.searchAPI.test(javax.servlet.http.HttpServletRequest)
+2018-12-19 17:39:27.827  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search/entity/dbread/{entity}],methods=[GET]}" onto public net.sf.json.JSONArray com.knowledge.graph.controller.searchAPI.searchEntityforDB(java.lang.String)
+2018-12-19 17:39:27.827  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search/entity/string/{entity}],methods=[GET]}" onto public java.lang.String com.knowledge.graph.controller.searchAPI.searchEntityString(java.lang.String)
+2018-12-19 17:39:27.827  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search/all/{entity}],methods=[GET]}" onto public net.sf.json.JSONObject com.knowledge.graph.controller.searchAPI.searchAll(java.lang.String)
+2018-12-19 17:39:27.828  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/search/entity/array/{entity}],methods=[GET]}" onto public net.sf.json.JSONArray com.knowledge.graph.controller.searchAPI.searchEntity(java.lang.String)
+2018-12-19 17:39:27.831  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-12-19 17:39:27.832  INFO 69695 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-12-19 17:39:27.862  INFO 69695 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-19 17:39:27.862  INFO 69695 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-19 17:39:27.939  WARN 69695 --- [           main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2018-12-19 17:39:27.999  INFO 69695 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2018-12-19 17:39:28.107  INFO 69695 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-12-19 17:39:28.179  INFO 69695 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2018-12-19 17:39:28.185  INFO 69695 --- [           main] c.k.graph.GraduatedesignApplication      : Started GraduatedesignApplication in 3.76 seconds (JVM running for 4.458)
+2018-12-19 17:39:50.441  INFO 69695 --- [p-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-12-19 17:39:50.441  INFO 69695 --- [p-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-12-19 17:39:50.460  INFO 69695 --- [p-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+2018-12-19 17:40:13.104  INFO 69695 --- [       Thread-3] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@59690aa4: startup date [Wed Dec 19 17:39:25 PST 2018]; root of context hierarchy
+2018-12-19 17:40:13.107  INFO 69695 --- [       Thread-3] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown

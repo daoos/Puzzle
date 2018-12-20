@@ -1,2 +1,2 @@
 #!/bin/bash
-nohup java -jar graduation.jar --server.port=80 &
+nohup java -jar ./target/graduation.jar --server.port=80 &

@@ -6,25 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/GraduatedesignApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/GraduatedesignApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/controller.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/test.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/test.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/model/Person.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/model/Person.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/graduatedesign-0.0.1-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/target/graduatedesign-0.0.1-SNAPSHOT.jar.original" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/graduation.jar" afterPath="$PROJECT_DIR$/target/graduation.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/.idea/workspace.xml" afterPath="$PROJECT_DIR$/NER/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/data_path_save/1539974818/results/log.txt" afterPath="$PROJECT_DIR$/NER/data_path_save/1539974818/results/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/display.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/display.html" afterPath="$PROJECT_DIR$/target/classes/templates/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.knowledge.graph.GraduatedesignApplicationTests.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.knowledge.graph.GraduatedesignApplicationTests.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.knowledge.graph.GraduatedesignApplicationTests.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.knowledge.graph.GraduatedesignApplicationTests.txt" />
-    </list>
+    <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -993,12 +975,12 @@
       <workItem from="1540442037742" duration="3063000" />
       <workItem from="1540446135090" duration="995000" />
       <workItem from="1545192623389" duration="805000" />
-      <workItem from="1545269052392" duration="115000" />
+      <workItem from="1545269052392" duration="339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35346000" />
+    <option name="totallyTimeSpent" value="35570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
