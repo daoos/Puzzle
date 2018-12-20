@@ -160,13 +160,13 @@ public class searchAPI {
     }
 
     private String[] NERProcessing(String content){
-        String baseURL = "http://127.0.0.1:5000/ner/";
+        String baseURL = "http://www.geshuaiqi.com:5000/ner/";
         String res = "";
         try{
             URL url = new URL( baseURL + java.net.URLEncoder.encode(content, "utf-8"));
             res = crawl(url);
         }catch (Exception e) {
-            logger.error("NERProcessing: 通过url地址获取文本内容失败 Exception：" + e);
+            logger.error("NERProcessing: 可能是谷歌云上的NER模块崩了：" + e);
         }
         JSONObject json_res = JSONObject.fromObject(res);
         String[] personlist = json_res.getString("PER").split(";");

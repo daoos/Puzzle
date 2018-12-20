@@ -7,10 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/GraduatedesignApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/GraduatedesignApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/controller.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/test.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/model/Person.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/model/Person.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/graduatedesign-0.0.1-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/target/graduatedesign-0.0.1-SNAPSHOT.jar.original" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/graduation.jar" afterPath="$PROJECT_DIR$/target/graduation.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/data_path_save/1521112368/results/log.txt" afterPath="$PROJECT_DIR$/NER/data_path_save/1521112368/results/log.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/.idea/workspace.xml" afterPath="$PROJECT_DIR$/NER/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/data_path_save/1539974818/results/log.txt" afterPath="$PROJECT_DIR$/NER/data_path_save/1539974818/results/log.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/display.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/display.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/display.html" afterPath="$PROJECT_DIR$/target/classes/templates/display.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.knowledge.graph.GraduatedesignApplicationTests.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.knowledge.graph.GraduatedesignApplicationTests.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.knowledge.graph.GraduatedesignApplicationTests.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.knowledge.graph.GraduatedesignApplicationTests.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +62,8 @@
       <file leaf-file-name="searchAPI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
-              <caret line="162" column="52" lean-forward="true" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="52" />
+            <state relative-caret-position="121">
+              <caret line="162" column="37" lean-forward="false" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -59,11 +72,11 @@
       <file leaf-file-name="nerAPI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NER/nerAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
+            <state relative-caret-position="1050">
               <caret line="78" column="31" lean-forward="false" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
               <folding>
                 <element signature="e#68#91#0" expanded="true" />
-                <marker date="1545192615557" expanded="true" signature="3833:4697" ph="..." />
+                <marker date="1545197025237" expanded="true" signature="3833:4697" ph="..." />
               </folding>
             </state>
           </provider>
@@ -85,8 +98,8 @@
             <state relative-caret-position="2160">
               <caret line="144" column="16" lean-forward="false" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+                <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+                <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
               </folding>
             </state>
           </provider>
@@ -204,9 +217,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -361,6 +371,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -979,12 +992,13 @@
       <workItem from="1540441983940" duration="29000" />
       <workItem from="1540442037742" duration="3063000" />
       <workItem from="1540446135090" duration="995000" />
-      <workItem from="1545192623389" duration="644000" />
+      <workItem from="1545192623389" duration="805000" />
+      <workItem from="1545269052392" duration="115000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35070000" />
+    <option name="totallyTimeSpent" value="35346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1008,11 +1022,11 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25783134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25783134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32971507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3018598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30615166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1077,8 +1091,8 @@
         <state relative-caret-position="1395">
           <caret line="93" column="80" lean-forward="false" selection-start-line="93" selection-start-column="80" selection-end-line="93" selection-end-column="80" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1120,8 +1134,8 @@
         <state relative-caret-position="1935">
           <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1179,8 +1193,8 @@
         <state relative-caret-position="2205">
           <caret line="147" column="4" lean-forward="false" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1238,8 +1252,8 @@
         <state relative-caret-position="2205">
           <caret line="147" column="4" lean-forward="false" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1313,8 +1327,8 @@
         <state relative-caret-position="2205">
           <caret line="147" column="4" lean-forward="false" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1426,11 +1440,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NER/nerAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
+        <state relative-caret-position="1050">
           <caret line="78" column="31" lean-forward="false" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
           <folding>
             <element signature="e#68#91#0" expanded="true" />
-            <marker date="1545192615557" expanded="true" signature="3833:4697" ph="..." />
+            <marker date="1545197025237" expanded="true" signature="3833:4697" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1448,16 +1462,16 @@
         <state relative-caret-position="2160">
           <caret line="144" column="16" lean-forward="false" selection-start-line="144" selection-start-column="16" selection-end-line="144" selection-end-column="16" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1545192615818" expanded="false" signature="3238:3254" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15797" ph="..." />
+            <marker date="1545259765717" expanded="true" signature="15789:15807" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
-          <caret line="162" column="52" lean-forward="true" selection-start-line="162" selection-start-column="26" selection-end-line="162" selection-end-column="52" />
+        <state relative-caret-position="121">
+          <caret line="162" column="37" lean-forward="false" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
           <folding />
         </state>
       </provider>
