@@ -7,7 +7,7 @@
     }
     
     .node {
-        fill: #000;
+        fill: gold;
     }
     
     .cursor {
@@ -19,12 +19,18 @@
     .link {
         stroke: #999;
     }
+    
+    text {
+        font: 12px Microsoft YaHei;
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+    }
 </style>
 
 <body>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script>
-        var width = 960,
+        var width = document.body.clientWidth,
             height = 500;
 
         var fill = d3.scale.category20();
@@ -32,8 +38,8 @@
         var force = d3.layout.force()
             .size([width, height])
             .nodes([{}]) // initialize with a single node
-            .linkDistance(30)
-            .charge(-60)
+            .linkDistance(100)
+            .charge(-1000)
             .on("tick", tick);
 
         var svg = d3.select("body").append("svg")
@@ -51,46 +57,97 @@
             node = svg.selectAll(".node"),
             link = svg.selectAll(".link");
 
+        var node_r = 20;
+
         var cursor = svg.append("circle")
-            .attr("r", 30)
+            .attr("r", node_r)
             .attr("transform", "translate(-100,-100)")
             .attr("class", "cursor");
 
+
+        var edges_text = svg.append("g").selectAll(".edgelabel")
+            .data(force.links())
+            .enter()
+            .append("text")
+            .style("pointer-events", "none")
+            //.attr("class","linetext")
+            .attr({
+                'class': 'edgelabel',
+                'id': function(d, i) {
+                    return 'edgepath' + i;
+                },
+                'dx': 80,
+                'dy': 0
+            });
+        //设置线条上的文字
+        edges_text.append('textPath')
+            .attr('xlink:href', function(d, i) {
+                return '#edgepath' + i
+            })
+            .style("pointer-events", "none")
+            .text(function(d) {
+                return d.rela;
+            });
+
         restart();
+
+
 
         function mousemove() {
             cursor.attr("transform", "translate(" + d3.mouse(this) + ")");
         }
 
+
+        var mode = 0; // 0代表拖拉 1代表增值
+
+        document.onkeydown = function(event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 81) { // 按 Esc 
+                mode = 1 - mode;
+            }
+        };
+
         function mousedownCanvas() {
-            var point = d3.mouse(this),
-                node = {
-                    x: point[0],
-                    y: point[1]
-                },
-                n = nodes.push(node);
+            if (mode == 0) {} else {
+                var point = d3.mouse(this),
+                    node = {
+                        x: point[0],
+                        y: point[1],
+                        name: "AAA"
+                    };
 
-            // add links to any nearby nodes
-            nodes.forEach(function(target) {
-                var x = target.x - node.x,
-                    y = target.y - node.y;
-                if (Math.sqrt(x * x + y * y) < 30) {
-                    links.push({
-                        source: node,
-                        target: target
-                    });
-                }
-            });
-
-            restart();
+                nodes.forEach(function(target) {
+                    var x = target.x - node.x,
+                        y = target.y - node.y;
+                    if (x * x + y * y < node_r * node_r) {
+                        n = nodes.push(node);
+                        links.push({
+                            source: node,
+                            target: target
+                        });
+                    }
+                });
+                restart();
+            }
         }
 
-        function mousedownNode(d, i) {
-            nodes.splice(i, 1);
-            links = links.filter(function(l) {
-                return l.source !== d && l.target !== d;
-            });
-            d3.event.stopPropagation();
+        function mousedownNode(respondNode, index) {
+            // var point = d3.mouse(this),
+            //     node = {
+            //         x: point[0],
+            //         y: point[1]
+            //     },
+            //     n = nodes.push(node);
+
+            // links.push({
+            //     source: respondNode,
+            //     target: node
+            // });
+            // nodes.splice(i, 1);
+            // links = links.filter(function(l) {
+            //     return l.source !== d && l.target !== d;
+            // });
+            // d3.event.stopPropagation();
 
             restart();
         }
@@ -122,8 +179,9 @@
 
             node.enter().insert("circle", ".cursor")
                 .attr("class", "node")
-                .attr("r", 5)
-                .on("mousedown", mousedownNode);
+                .attr("r", 20)
+                .on("mousedown", mousedownNode)
+                .call(force.drag);
 
             node.exit()
                 .remove();
