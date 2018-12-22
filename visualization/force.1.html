@@ -36,51 +36,48 @@
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script>
-        function checknode(name) {
-            for (var i = 0; i < nodes.length; i++) {
-                if (nodes[i].name == name) {
+        function checknode(nodename) {
+            nodes.forEach(function(node) {
+                if (node.name == nodename) {
                     return true;
                 }
-            }
+            });
             return false;
         }
 
         function checkedge(source, target) {
-            for (var i = 0; i < links.length; i++) {
-                if (links[i].source == source && links[i].target == target) {
+            links.forEach(function(link) {
+                if (link.source == source && link.target == target) {
                     return true;
                 }
-            }
+            });
             return false;
         }
 
         function run() {
-            // var point = d3.mouse(this);
             jsons.forEach(function(json) {
-                console.log(json);
                 var repeat = false;
-                if (checknode(json.source) == false) {
-                    newnode = {
-                        name: json.source
-                    };
-                    nodes.push(newnode);
-                    console.log(newnode);
+                for (var i = 0; i < nodes.length; i++) {
+                    if (checknode(json.source) == false) {
+                        nodes.push({
+                            name: json.source
+                        });
+                    }
+                    if (checknode(json.target) == false) {
+                        nodes.push({
+                            name: json.target
+                        });
+                    }
+                    if (checkedge(json.source, json.target) == false) {
+                        links.push({
+                            source: json.source,
+                            target: json.target,
+                            rela: json.rela
+                        });
+                    }
                 }
-                if (checknode(json.target) == false) {
-                    nodes.push({
-                        name: json.target,
-                    });
-                }
-                if (checkedge(json.source, json.target) == false) {
-                    links.push({
-                        source: json.source,
-                        target: json.target,
-                        rela: json.rela
-                    });
-                }
+
             });
-            console.log(links);
-            restart();
         }
 
         var jsons = [{
@@ -103,6 +100,8 @@
 
 
 
+
+
         var width = window.innerWidth,
             height = window.innerHeight;;
 
@@ -112,8 +111,14 @@
             .size([width, height])
             .nodes([{
                 name: "A",
+            }, {
+                name: "B",
+            }, {
+                name: "C",
+            }, {
+                name: "D",
             }]) // initialize with a single node
-            // .nodes([])
+            .links(jsons)
             .linkDistance(100)
             .charge(-1000)
             .on("tick", tick);
@@ -161,7 +166,6 @@
         };
 
         function mousedownCanvas() {
-            run();
             // if (mode == 0) {} else {
             //     var point = d3.mouse(this),
             //         node = {
@@ -274,7 +278,6 @@
             node.exit()
                 .remove();
 
-            console.log("BBBB")
             link = link.data(links);
             link.enter().insert("line", ".node")
                 .attr({
@@ -290,7 +293,6 @@
             link.exit()
                 .remove();
 
-            console.log("CCCC")
             text = text.data(nodes);
             text.enter().insert("text", ".text")
                 .attr("class", "text")
