@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -19,6 +16,7 @@ import java.net.URL;
 /**
  * Created by geshuaiqi on 2018/9/30.
  */
+@CrossOrigin
 @RestController
 public class searchAPI {
     String baseURL = "https://api.ownthink.com/kg/knowledge?entity=";
@@ -89,12 +87,14 @@ public class searchAPI {
         return json_res;
     }
 
+    @CrossOrigin
     @GetMapping("/search/entity/array/{entity}")
     public JSONArray searchEntity(@PathVariable String entity){
         JSONArray jsonarray = JSONArray.fromObject(searchEntityString(entity));
         return jsonarray;
     }
 
+    @CrossOrigin
     @GetMapping("/search/entity/dbread/{entity}")
     public JSONArray searchEntityforDB(@PathVariable String entity){
         try {
@@ -105,6 +105,7 @@ public class searchAPI {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/search/entity/string/{entity}")
     public String searchEntityString(@PathVariable String entity){
         JSONObject json = searchAll(entity).getJSONObject("data");

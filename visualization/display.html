@@ -120,6 +120,14 @@
             rela: "发送到"
         }];
 
+
+        function requestJson(name) {
+            var api = "http://dearwhy.top/search/entity/array/" + name;
+            $.get(api, function(data, status) {
+                console.log("Data: " + data + "\nStatus: " + status);
+            });
+        }
+
         function requestAPI(source_name) {
             var result = [];
             net.forEach(function(item) {
@@ -129,6 +137,8 @@
             });
             return result;
         }
+
+        requestJson("周杰伦");
 
 
 
