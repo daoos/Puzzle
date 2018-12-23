@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://lab.yiwise.com:55555/QA/answer/ -->
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- META TAGS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        .link {
+            fill: none;
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
+        
+        #licensing {
+            fill: green;
+        }
+        
+        .link.licensing {
+            stroke: green;
+        }
+        
+        .link.resolved {
+            stroke-dasharray: 0, 2 1;
+        }
+        
+        circle {
+            fill: #ccc;
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+        
+        text {
+            font: 12px Microsoft YaHei;
+            pointer-events: none;
+            text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+        }
+        
+        .linetext {
+            font-size: 12px Microsoft YaHei;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+    <div class="span8 page-content" id="display">
+
+    </div>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+        // var links = "searchLinkTarget";
+
+        // var links = [{
+        //     source: "A",
+        //     target: "B",
+        //     rela: "背景"
+        // }, {
+        //     source: "A",
+        //     target: "C",
+        //     rela: "放肆的"
+        // }, {
+        //     source: "B",
+        //     target: "C",
+        //     rela: "发"
+        // }, {
+        //     source: "C",
+        //     target: "D",
+        //     rela: "发送到"
+        // }, ];
+
+        var net = [{
+            source: "A",
+            target: "B",
+            rela: "背景"
+        }, {
+            source: "A",
+            target: "C",
+            rela: "放肆的"
+        }, {
+            source: "B",
+            target: "C",
+            rela: "发"
+        }, {
+            source: "C",
+            target: "D",
+            rela: "发送到"
+        }, {
+            source: "A",
+            target: "M",
+            rela: "发送到"
+        }, {
+            source: "A",
+            target: "N",
+            rela: "发送到"
+        }, {
+            source: "C",
+            target: "M",
+            rela: "发送到"
+        }, {
+            source: "C",
+            target: "N",
+            rela: "发送到"
+        }, {
+            source: "M",
+            target: "Q",
+            rela: "发送到"
+        }, {
+            source: "Q",
+            target: "P",
+            rela: "发送到"
+        }];
+
+
+        function requestJson(name) {
+            var api = "http://dearwhy.top/search/entity/array/" + name;
+            // $.get(api, function(data, status) {
+            //     console.log("Data: " + data + "\nStatus: " + status);
+            // });
+
+            $.ajax({
+                type: "Get",
+                url: api,
+                dataType: "jsonp",
+                jsonp: "callback", //传递给请求服务器处理程序或页面的，用以获得JSONP回调函数名
+                jsonpCallback: "jsonCallBackTest", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，此属性可不配置
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function() {
+                    alert("error");
+                }
+            });
+
+        }
+
+        function requestAPI(source_name) {
+            var result = [];
+            net.forEach(function(item) {
+                if (item.source == source_name) {
+                    result.push(item);
+                }
+            });
+            return result;
+        }
+
+        requestJson("周杰伦");
+
+
+
+        // var secondlinks = [{
+        //     source: "A",
+        //     target: "M",
+        //     rela: "背景"
+        // }, {
+        //     source: "A",
+        //     target: "N",
+        //     rela: "放肆的"
+        // }, {
+        //     source: "A",
+        //     target: "N",
+        //     rela: "放肆的"
+        // }];
+
+        var nodes = {};
+
+        links = requestAPI("A");
+
+        links.forEach(function(link) {
+            link.source = nodes[link.source] || (nodes[link.source] = {
+                name: link.source
+            });
+            link.target = nodes[link.target] || (nodes[link.target] = {
+                name: link.target
+            });
+        });
+
+        var width = window.innerWidth,
+            height = window.innerHeight;
+
+
+        var force = d3.layout.force() //layout将json格式转化为力学图可用的格式
+            .nodes(d3.values(nodes)) //设定节点数组
+            .links(links) //设定连线数组
+            .size([width, height]) //作用域的大小
+            .linkDistance(180) //连接线长度
+            .charge(-1500) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
+            .on("tick", tick) //指时间间隔，隔一段时间刷新一次画面
+        ;
+
+        var svg = d3.select("#display").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .on("mousedown", mousedownCanvas);;
+
+        var circle = svg.selectAll("circle"),
+            text = svg.selectAll(".text"),
+            edges_line = svg.selectAll(".edgepath"),
+            edges_text = svg.selectAll(".edgelabel");
+
+
+        var node_r = 20;
+
+
+        function checknode(name, nodes) {
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].name == name) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function checkedge(source, target, links) {
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].source == source && links[i].target == target) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function getnode(name, nodes) {
+            var result = [];
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].name == name) {
+                    result.push(nodes[i]);
+                }
+            }
+            return result;
+        }
+
+        function mousedownNode(thisNode, index) {
+            // console.log(requestAPI(thisNode.name));
+            var point = d3.mouse(this);
+            var nodes = force.nodes();
+            var links = force.links();
+            requestAPI(thisNode.name).forEach(function(link) {
+                if (checknode(link.target, nodes) == false) {
+                    var targetnode = {
+                        x: point[0],
+                        y: point[1],
+                        name: link.target
+                    }
+                    nodes.push(targetnode)
+                }
+                if (checkedge(link.source, link.target, links) == false) {
+                    var targetnodes = getnode(link.target, nodes);
+                    targetnodes.forEach(function(target) {
+                        links.push({
+                            source: thisNode,
+                            target: target,
+                            rela: link.rela
+                        });
+                    });
+                }
+            });
+            // console.log(links);
+            restart();
+        }
+
+        function mousedownCanvas() {
+            // var point = d3.mouse(this),
+            //     node = {
+            //         x: point[0],
+            //         y: point[1],
+            //         name: "AAA"
+            //     };
+            // var nodes = force.nodes();
+            // var links = force.links();
+            // nodes.forEach(function(target) {
+            //     var x = target.x - node.x,
+            //         y = target.y - node.y;
+            //     if (x * x + y * y < node_r * node_r) {
+            //         n = force.nodes().push(node);
+            //         force.links().push({
+            //             source: node,
+            //             target: target,
+            //             rela: "hello"
+            //         });
+            //     }
+            // });
+            // restart();
+        }
+
+
+        function tick() {
+            circle.attr("transform", transform1); //圆圈
+            text.attr("transform", transform1); //顶点文字
+            edges_line.attr('d', function(d) {
+                var path = 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
+                return path;
+            });
+
+            //更新连接线上文字的位置
+            edges_text.attr("transform", function(d) {
+                return "translate(" + (d.source.x + d.target.x) / 2 + "," + (d.source.y + d.target.y) / 2 + ")";
+            })
+        }
+
+        //设置圆圈和文字的坐标
+        function transform1(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        }
+
+        function transform2(d) {
+            return "translate(" + (d.x) + "," + d.y + ")";
+        }
+
+        restart();
+
+        function restart() {
+            //圆圈
+            circle = circle.data(force.nodes());
+            circle.enter().append("circle")
+                .style("fill", function(node) {
+                    var color = "#F9EBF9"; //圆圈背景色
+                    var link = links[node.index];
+                    return color;
+                })
+                .style('stroke', function(node) {
+                    var color = "#A254A2"; //圆圈线条的颜色
+                    var link = links[node.index];
+                    return color;
+                })
+                .on("mousedown", mousedownNode)
+                .attr("r", node_r) //设置圆圈半径
+                .call(force.drag); //将当前选中的元素传到drag函数中，使顶点可以被拖动
+            circle.exit().remove();
+
+
+            text = text.data(force.nodes());
+            text.enter().append("text")
+                .attr("class", "text")
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle") //在圆圈中加上数据
+                .style('fill', "#3b3b3b")
+                .text(function(d) {
+                    return d.name;
+                });
+            text.exit().remove();
+
+
+            edges_line = edges_line.data(force.links())
+            edges_line.enter().insert("path", "circle")
+                .attr({
+                    'd': function(d) {
+                        return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y
+                    },
+                    'class': 'edgepath',
+                    'id': function(d, i) {
+                        return 'edgepath' + i;
+                    }
+                })
+                .style("stroke", "#999");
+            edges_line.exit().remove();
+
+            edges_text = edges_text.data(links);
+            edges_text.enter()
+                .append("text")
+                .attr("class", "linetext")
+                .text(function(d) {
+                    return d.rela;
+                });
+            edges_text.exit()
+                .remove();
+
+
+            force.start();
+        }
+    </script>
+
+</body>
+
+</html>

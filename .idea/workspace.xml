@@ -7,8 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visualization/display.html" afterPath="$PROJECT_DIR$/visualization/display.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -979,12 +977,12 @@
       <workItem from="1540446135090" duration="995000" />
       <workItem from="1545192623389" duration="805000" />
       <workItem from="1545269052392" duration="380000" />
-      <workItem from="1545539260959" duration="585000" />
+      <workItem from="1545539260959" duration="858000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36196000" />
+    <option name="totallyTimeSpent" value="36469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />

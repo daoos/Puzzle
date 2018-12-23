@@ -32,9 +32,9 @@ public class controller {
         return "index";
     }
 
-//    @RequestMapping("/display")
-//    public String display(Model model) {
-//        return "display";
-//    }
+    @RequestMapping("/visualization")
+    public String visualization(Model model) {
+        return "visualization";
+    }
 
 }
