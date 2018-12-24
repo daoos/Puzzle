@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Bootstrap 3
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-home"></i> 主页</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
+                </li>
+                <li></li>
+                <li>
+                    <a href="#">参数设置</a>
+                </li>
+                <li>
+                    <a href="#">linkDistance  <span id="linkDistance-span">50%</span></a>
+                </li>
+                <li>
+                    <input name="linkDistanceSlider" type="range" min="1" max="100" step="1" value="50">
+                </li>
+                <li>
+                    <a href="#">charge  <span id="charge-span">50%</span></a>
+                </li>
+                <li>
+                    <input name="chargeSlider" type="range" min="1" max="100" step="1" value="50">
+                </li>
+            </ul>
+
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+          </button>
+            <div class="span8 page-content" id="display">
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script>
+        // 这一块为网络请求函数
+        function requestJson(name) {
+            var api = "http://127.0.0.1:8080/search/entity/array/" + name;
+            $.get(api, function(data, status) {
+                console.log(data);
+                net = data;
+            });
+        }
+
+        function requestAPI(source_name) {
+            var result = [];
+            requestJson(source_name).forEach(function(item) {
+                if (item.source == source_name) {
+                    result.push(item);
+                }
+            });
+            console.log(result);
+            return result;
+        }
+    </script>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+        // var links = "searchLinkTarget";
+
+        var links = [{
+            source: "周杰伦",
+            target: "B",
+            rela: "背景"
+        }];
+
+        var nodes = {};
+        var node_r = 20; // 圆圈尺寸
+        var linkDistance = 400;
+        var charge = -1000;
+
+        // 可以看成初始化函数
+        links.forEach(function(link) {
+            link.source = nodes[link.source] || (nodes[link.source] = {
+                name: link.source
+            });
+            link.target = nodes[link.target] || (nodes[link.target] = {
+                name: link.target
+            });
+        });
+
+        // 屏幕尺寸自动响应与g鞥新
+        var width = window.innerWidth,
+            height = window.innerHeight;
+        window.onresize = function() {
+            width = window.innerWidth, height = window.innerHeight;
+            svg.attr('width', width).attr('height', height);
+            force.size([width, height]).resume();
+        };
+
+        // mode 代表当前操作模式
+        var mode = 0; // 0代表拖拉 1代表增值
+        document.onkeydown = function(event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 81) { // 按 Esc 
+                mode = 1 - mode;
+            }
+        };
+
+        var force = d3.layout.force() //layout将json格式转化为力学图可用的格式
+            .nodes(d3.values(nodes)) //设定节点数组
+            .links(links) //设定连线数组
+            .size([width, height]) //作用域的大小
+            .linkDistance(linkDistance * 0.5) //连接线长度
+            .charge(charge * 0.5) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
+            .on("tick", tick) //指时间间隔，隔一段时间刷新一次画面
+        ;
+
+        var svg = d3.select("#display").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .on("mousedown", mousedownCanvas);;
+
+        var circle = svg.selectAll("circle"),
+            text = svg.selectAll(".text"),
+            edges_line = svg.selectAll(".edgepath"),
+            edges_text = svg.selectAll(".edgelabel");
+
+
+        restart();
+
+        function checknode(name, nodes) {
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].name == name) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function checkedge(source, target, links) {
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].source == source && links[i].target == target) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function getnode(name, nodes) {
+            var result = [];
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].name == name) {
+                    result.push(nodes[i]);
+                }
+            }
+            return result;
+        }
+
+        function mousedownNode(thisNode, index) {
+            console.log(thisNode.name);
+            if (mode == 1) {
+                // 请求数据
+                // 调用API接口，更新数据，更新视图
+                var point = d3.mouse(this);
+                var api = "http://127.0.0.1:8080/search/entity/array/" + thisNode.name;
+                $.get(api, function(data, status) {
+                    console.log(data);
+                    var nodes = force.nodes();
+                    var links = force.links();
+                    data.forEach(function(link) {
+                        if (checknode(link.target, nodes) == false) {
+                            var targetnode = {
+                                x: point[0],
+                                y: point[1],
+                                name: link.target
+                            }
+                            nodes.push(targetnode)
+                        }
+                        if (checkedge(link.source, link.target, links) == false) {
+                            var targetnodes = getnode(link.target, nodes);
+                            targetnodes.forEach(function(target) {
+                                links.push({
+                                    source: thisNode,
+                                    target: target,
+                                    rela: link.rela
+                                });
+                            });
+                        }
+                    });
+                    // console.log(links);
+                    restart();
+                });
+            }
+        }
+
+        function mousedownCanvas() {
+
+            // var point = d3.mouse(this),
+            //     node = {
+            //         x: point[0],
+            //         y: point[1],
+            //         name: "AAA"
+            //     };
+            // var nodes = force.nodes();
+            // var links = force.links();
+            // nodes.forEach(function(target) {
+            //     var x = target.x - node.x,
+            //         y = target.y - node.y;
+            //     if (x * x + y * y < node_r * node_r) {
+            //         n = force.nodes().push(node);
+            //         force.links().push({
+            //             source: node,
+            //             target: target,
+            //             rela: "hello"
+            //         });
+            //     }
+            // });
+            // restart();
+        }
+
+        // force的自动更新函数
+        function tick() {
+
+            circle.attr("transform", transform1); //圆圈
+            text.attr("transform", transform1); //顶点文字
+            edges_line.attr('d', function(d) {
+                var path = 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
+                return path;
+            });
+
+            //更新连接线上文字的位置
+            edges_text.attr("transform", function(d) {
+                return "translate(" + (d.source.x + d.target.x) / 2 + "," + (d.source.y + d.target.y) / 2 + ")";
+            })
+        }
+
+        //设置圆圈和文字的坐标
+        function transform1(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        }
+
+        function transform2(d) {
+            return "translate(" + (d.x) + "," + d.y + ")";
+        }
+
+        function restart() {
+            //圆圈
+            circle = circle.data(force.nodes());
+            circle.enter().append("circle")
+                .style("fill", function(node) {
+                    var color = "#F9EBF9"; //圆圈背景色
+                    var link = links[node.index];
+                    return color;
+                })
+                .style('stroke', function(node) {
+                    var color = "#A254A2"; //圆圈线条的颜色
+                    var link = links[node.index];
+                    return color;
+                })
+                .on("mousedown", mousedownNode)
+                .attr("r", node_r) //设置圆圈半径
+                .call(force.drag); //将当前选中的元素传到drag函数中，使顶点可以被拖动
+            circle.exit().remove();
+
+
+            text = text.data(force.nodes());
+            text.enter().append("text")
+                .attr("class", "text")
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle") //在圆圈中加上数据
+                .style('fill', "#3b3b3b")
+                .text(function(d) {
+                    return d.name;
+                });
+            text.exit().remove();
+
+
+            edges_line = edges_line.data(force.links())
+            edges_line.enter().insert("path", "circle")
+                .attr({
+                    // 'd': function(d) {
+                    //     return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y
+                    // },
+                    'class': 'edgepath',
+                    'id': function(d, i) {
+                        return 'edgepath' + i;
+                    }
+                })
+                .style("stroke", "#999");
+            edges_line.exit().remove();
+
+            edges_text = edges_text.data(links);
+            edges_text.enter()
+                .append("text")
+                .attr("class", "linetext")
+                .text(function(d) {
+                    return d.rela;
+                });
+            edges_text.exit()
+                .remove();
+
+            force.start();
+        }
+    </script>
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script type="text/javascript">
+        //侧边栏操作函数
+        $(document).ready(function() {
+            var trigger = $('.hamburger'),
+                overlay = $('.overlay'),
+                scale_add = $('#scale_add'),
+                isClosed = false;
+
+            trigger.click(function() {
+                hamburger_cross();
+            });
+
+            scale_add.click(function() {
+                force.linkDistance(50);
+                restart();
+            })
+
+            function hamburger_cross() {
+
+                if (isClosed == true) {
+                    // overlay.hide();
+                    trigger.removeClass('is-open');
+                    trigger.addClass('is-closed');
+                    isClosed = false;
+                } else {
+                    // overlay.show();
+                    trigger.removeClass('is-closed');
+                    trigger.addClass('is-open');
+                    isClosed = true;
+                }
+            }
+
+            $('[data-toggle="offcanvas"]').click(function() {
+                $('#wrapper').toggleClass('toggled');
+            });
+        });
+    </script>
+
+    <script>
+        $('input[type="range"]').change(function() {
+            var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+
+            $(this).css('background-image',
+                '-webkit-gradient(linear, left top, right top, ' +
+                'color-stop(' + val + ', #94A14E), ' +
+                'color-stop(' + val + ', #C5C5C5)' +
+                ')'
+            );
+
+            if ($(this).attr('name') == "linkDistanceSlider") {
+                force.linkDistance(linkDistance * val);
+                $("#linkDistance-span").text((100 * val).toFixed(0) + "%");
+                restart();
+            }
+
+            if ($(this).attr('name') == "chargeSlider") {
+                force.charge(charge * val);
+                $("#charge-span").text((100 * val).toFixed(0) + "%");
+                restart();
+            }
+
+        });
+    </script>
+</body>
+
+</html>

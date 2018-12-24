@@ -28,12 +28,10 @@
         .link.resolved {
             stroke-dasharray: 0, 2 1;
         }
-        
-        circle {
-            fill: #ccc;
-            stroke: #333;
-            stroke-width: 1.5px;
+        /* circle {
+            fill: lightgoldenrodyellow;
         }
+         */
         
         text {
             font: 12px Microsoft YaHei;
@@ -60,120 +58,33 @@
     <script>
         // var links = "searchLinkTarget";
 
-        // var links = [{
-        //     source: "A",
-        //     target: "B",
-        //     rela: "背景"
-        // }, {
-        //     source: "A",
-        //     target: "C",
-        //     rela: "放肆的"
-        // }, {
-        //     source: "B",
-        //     target: "C",
-        //     rela: "发"
-        // }, {
-        //     source: "C",
-        //     target: "D",
-        //     rela: "发送到"
-        // }, ];
-
-        var net = [{
-            source: "A",
+        var links = [{
+            source: "周杰伦",
             target: "B",
             rela: "背景"
-        }, {
-            source: "A",
-            target: "C",
-            rela: "放肆的"
-        }, {
-            source: "B",
-            target: "C",
-            rela: "发"
-        }, {
-            source: "C",
-            target: "D",
-            rela: "发送到"
-        }, {
-            source: "A",
-            target: "M",
-            rela: "发送到"
-        }, {
-            source: "A",
-            target: "N",
-            rela: "发送到"
-        }, {
-            source: "C",
-            target: "M",
-            rela: "发送到"
-        }, {
-            source: "C",
-            target: "N",
-            rela: "发送到"
-        }, {
-            source: "M",
-            target: "Q",
-            rela: "发送到"
-        }, {
-            source: "Q",
-            target: "P",
-            rela: "发送到"
         }];
 
 
         function requestJson(name) {
-            var api = "http://dearwhy.top/search/entity/array/" + name;
-            // $.get(api, function(data, status) {
-            //     console.log("Data: " + data + "\nStatus: " + status);
-            // });
-
-            $.ajax({
-                type: "Get",
-                url: api,
-                dataType: "jsonp",
-                jsonp: "callback", //传递给请求服务器处理程序或页面的，用以获得JSONP回调函数名
-                jsonpCallback: "jsonCallBackTest", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，此属性可不配置
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function() {
-                    alert("error");
-                }
+            var api = "http://127.0.0.1:8080/search/entity/array/" + name;
+            $.get(api, function(data, status) {
+                console.log(data);
+                net = data;
             });
-
         }
 
         function requestAPI(source_name) {
             var result = [];
-            net.forEach(function(item) {
+            requestJson(source_name).forEach(function(item) {
                 if (item.source == source_name) {
                     result.push(item);
                 }
             });
+            console.log(result);
             return result;
         }
 
-        requestJson("周杰伦");
-
-
-
-        // var secondlinks = [{
-        //     source: "A",
-        //     target: "M",
-        //     rela: "背景"
-        // }, {
-        //     source: "A",
-        //     target: "N",
-        //     rela: "放肆的"
-        // }, {
-        //     source: "A",
-        //     target: "N",
-        //     rela: "放肆的"
-        // }];
-
         var nodes = {};
-
-        links = requestAPI("A");
 
         links.forEach(function(link) {
             link.source = nodes[link.source] || (nodes[link.source] = {
@@ -186,6 +97,11 @@
 
         var width = window.innerWidth,
             height = window.innerHeight;
+        window.onresize = function() {
+            width = window.innerWidth, height = window.innerHeight;
+            svg.attr('width', width).attr('height', height);
+            force.size([width, height]).resume();
+        };
 
 
         var force = d3.layout.force() //layout将json格式转化为力学图可用的格式
@@ -193,7 +109,7 @@
             .links(links) //设定连线数组
             .size([width, height]) //作用域的大小
             .linkDistance(180) //连接线长度
-            .charge(-1500) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
+            .charge(-800) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
             .on("tick", tick) //指时间间隔，隔一段时间刷新一次画面
         ;
 
@@ -239,36 +155,56 @@
             return result;
         }
 
+        // mode 代表当前操作模式
+        var mode = 0; // 0代表拖拉 1代表增值
+        document.onkeydown = function(event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 81) { // 按 Esc 
+                mode = 1 - mode;
+            }
+        };
+
         function mousedownNode(thisNode, index) {
-            // console.log(requestAPI(thisNode.name));
-            var point = d3.mouse(this);
-            var nodes = force.nodes();
-            var links = force.links();
-            requestAPI(thisNode.name).forEach(function(link) {
-                if (checknode(link.target, nodes) == false) {
-                    var targetnode = {
-                        x: point[0],
-                        y: point[1],
-                        name: link.target
-                    }
-                    nodes.push(targetnode)
-                }
-                if (checkedge(link.source, link.target, links) == false) {
-                    var targetnodes = getnode(link.target, nodes);
-                    targetnodes.forEach(function(target) {
-                        links.push({
-                            source: thisNode,
-                            target: target,
-                            rela: link.rela
-                        });
+            console.log(thisNode.name);
+            if (mode == 1) {
+                // 请求数据
+                // 调用API接口，更新数据，更新视图
+                var point = d3.mouse(this);
+                var api = "http://127.0.0.1:8080/search/entity/array/" + thisNode.name;
+                $.get(api, function(data, status) {
+                    console.log(data);
+                    var nodes = force.nodes();
+                    var links = force.links();
+                    data.forEach(function(link) {
+                        if (checknode(link.target, nodes) == false) {
+                            var targetnode = {
+                                x: point[0],
+                                y: point[1],
+                                name: link.target
+                            }
+                            nodes.push(targetnode)
+                        }
+                        if (checkedge(link.source, link.target, links) == false) {
+                            var targetnodes = getnode(link.target, nodes);
+                            targetnodes.forEach(function(target) {
+                                links.push({
+                                    source: thisNode,
+                                    target: target,
+                                    rela: link.rela
+                                });
+                            });
+                        }
                     });
-                }
-            });
-            // console.log(links);
-            restart();
+                    // console.log(links);
+                    restart();
+                });
+            }
         }
 
+
+
         function mousedownCanvas() {
+
             // var point = d3.mouse(this),
             //     node = {
             //         x: point[0],
@@ -292,8 +228,9 @@
             // restart();
         }
 
-
+        // force的自动更新函数
         function tick() {
+
             circle.attr("transform", transform1); //圆圈
             text.attr("transform", transform1); //顶点文字
             edges_line.attr('d', function(d) {
@@ -373,7 +310,6 @@
                 });
             edges_text.exit()
                 .remove();
-
 
             force.start();
         }
