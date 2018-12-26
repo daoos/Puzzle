@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
 
 /**
  * Created by geshuaiqi on 2018/9/30.
@@ -55,28 +59,10 @@ public class searchAPI {
 
 //    @RequestMapping("/search/view")
     @RequestMapping("/display")
-    public String test(HttpServletRequest request){
-        String content=request.getParameter("question");
-        String html = "";
-        try {
-            Resource resource = new ClassPathResource("/templates/display.html");
-            BufferedReader in = new BufferedReader(new InputStreamReader(resource.getInputStream()));
-            StringBuffer buffer = new StringBuffer();
-            String line = " ";
-            while ((line = in.readLine()) != null) {
-                buffer.append(line+"\n");
-            }
-            html =  buffer.toString();
-            String res = searchEntities(content);
-            html = html.replace("\"searchLinkTarget\"",res);
-        }catch (Exception e){
-            if(content != null) {
-                html = html.replace("\"searchLinkTarget\"", "null");
-            }
-            logger.error("read fail");
-        }finally {
-            return html;
-        }
+    public ModelAndView display(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("display");
+        modelAndView.addObject("hello", "老王");
+        return modelAndView;
 
     }
 

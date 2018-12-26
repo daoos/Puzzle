@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.springframework.org/schema/mvc">
 
 <head>
     <meta charset="UTF-8">
@@ -121,7 +121,7 @@
     </script>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script>
+    <script th:inline="javascript">
         // var links = "searchLinkTarget";
         // var links = [{
         //     source: "周杰伦",
@@ -129,7 +129,9 @@
         //     rela: "背景",
         // }];
 
-        var links = requestAPI("周杰伦");
+        var links = requestAPI(
+            /*[[${searchTarget}]]*/ //thymeleaf 的js的模板语法，获得searchTarget变量的值
+        );
         // console.log("12", s);
 
         var nodes = {};
