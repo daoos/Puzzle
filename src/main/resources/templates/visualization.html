@@ -1,115 +1,180 @@
 <!DOCTYPE html>
-<!-- saved from url=(0038)http://lab.yiwise.com:55555/QA/answer/ -->
-<html lang="en-US">
-<!--<![endif]-->
+<html lang="zh">
 
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puzzle</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-    <style>
-        .link {
-            fill: none;
-            stroke: #666;
-            stroke-width: 1.5px;
-        }
-        
-        #licensing {
-            fill: green;
-        }
-        
-        .link.licensing {
-            stroke: green;
-        }
-        
-        .link.resolved {
-            stroke-dasharray: 0, 2 1;
-        }
-        /* circle {
-            fill: lightgoldenrodyellow;
-        }
-         */
-        
-        text {
-            font: 12px Microsoft YaHei;
-            pointer-events: none;
-            text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
-        }
-        
-        .linetext {
-            font-size: 12px Microsoft YaHei;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link rel="stylesheet" href="/css/visualization/style.css">
 
 </head>
 
-
-
 <body>
 
-    <div class="span8 page-content" id="display">
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Puzzle可视化平台
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-home"></i> 主页</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
+                </li>
+
+                <li>
+                    <div style="height: 40px;padding: 10px 15px 10px 30px;">
+                        <p>增值模式
+                            <span style="margin-left: 10px">
+                                <label class="switch">
+                                            <input id="mode" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            </span>
+                        </p>
+                    </div>
+                </li>
+
+                <li></li>
+                <li>
+                    <a href="#">参数设置</a>
+                </li>
+                <li>
+                    <a href="#">linkDistance  <span id="linkDistance-span">50%</span></a>
+                </li>
+                <li>
+                    <input name="linkDistanceSlider" type="range" min="1" max="100" step="1" value="50">
+                </li>
+                <li>
+                    <a href="#">charge  <span id="charge-span">50%</span></a>
+                </li>
+                <li>
+                    <input name="chargeSlider" type="range" min="1" max="100" step="1" value="50">
+                </li>
+                <li>
+                    <a href="#">画布高度  <span id="height-span">800</span></a>
+                </li>
+                <li>
+                    <input name="heightSlider" type="range" min="700" max="2000" step="20" value="0" style="background-image: -webkit-gradient( linear, left top, right top, color-stop(0.0, #94A14E), color-stop(0.0, #C5C5C5));">
+                </li>
+                <li>
+
+                </li>
+            </ul>
+
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+          </button>
+            <div class="span8 page-content" id="display">
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
 
     </div>
+    <!-- /#wrapper -->
+
+    <script>
+        // 这一块为网络请求函数
+        function requestAPI(source_name) {
+            var result = [];
+            $.ajax({
+                url: "http://127.0.0.1:8080/search/entity/array/" + source_name,
+                async: false,
+                success: function(data) {
+                    // console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        result.push({
+                            source: data[i].source,
+                            target: data[i].target,
+                            rela: data[i].rela,
+                        });
+                    }
+                }
+            });
+            return result;
+        }
+    </script>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script>
         // var links = "searchLinkTarget";
+        // var links = [{
+        //     source: "周杰伦",
+        //     target: "B",
+        //     rela: "背景",
+        // }];
 
-        var links = [{
-            source: "周杰伦",
-            target: "B",
-            rela: "背景"
-        }];
-
-
-        function requestJson(name) {
-            var api = "http://127.0.0.1:8080/search/entity/array/" + name;
-            $.get(api, function(data, status) {
-                console.log(data);
-                net = data;
-            });
-        }
-
-        function requestAPI(source_name) {
-            var result = [];
-            requestJson(source_name).forEach(function(item) {
-                if (item.source == source_name) {
-                    result.push(item);
-                }
-            });
-            console.log(result);
-            return result;
-        }
+        var links = requestAPI("周杰伦");
+        // console.log("12", s);
 
         var nodes = {};
+        var node_r = 20; // 圆圈尺寸
+        var linkDistance = 400;
+        var charge = -1000;
 
+        // 可以看成初始化函数
         links.forEach(function(link) {
             link.source = nodes[link.source] || (nodes[link.source] = {
-                name: link.source
+                name: link.source,
+                role: "entity",
+                desc: null
             });
             link.target = nodes[link.target] || (nodes[link.target] = {
-                name: link.target
+                name: link.target,
+                role: "attribute",
+                desc: null
             });
         });
 
+        // 屏幕尺寸自动响应与g鞥新
         var width = window.innerWidth,
-            height = window.innerHeight;
+            height = 700;
         window.onresize = function() {
-            width = window.innerWidth, height = window.innerHeight;
+            width = window.innerWidth;
             svg.attr('width', width).attr('height', height);
             force.size([width, height]).resume();
         };
 
+        // mode 代表当前操作模式
+        var mode = 0; // 0代表拖拉 1代表增值
+        document.onkeydown = function(event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 81) { // 按 Esc 
+                mode = 1 - mode;
+            }
+        };
 
         var force = d3.layout.force() //layout将json格式转化为力学图可用的格式
             .nodes(d3.values(nodes)) //设定节点数组
             .links(links) //设定连线数组
             .size([width, height]) //作用域的大小
-            .linkDistance(180) //连接线长度
-            .charge(-800) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
+            .linkDistance(linkDistance * 0.5) //连接线长度
+            .charge(charge * 0.5) //顶点的电荷数。该参数决定是排斥还是吸引，数值越小越互相排斥
             .on("tick", tick) //指时间间隔，隔一段时间刷新一次画面
         ;
 
@@ -124,8 +189,7 @@
             edges_text = svg.selectAll(".edgelabel");
 
 
-        var node_r = 20;
-
+        restart();
 
         function checknode(name, nodes) {
             for (var i = 0; i < nodes.length; i++) {
@@ -155,77 +219,73 @@
             return result;
         }
 
-        // mode 代表当前操作模式
-        var mode = 0; // 0代表拖拉 1代表增值
-        document.onkeydown = function(event) {
-            var e = event || window.event || arguments.callee.caller.arguments[0];
-            if (e && e.keyCode == 81) { // 按 Esc 
-                mode = 1 - mode;
-            }
-        };
-
         function mousedownNode(thisNode, index) {
-            console.log(thisNode.name);
+            // console.log(thisNode.name);
             if (mode == 1) {
                 // 请求数据
                 // 调用API接口，更新数据，更新视图
                 var point = d3.mouse(this);
                 var api = "http://127.0.0.1:8080/search/entity/array/" + thisNode.name;
                 $.get(api, function(data, status) {
-                    console.log(data);
+                    // console.log(data);
+                    // console.log(status);
+                    if (status != "success") {
+                        console.warn("数据加载失败");
+                    }
+
+                    // thisNode.role = "entity";
+                    $('circle[name=' + thisNode.name + ']').attr('class', "entity");
+
                     var nodes = force.nodes();
                     var links = force.links();
+
                     data.forEach(function(link) {
-                        if (checknode(link.target, nodes) == false) {
+                        if (checknode(link.target, nodes) == false && link.rela != "desc") {
                             var targetnode = {
                                 x: point[0],
                                 y: point[1],
-                                name: link.target
-                            }
-                            nodes.push(targetnode)
+                                name: link.target,
+                                role: "atttribute",
+                                desc: null
+                            };
+                            nodes.push(targetnode);
                         }
-                        if (checkedge(link.source, link.target, links) == false) {
+                        if (link.rela == "desc") {
+                            // console.log(link);
+                            nodes.forEach(function(node) {
+                                if (node.name == link.source) {
+                                    link.role = "entity";
+                                    node.desc = link.target;
+                                }
+                            });
+                        } else if (checkedge(link.source, link.target, links) == false) {
                             var targetnodes = getnode(link.target, nodes);
                             targetnodes.forEach(function(target) {
                                 links.push({
                                     source: thisNode,
                                     target: target,
-                                    rela: link.rela
+                                    rela: link.rela,
+                                    role: "atttribute",
+                                    desc: null
                                 });
                             });
                         }
+
+
                     });
                     // console.log(links);
+                    // nodes.forEach(function(node) {
+                    //     console.log(node);
+                    // });
                     restart();
                 });
+            } else {
+                console.log(thisNode);
             }
         }
 
-
-
         function mousedownCanvas() {
 
-            // var point = d3.mouse(this),
-            //     node = {
-            //         x: point[0],
-            //         y: point[1],
-            //         name: "AAA"
-            //     };
-            // var nodes = force.nodes();
-            // var links = force.links();
-            // nodes.forEach(function(target) {
-            //     var x = target.x - node.x,
-            //         y = target.y - node.y;
-            //     if (x * x + y * y < node_r * node_r) {
-            //         n = force.nodes().push(node);
-            //         force.links().push({
-            //             source: node,
-            //             target: target,
-            //             rela: "hello"
-            //         });
-            //     }
-            // });
-            // restart();
         }
 
         // force的自动更新函数
@@ -253,24 +313,22 @@
             return "translate(" + (d.x) + "," + d.y + ")";
         }
 
-        restart();
-
         function restart() {
             //圆圈
             circle = circle.data(force.nodes());
             circle.enter().append("circle")
-                .style("fill", function(node) {
-                    var color = "#F9EBF9"; //圆圈背景色
-                    var link = links[node.index];
-                    return color;
-                })
-                .style('stroke', function(node) {
-                    var color = "#A254A2"; //圆圈线条的颜色
-                    var link = links[node.index];
-                    return color;
-                })
                 .on("mousedown", mousedownNode)
                 .attr("r", node_r) //设置圆圈半径
+                .attr("name", function(node) {
+                    return node.name;
+                })
+                .attr("class", function(node) {
+                    if (node.role == "entity") {
+                        return "entity";
+                    } else {
+                        return "attribute";
+                    }
+                }) //设置圆圈半径
                 .call(force.drag); //将当前选中的元素传到drag函数中，使顶点可以被拖动
             circle.exit().remove();
 
@@ -290,9 +348,9 @@
             edges_line = edges_line.data(force.links())
             edges_line.enter().insert("path", "circle")
                 .attr({
-                    'd': function(d) {
-                        return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y
-                    },
+                    // 'd': function(d) {
+                    //     return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y
+                    // },
                     'class': 'edgepath',
                     'id': function(d, i) {
                         return 'edgepath' + i;
@@ -311,9 +369,96 @@
             edges_text.exit()
                 .remove();
 
+
             force.start();
         }
     </script>
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script type="text/javascript">
+        //侧边栏操作函数
+        $(document).ready(function() {
+            var trigger = $('.hamburger'),
+                overlay = $('.overlay'),
+                scale_add = $('#scale_add'),
+                isClosed = false;
+
+            trigger.click(function() {
+                hamburger_cross();
+            });
+
+            scale_add.click(function() {
+                force.linkDistance(50);
+                restart();
+            })
+
+            function hamburger_cross() {
+
+                if (isClosed == true) {
+                    // overlay.hide();
+                    trigger.removeClass('is-open');
+                    trigger.addClass('is-closed');
+                    isClosed = false;
+                } else {
+                    // overlay.show();
+                    trigger.removeClass('is-closed');
+                    trigger.addClass('is-open');
+                    isClosed = true;
+                }
+            }
+
+            $('[data-toggle="offcanvas"]').click(function() {
+                $('#wrapper').toggleClass('toggled');
+            });
+        });
+    </script>
+
+    <script>
+        // 这一块是侧边栏响应函数
+        // 参设设置
+
+        $('input[type="range"]').change(function() {
+            var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+            $(this).css('background-image',
+                '-webkit-gradient(linear, left top, right top, ' +
+                'color-stop(' + val + ', #94A14E), ' +
+                'color-stop(' + val + ', #C5C5C5)' +
+                ')'
+            );
+
+            if ($(this).attr('name') == "linkDistanceSlider") {
+                force.linkDistance(linkDistance * val);
+                $("#linkDistance-span").text((100 * val).toFixed(0) + "%");
+                restart();
+            }
+
+            if ($(this).attr('name') == "chargeSlider") {
+                force.charge(charge * val);
+                $("#charge-span").text((100 * val).toFixed(0) + "%");
+                restart();
+            }
+
+            if ($(this).attr('name') == "heightSlider") {
+                $("#height-span").text($(this).val());
+                height = $(this).val();
+                svg.attr('width', width).attr('height', height);
+                force.size([width, height]).resume();
+                restart();
+            }
+
+        });
+
+        // 增值模式
+        $('#mode').change(function() {
+            if (document.getElementById('mode').checked == true) {
+                mode = 1;
+            } else {
+                mode = 0;
+            };
+        });
+    </script>
+
 
 </body>
 

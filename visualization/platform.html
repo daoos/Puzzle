@@ -25,14 +25,11 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       Bootstrap 3
+                       Puzzle可视化平台
                     </a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-home"></i> 主页</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
@@ -40,9 +37,20 @@
                 <li>
                     <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
                 </li>
+
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
+                    <div style="height: 40px;padding: 10px 15px 10px 30px;">
+                        <p>增值模式
+                            <span style="margin-left: 10px">
+                                <label class="switch">
+                                            <input id="mode" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            </span>
+                        </p>
+                    </div>
                 </li>
+
                 <li></li>
                 <li>
                     <a href="#">参数设置</a>
@@ -58,6 +66,9 @@
                 </li>
                 <li>
                     <input name="chargeSlider" type="range" min="1" max="100" step="1" value="50">
+                </li>
+                <li>
+
                 </li>
             </ul>
 
@@ -110,8 +121,11 @@
         var links = [{
             source: "周杰伦",
             target: "B",
-            rela: "背景"
+            rela: "背景",
         }];
+
+        // var links = requestAPI("周杰伦");
+
 
         var nodes = {};
         var node_r = 20; // 圆圈尺寸
@@ -121,10 +135,14 @@
         // 可以看成初始化函数
         links.forEach(function(link) {
             link.source = nodes[link.source] || (nodes[link.source] = {
-                name: link.source
+                name: link.source,
+                role: "entity",
+                desc: null
             });
             link.target = nodes[link.target] || (nodes[link.target] = {
-                name: link.target
+                name: link.target,
+                role: "attribute",
+                desc: null
             });
         });
 
@@ -197,39 +215,67 @@
         }
 
         function mousedownNode(thisNode, index) {
-            console.log(thisNode.name);
+            // console.log(thisNode.name);
             if (mode == 1) {
                 // 请求数据
                 // 调用API接口，更新数据，更新视图
                 var point = d3.mouse(this);
                 var api = "http://127.0.0.1:8080/search/entity/array/" + thisNode.name;
                 $.get(api, function(data, status) {
-                    console.log(data);
+                    // console.log(data);
+                    // console.log(status);
+                    if (status != "success") {
+                        console.warn("数据加载失败");
+                    }
+
+                    // thisNode.role = "entity";
+                    $('circle[name=' + thisNode.name + ']').attr('class', "entity");
+
                     var nodes = force.nodes();
                     var links = force.links();
+
                     data.forEach(function(link) {
-                        if (checknode(link.target, nodes) == false) {
+                        if (checknode(link.target, nodes) == false && link.rela != "desc") {
                             var targetnode = {
                                 x: point[0],
                                 y: point[1],
-                                name: link.target
-                            }
-                            nodes.push(targetnode)
+                                name: link.target,
+                                role: "atttribute",
+                                desc: null
+                            };
+                            nodes.push(targetnode);
                         }
-                        if (checkedge(link.source, link.target, links) == false) {
+                        if (link.rela == "desc") {
+                            // console.log(link);
+                            nodes.forEach(function(node) {
+                                if (node.name == link.source) {
+                                    link.role = "entity";
+                                    node.desc = link.target;
+                                }
+                            });
+                        } else if (checkedge(link.source, link.target, links) == false) {
                             var targetnodes = getnode(link.target, nodes);
                             targetnodes.forEach(function(target) {
                                 links.push({
                                     source: thisNode,
                                     target: target,
-                                    rela: link.rela
+                                    rela: link.rela,
+                                    role: "atttribute",
+                                    desc: null
                                 });
                             });
                         }
+
+
                     });
                     // console.log(links);
+                    // nodes.forEach(function(node) {
+                    //     console.log(node);
+                    // });
                     restart();
                 });
+            } else {
+                console.log(thisNode);
             }
         }
 
@@ -287,18 +333,18 @@
             //圆圈
             circle = circle.data(force.nodes());
             circle.enter().append("circle")
-                .style("fill", function(node) {
-                    var color = "#F9EBF9"; //圆圈背景色
-                    var link = links[node.index];
-                    return color;
-                })
-                .style('stroke', function(node) {
-                    var color = "#A254A2"; //圆圈线条的颜色
-                    var link = links[node.index];
-                    return color;
-                })
                 .on("mousedown", mousedownNode)
                 .attr("r", node_r) //设置圆圈半径
+                .attr("name", function(node) {
+                    return node.name;
+                })
+                .attr("class", function(node) {
+                    if (node.role == "entity") {
+                        return "entity";
+                    } else {
+                        return "attribute";
+                    }
+                }) //设置圆圈半径
                 .call(force.drag); //将当前选中的元素传到drag函数中，使顶点可以被拖动
             circle.exit().remove();
 
@@ -384,6 +430,8 @@
     </script>
 
     <script>
+        // 这一块是侧边栏响应函数
+        // 参设设置
         $('input[type="range"]').change(function() {
             var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
 
@@ -405,9 +453,19 @@
                 $("#charge-span").text((100 * val).toFixed(0) + "%");
                 restart();
             }
+        });
 
+        // 增值模式
+        $('#mode').change(function() {
+            if (document.getElementById('mode').checked == true) {
+                mode = 1;
+            } else {
+                mode = 0;
+            };
         });
     </script>
+
+
 </body>
 
 </html>

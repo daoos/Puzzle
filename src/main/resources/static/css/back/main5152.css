@@ -1,6 +1,7 @@
 /* General ------------------------------------------------------------------------------------------------------------*/
 body {
   background-color: #fff;
+  background: #353b65 url("/img/back/page1_bg.jpg") center top no-repeat;
 }
 
 a:hover {
@@ -141,7 +142,7 @@ span.tag-line {
 
 /* Header - Search ---------------------------------------------------------------------------------------------------*/
 .search-area-wrapper {
-  background: #353b65 url("/img/back/page1_bg.jpg") center top no-repeat;
+  /*background: #353b65 url("/img/back/page1_bg.jpg") center top no-repeat;*/
   background-size: 100%;
   min-height: 279px;
   height: auto !important;
