@@ -63,7 +63,6 @@ public class searchAPI {
         ModelAndView modelAndView = new ModelAndView("display");
         modelAndView.addObject("hello", "老王");
         return modelAndView;
-
     }
 
     @GetMapping("/search/all/{entity}")

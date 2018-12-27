@@ -1,5 +1,7 @@
 package com.knowledge.graph.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ import java.util.List;
 @CrossOrigin
 @Controller
 public class controller {
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -24,8 +28,15 @@ public class controller {
 
     @CrossOrigin
     @RequestMapping("/visualization")
-    public String visualization(Model model) {
+    public String visualization(HttpServletRequest request,Model model) {
         // sprint 的模板语法
+        String searchMethod = request.getParameter("searchby");
+        String question = request.getParameter("question");
+        if(searchMethod.equals("entity")){
+            logger.info(question);
+            model.addAttribute("searchTarget", question);
+            return "visualization";
+        }
         model.addAttribute("searchTarget", "周杰伦");
         return "visualization";
     }
