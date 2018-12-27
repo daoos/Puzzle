@@ -6,15 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/back/bootstrap5152.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/back/bootstrap5152.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/back/main5152.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/back/main5152.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/display.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/visualization.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/visualization.html" />
-    </list>
+    <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,8 +44,8 @@
       <file leaf-file-name="searchAPI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="31" />
+            <state relative-caret-position="311">
+              <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1257,12 +1249,12 @@
       <workItem from="1545192623389" duration="805000" />
       <workItem from="1545269052392" duration="380000" />
       <workItem from="1545539260959" duration="2715000" />
-      <workItem from="1545782257929" duration="12706000" />
+      <workItem from="1545782257929" duration="12900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51032000" />
+    <option name="totallyTimeSpent" value="51226000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1440" height="825" extended-state="6" />
@@ -1834,8 +1826,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="31" />
+        <state relative-caret-position="311">
+          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
