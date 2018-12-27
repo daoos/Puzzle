@@ -135,22 +135,49 @@
         var node_r = 20; // 圆圈尺寸
         var linkDistance = 400;
         var charge = -1000;
+        var descmap = {}
 
         // 可以看成初始化函数
-        links.forEach(function(link) {
-            link.source = nodes[link.source] || (nodes[link.source] = {
-                name: link.source,
-                role: "entity",
-                desc: null
-            });
-            link.target = nodes[link.target] || (nodes[link.target] = {
-                name: link.target,
-                role: "attribute",
-                desc: null
-            });
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].rela == "desc") {
+                descmap[links[i].source] = links[i].target;
+            }
+        }
+        console.log(descmap);
+        links.forEach(function(link, index) {
+            if (link.rela != "desc") {
+                link.source = nodes[link.source] || (nodes[link.source] = {
+                    name: link.source,
+                    role: "entity",
+                    desc: descmap[link.source]
+                });
+
+                link.target = nodes[link.target] || (nodes[link.target] = {
+                    name: link.target,
+                    role: "attribute",
+                    desc: null
+                });
+            } else {
+                links.splice(index);
+            }
         });
 
-        // 屏幕尺寸自动响应与g鞥新
+        // links.forEach(function(link, index) {
+        //     if (link.rela == "desc") {
+        //         console.log(link);
+        //         for (var i = 0; i < nodes.length; i++) {
+        //             if (nodes[i].name == link.source) {
+        //                 nodes[i].desc = link.target;
+        //                 console.log(nodes[i]);
+        //                 break;
+        //             }
+        //         }
+        //         links.splice(index);
+        //     }
+        // });
+
+
+        // 屏幕尺寸自动响应与g更新
         var width = window.innerWidth,
             height = 700;
         window.onresize = function() {
