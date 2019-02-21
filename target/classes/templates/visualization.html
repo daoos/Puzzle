@@ -99,8 +99,7 @@
         function requestAPI(source_name) {
             var result = [];
             $.ajax({
-                url: "http://dearwhy.top:80/search/entity/array/" + source_name,
-                // url: "http://dearwhy.top/search/entity/array/" + source_name,
+                url: "/search/entity/array/" + source_name,
                 async: false,
                 success: function(data) {
                     // console.log(data);
@@ -129,7 +128,6 @@
         var links = requestAPI(
             /*[[${searchTarget}]]*/ //thymeleaf 的js的模板语法，获得searchTarget变量的值
         );
-        // console.log("12", s);
 
         var nodes = {};
         var node_r = 20; // 圆圈尺寸
@@ -161,21 +159,6 @@
                 links.splice(index);
             }
         });
-
-        // links.forEach(function(link, index) {
-        //     if (link.rela == "desc") {
-        //         console.log(link);
-        //         for (var i = 0; i < nodes.length; i++) {
-        //             if (nodes[i].name == link.source) {
-        //                 nodes[i].desc = link.target;
-        //                 console.log(nodes[i]);
-        //                 break;
-        //             }
-        //         }
-        //         links.splice(index);
-        //     }
-        // });
-
 
         // 屏幕尺寸自动响应与g更新
         var width = window.innerWidth,
@@ -256,7 +239,7 @@
                 // 请求数据
                 // 调用API接口，更新数据，更新视图
                 var point = d3.mouse(this);
-                var api = "http://127.0.0.1:8080/search/entity/array/" + thisNode.name;
+                var api = "/search/entity/array/" + thisNode.name;
                 $.get(api, function(data, status) {
                     // console.log(data);
                     // console.log(status);
