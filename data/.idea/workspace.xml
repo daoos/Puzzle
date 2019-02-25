@@ -10,7 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/data$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551022642403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551065915866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QASystemOnMedicalKG$data_spider.coverage" NAME="data_spider Coverage Results" MODIFIED="1550996797004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prepare_data" />
     <SUITE FILE_PATH="coverage/QASystemOnMedicalKG$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551014272749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -47,8 +47,8 @@
       <file leaf-file-name="build_medicalgraph.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build_medicalgraph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1076">
-              <caret line="188" column="25" selection-start-line="188" selection-start-column="8" selection-end-line="188" selection-end-column="25" />
+            <state relative-caret-position="279">
+              <caret line="211" column="71" selection-start-line="211" selection-start-column="65" selection-end-line="211" selection-end-column="71" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -220,7 +220,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969698" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3721212" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28121212" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" weight="0.32969698" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32969698" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
@@ -392,8 +392,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build_medicalgraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1076">
-          <caret line="188" column="25" selection-start-line="188" selection-start-column="8" selection-end-line="188" selection-end-column="25" />
+        <state relative-caret-position="279">
+          <caret line="211" column="71" selection-start-line="211" selection-start-column="65" selection-end-line="211" selection-end-column="71" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

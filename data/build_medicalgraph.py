@@ -212,7 +212,7 @@ class MedicalGraph:
         self.create_relationship('Disease', 'Food', rels_doeat, 'do_eat', '宜吃')
         self.create_relationship('Department', 'Department', rels_department, 'belongs_to', '属于')
         self.create_relationship('Disease', 'Drug', rels_commonddrug, 'common_drug', '常用药品')
-        self.create_relationship('Producer', 'Drug', rels_drug_producer, 'drugs_of', '生产药品')
+        # self.create_relationship('Producer', 'Drug', rels_drug_producer, 'drugs_of', '生产药品')
         self.create_relationship('Disease', 'Drug', rels_recommanddrug, 'recommand_drug', '好评药品')
         self.create_relationship('Disease', 'Check', rels_check, 'need_check', '诊断检查')
         self.create_relationship('Disease', 'Symptom', rels_symptom, 'has_symptom', '症状')
@@ -277,7 +277,7 @@ class MedicalGraph:
 
 if __name__ == '__main__':
     handler = MedicalGraph()
-    handler.create_graphnodes()
+    # handler.create_graphnodes()
     handler.create_graphrels()
     # handler.export_data()
 
