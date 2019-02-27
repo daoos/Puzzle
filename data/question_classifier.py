@@ -1,14 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf-8
-# File: question_classifier.py
-# Author: lhy<lhy_in_blcu@126.com,https://huangyong.github.io>
-# Date: 18-10-4
-
 import os
 import ahocorasick
 
 class QuestionClassifier:
     def __init__(self):
+        print("模型初始化中...")
         cur_dir = '/'.join(os.path.abspath(__file__).split('/')[:-1])
         #　特征词路径
         self.disease_path = os.path.join(cur_dir, 'dict/disease.txt')
@@ -53,7 +48,7 @@ class QuestionClassifier:
         self.cure_qwds = ['治疗什么', '治啥', '治疗啥', '医治啥', '治愈啥', '主治啥', '主治什么', '有什么用', '有何用', '用处', '用途',
                           '有什么好处', '有什么益处', '有何益处', '用来', '用来做啥', '用来作甚', '需要', '要']
 
-        print('model init finished ......')
+        print('初始化完成...')
 
         return
 
@@ -219,9 +214,10 @@ class QuestionClassifier:
         return False
 
 
-if __name__ == '__main__':
-    handler = QuestionClassifier()
-    while 1:
-        question = input('input an question:')
-        data = handler.classify(question)
-        print(data)
+
+# if __name__ == '__main__':
+#     handler = QuestionClassifier()
+#     while 1:
+#         question = input('input an question:')
+#         data = handler.classify(question)
+#         print(data)

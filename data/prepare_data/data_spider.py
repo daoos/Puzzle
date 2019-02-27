@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# coding: utf-8
-# File: data_spider.py
-# Author: lhy<lhy_in_blcu@126.com,https://huangyong.github.io>
-# Date: 18-10-3
-
-
 import urllib.request
 import urllib.parse
 from lxml import etree
