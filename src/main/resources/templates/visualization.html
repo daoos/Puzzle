@@ -99,7 +99,8 @@
         function requestAPI(source_name) {
             var result = [];
             $.ajax({
-                url: "/search/entity/array/" + source_name,
+//                url: "/search/entity/array/" + source_name,
+                url: "/neo4j/" + source_name,
                 async: false,
                 success: function(data) {
                     // console.log(data);
@@ -239,9 +240,10 @@
                 // 请求数据
                 // 调用API接口，更新数据，更新视图
                 var point = d3.mouse(this);
-                var api = "/search/entity/array/" + thisNode.name;
+//                var api = "/search/entity/array/" + thisNode.name;
+                var api = "/neo4j/" + thisNode.name;
                 $.get(api, function(data, status) {
-                    // console.log(data);
+                     console.log(data);
                     // console.log(status);
                     if (status != "success") {
                         console.warn("数据加载失败");

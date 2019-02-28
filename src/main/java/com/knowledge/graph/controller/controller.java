@@ -21,6 +21,7 @@ import java.util.List;
 public class controller {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+//    返回首页
     @RequestMapping("/")
     public String index(Model model) {
         return "index";
@@ -29,7 +30,7 @@ public class controller {
     @CrossOrigin
     @RequestMapping("/visualization")
     public String visualization(HttpServletRequest request,Model model) {
-        // sprint 的模板语法
+        // spring 的模板语法
         String searchMethod = request.getParameter("searchby");
         String question = request.getParameter("question");
         if(searchMethod.equals("entity")){

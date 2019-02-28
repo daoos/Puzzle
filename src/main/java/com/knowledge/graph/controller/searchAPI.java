@@ -57,7 +57,6 @@ public class searchAPI {
 
     }
 
-//    @RequestMapping("/search/view")
     @RequestMapping("/display")
     public ModelAndView display(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView("display");
