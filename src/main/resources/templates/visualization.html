@@ -255,7 +255,9 @@
                     var nodes = force.nodes();
                     var links = force.links();
 
+
                     data.forEach(function(link) {
+                        // 现在是双向关系
                         if (checknode(link.target, nodes) == false && link.rela != "desc") {
                             var targetnode = {
                                 x: point[0],
@@ -266,6 +268,19 @@
                             };
                             nodes.push(targetnode);
                         }
+
+                        if (checknode(link.source, nodes) == false && link.rela != "desc") {
+                            var targetnode = {
+                                x: point[0],
+                                y: point[1],
+                                name: link.source,
+                                role: "entity",
+                                desc: null
+                            };
+                            nodes.push(targetnode);
+                        }
+
+
                         if (link.rela == "desc") {
                             // console.log(link);
                             nodes.forEach(function(node) {
@@ -275,19 +290,30 @@
                                 }
                             });
                         } else if (checkedge(link.source, link.target, links) == false) {
-                            var targetnodes = getnode(link.target, nodes);
-                            targetnodes.forEach(function(target) {
-                                links.push({
-                                    source: thisNode,
-                                    target: target,
-                                    rela: link.rela,
-                                    role: "atttribute",
-                                    desc: null
+                            if(thisNode.name == link.source) {
+                                var targetnodes = getnode(link.target, nodes);
+                                targetnodes.forEach(function (target) {
+                                    links.push({
+                                        source: thisNode,
+                                        target: target,
+                                        rela: link.rela,
+                                        role: "atttribute",
+                                        desc: null
+                                    });
                                 });
-                            });
+                            }else{
+                                var sourcenodes = getnode(link.source, nodes);
+                                sourcenodes.forEach(function (source) {
+                                    links.push({
+                                        source: source,
+                                        target: thisNode,
+                                        rela: link.rela,
+                                        role: "atttribute",
+                                        desc: null
+                                    });
+                                });
+                            }
                         }
-
-
                     });
                     // console.log(links);
                     // nodes.forEach(function(node) {

@@ -7,12 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/templates/test.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/templates/test.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/.idea/workspace.xml" afterPath="$PROJECT_DIR$/data/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/visualization.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/visualization.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/visualization.html" afterPath="$PROJECT_DIR$/target/classes/templates/visualization.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,11 +86,11 @@
       <file leaf-file-name="visualization.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/visualization.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="280" column="52" lean-forward="false" selection-start-line="280" selection-start-column="44" selection-end-line="280" selection-end-column="52" />
+            <state relative-caret-position="-987">
+              <caret line="251" column="26" lean-forward="false" selection-start-line="251" selection-start-column="26" selection-end-line="251" selection-end-column="26" />
               <folding>
-                <marker date="1551354377007" expanded="true" signature="1283:1314" ph="..." />
-                <marker date="1551354377007" expanded="true" signature="4751:4814" ph="/*...*/" />
+                <marker date="1551358430938" expanded="true" signature="1283:1314" ph="..." />
+                <marker date="1551358430938" expanded="true" signature="4751:4814" ph="/*...*/" />
               </folding>
             </state>
           </provider>
@@ -1092,12 +1091,12 @@
       <workItem from="1551272976519" duration="432000" />
       <workItem from="1551273448664" duration="1329000" />
       <workItem from="1551278228351" duration="598000" />
-      <workItem from="1551339727749" duration="4476000" />
+      <workItem from="1551339727749" duration="5931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73085000" />
+    <option name="totallyTimeSpent" value="74540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1565,11 +1564,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/visualization.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="280" column="52" lean-forward="false" selection-start-line="280" selection-start-column="44" selection-end-line="280" selection-end-column="52" />
+        <state relative-caret-position="-987">
+          <caret line="251" column="26" lean-forward="false" selection-start-line="251" selection-start-column="26" selection-end-line="251" selection-end-column="26" />
           <folding>
-            <marker date="1551354377007" expanded="true" signature="1283:1314" ph="..." />
-            <marker date="1551354377007" expanded="true" signature="4751:4814" ph="/*...*/" />
+            <marker date="1551358430938" expanded="true" signature="1283:1314" ph="..." />
+            <marker date="1551358430938" expanded="true" signature="4751:4814" ph="/*...*/" />
           </folding>
         </state>
       </provider>
