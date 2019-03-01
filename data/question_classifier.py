@@ -215,9 +215,9 @@ class QuestionClassifier:
 
 
 
-# if __name__ == '__main__':
-#     handler = QuestionClassifier()
-#     while 1:
-#         question = input('input an question:')
-#         data = handler.classify(question)
-#         print(data)
+if __name__ == '__main__':
+    handler = QuestionClassifier()
+    while 1:
+        question = input('input an question:')
+        data = handler.classify(question)
+        print(data)
