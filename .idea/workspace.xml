@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/display.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/chatrobot.html" afterPath="$PROJECT_DIR$/target/classes/templates/chatrobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/display.html" afterPath="$PROJECT_DIR$/target/classes/templates/display.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,17 +79,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="display.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="display.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/display.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="331">
+              <caret line="54" column="126" lean-forward="false" selection-start-line="54" selection-start-column="126" selection-end-line="54" selection-end-column="126" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chatrobot.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chatrobot.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chatrobot.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="265">
@@ -185,8 +181,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/visualization.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/display.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/display.html" />
       </list>
     </option>
   </component>
@@ -1024,12 +1020,12 @@
       <workItem from="1551272976519" duration="432000" />
       <workItem from="1551273448664" duration="1329000" />
       <workItem from="1551278228351" duration="598000" />
-      <workItem from="1551339727749" duration="8576000" />
+      <workItem from="1551339727749" duration="8842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77185000" />
+    <option name="totallyTimeSpent" value="77451000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1492,14 +1488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/display.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chatrobot.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
@@ -1507,6 +1495,14 @@
           <folding>
             <element signature="n#style#0;n#span#0;n#a#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="54" column="126" lean-forward="false" selection-start-line="54" selection-start-column="126" selection-end-line="54" selection-end-column="126" />
+          <folding />
         </state>
       </provider>
     </entry>
