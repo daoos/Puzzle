@@ -203,7 +203,7 @@ public class searchAPI {
     public String robotqa(@PathVariable String question){
         System.out.println(question);
         try{
-            URL url = new URL( "http://127.0.0.1:5000/" + java.net.URLEncoder.encode(question, "utf-8"));
+            URL url = new URL( "http://www.dearwhy.top:5000/" + java.net.URLEncoder.encode(question, "utf-8"));
             String data = crawl(url);
             System.out.println(data);
             return data;

@@ -7,18 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visualization/chat/Chat.cshtml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NER/nerAPI.py" afterPath="$PROJECT_DIR$/NER/nerAPI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/.idea/workspace.xml" afterPath="$PROJECT_DIR$/data/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/chatbot_graph.py" afterPath="$PROJECT_DIR$/data/chatbot_graph.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/prepare_data/data_spider.py" afterPath="$PROJECT_DIR$/data/prepare_data/data_spider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/question_classifier.py" afterPath="$PROJECT_DIR$/data/question_classifier.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/robot.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/robot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/chat/chat.js" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/chat.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,28 +80,28 @@
       <file leaf-file-name="chat.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/chat/chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
+            <state relative-caret-position="437">
               <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="0">
+              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchAPI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="searchAPI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="207" column="35" lean-forward="false" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="35" />
+            <state relative-caret-position="179">
+              <caret line="197" column="0" lean-forward="true" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,9 +180,9 @@
         <option value="$PROJECT_DIR$/NER/nerAPI.py" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/robot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/chat/chat.js" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
       </list>
     </option>
   </component>
@@ -936,12 +926,12 @@
       <workItem from="1551272976519" duration="432000" />
       <workItem from="1551273448664" duration="1329000" />
       <workItem from="1551278228351" duration="598000" />
-      <workItem from="1551339727749" duration="13065000" />
+      <workItem from="1551339727749" duration="13647000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81674000" />
+    <option name="totallyTimeSpent" value="82256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1311,14 +1301,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1380,16 +1362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chatrobot.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#a#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/robot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
@@ -1400,29 +1372,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="207" column="35" lean-forward="false" selection-start-line="207" selection-start-column="35" selection-end-line="207" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/chat/chat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+        <state relative-caret-position="164">
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chatrobot.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/chat/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="197" column="0" lean-forward="true" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
