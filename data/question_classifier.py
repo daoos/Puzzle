@@ -221,3 +221,4 @@ if __name__ == '__main__':
         question = input('input an question:')
         data = handler.classify(question)
         print(data)
+

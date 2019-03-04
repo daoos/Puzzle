@@ -2,7 +2,6 @@ import urllib.request
 import urllib.parse
 from lxml import etree
 import pymongo
-import re
 
 '''基于司法网的犯罪案件采集'''
 class CrimeSpider:

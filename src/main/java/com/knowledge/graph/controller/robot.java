@@ -1,11 +1,13 @@
 package com.knowledge.graph.controller;
 
+import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,13 +28,6 @@ public class robot {
     public String robotchat(HttpServletRequest request,Model model) {
         // sprint 的模板语法
         return "chatrobot";
-    }
-
-    @CrossOrigin
-    @RequestMapping("/test")
-    public String test(HttpServletRequest request,Model model) {
-        // sprint 的模板语法
-        return "test";
     }
 
 }

@@ -21,10 +21,18 @@ class ChatBotGraph:
         else:
             return '\n'.join(final_answers)
 
+
+from flask import Flask
+app = Flask(__name__)
+
+handler = ChatBotGraph()
+
+
+@app.route('/<question>',methods=['GET'])
+def hello_world(question):
+    data = handler.chat_main(question)
+    return data
+
 if __name__ == '__main__':
-    handler = ChatBotGraph()
-    while 1:
-        question = input('question:')
-        answer = handler.chat_main(question)
-        print('Puzzle机器人:', answer)
+    app.run(host='0.0.0.0')
 

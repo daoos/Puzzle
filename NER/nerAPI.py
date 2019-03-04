@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # by vellhe 2017/7/9
-
 from flask import Flask
-
 import tensorflow as tf
 import numpy as np
 import os, argparse, time, random

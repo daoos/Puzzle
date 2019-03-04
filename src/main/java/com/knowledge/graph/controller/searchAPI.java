@@ -196,6 +196,24 @@ public class searchAPI {
         return str;
     }
 
+
+    // 机器人智能问答接口
+    @CrossOrigin
+    @GetMapping("/qa/{question}")
+    public String robotqa(@PathVariable String question){
+        System.out.println(question);
+        try{
+            URL url = new URL( "http://127.0.0.1:5000/" + java.net.URLEncoder.encode(question, "utf-8"));
+            String data = crawl(url);
+            System.out.println(data);
+            return data;
+        }catch (Exception e){
+            e.printStackTrace();
+            return "访问flask接口时出错";
+        }
+
+    }
+
     public static void main(String[]args){
         new searchAPI().NERProcessing("刘备和毛泽东率领三十万大军");
     }

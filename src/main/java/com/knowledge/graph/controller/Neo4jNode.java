@@ -55,7 +55,6 @@ public class Neo4jNode {
         res+="]";
 
         return JSONArray.fromObject(res);
-//        return res;
     }
 
     public static void main(String[] args) throws SQLException  {

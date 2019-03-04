@@ -60,21 +60,20 @@ function CreadMsg(user, content)
 /////////////////////////////////////////////////////////////////////// 后台信息处理 /////////////////////////////////////////////////////////////////////////////////
 
 // 发送
-function AjaxSendMsg(_content)
+function AjaxSendMsg(question)
 {
+    console.log(question);
     var retStr = "";
     $.ajax({
-        type: "POST",
+        type: "GET",
         async:false,
-        url: "/Home/ChatMethod/",
-        data: {
-            content: _content
-        },
+        url: "/qa/"+question,
         error: function (request) {
             retStr = "你好";
         },
         success: function (data) {
-            retStr = data.info;
+            console.log(data);
+            retStr = data;
         }
     });
     return retStr;
