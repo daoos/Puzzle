@@ -17,7 +17,7 @@ class ChatBotGraph:
         res_sql = self.parser.parser_main(res_classify)
         final_answers = self.searcher.search_main(res_sql)
         if not final_answers:
-            return answer
+            return "你这个问题我回答不出来，请问的简单些。比如白血病是什么，白血病能治吗？谢谢，我是智障。"
         else:
             return '\n'.join(final_answers)
 

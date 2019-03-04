@@ -3053,8 +3053,8 @@ body.phone .media-container,body.ifr .media-container {
 	width:900px;
 	border-radius:.5em;
 	overflow:hidden;
-	-webkit-box-shadow:0 0 8px 0 rgba(33,101,129,0.4);
-	box-shadow:0 0 8px 0 rgba(33,101,129,0.4)
+	/*-webkit-box-shadow:0 0 8px 0 rgba(33,101,129,0.4);*/
+	/*box-shadow:0 0 8px 0 rgba(33,101,129,0.4)*/
 }
 .body-bg {
 	display:block
