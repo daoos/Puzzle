@@ -13,7 +13,7 @@ class ChatBotGraph:
         answer = '请输入问题'
         res_classify = self.classifier.classify(sent)
         if not res_classify:
-            return answer
+            return "你这个问题我回答不出来，请问的简单些。比如白血病是什么，白血病能治吗？谢谢，我是智障。"
         res_sql = self.parser.parser_main(res_classify)
         final_answers = self.searcher.search_main(res_sql)
         if not final_answers:
