@@ -35,6 +35,13 @@
 	</repositories>
 
 	<dependencies>
+		<!--<dependency>-->
+			<!--<groupId>com.baidu.aip</groupId>-->
+			<!--<artifactId>java-sdk</artifactId>-->
+			<!--<version>4.10.0</version>-->
+		<!--</dependency>-->
+
+
         <!--访问静态资源-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

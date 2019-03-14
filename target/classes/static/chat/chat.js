@@ -22,6 +22,7 @@ function SendMsg()
         AddMsg('default', SendMsgDispose(text.value));
         var retMsg = AjaxSendMsg(text.value)
         AddMsg('小龙', retMsg);
+        tts(retMsg);
         text.value = "";
     }
 }
@@ -77,4 +78,44 @@ function AjaxSendMsg(question)
         }
     });
     return retStr;
+}
+
+// 初始化变量
+var audio = null;
+
+// 合成按钮
+function tts(text) {
+
+    audio = btts({
+        tex: text,
+        tok: '24.bc96799e7250d0f2b95cda27f91574fb.2592000.1555146378.282335-15758186',
+        spd: 5,
+        pit: 5,
+        vol: 15,
+        per: 0
+    }, {
+        volume: 0.3,
+        autoDestory: true,
+        timeout: 10000,
+        hidden: true,
+        onInit: function(htmlAudioElement) {
+
+        },
+        onSuccess: function(htmlAudioElement) {
+            audio = htmlAudioElement;
+            audio.play();
+        },
+        onError: function(text) {
+            alert(text)
+        },
+        onTimeout: function() {
+            alert('timeout')
+        }
+    });
+}
+
+
+// 取消按钮
+function cancel() {
+    tts("防守打法四大发");
 }

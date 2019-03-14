@@ -30,4 +30,11 @@ public class robot {
         return "chatrobot";
     }
 
+    @RequestMapping("/demo")
+    @CrossOrigin
+    public String demo(HttpServletRequest request,Model model) {
+        // sprint 的模板语法
+        return "demo";
+    }
+
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script type="text/javascript" src="/chat/baidu_tts_cors.js"></script>
+    <script type="text/javascript">
+        // 初始化变量
+        var audio = null;
+
+        // 合成按钮
+        function tts(text) {
+
+            audio = btts({
+                tex: text,
+                tok: '24.bc96799e7250d0f2b95cda27f91574fb.2592000.1555146378.282335-15758186',
+                spd: 5,
+                pit: 5,
+                vol: 15,
+                per: 0
+            }, {
+                volume: 0.3,
+                autoDestory: true,
+                timeout: 10000,
+                hidden: true,
+                onInit: function(htmlAudioElement) {
+
+                },
+                onSuccess: function(htmlAudioElement) {
+                    audio = htmlAudioElement;
+                    play();
+                },
+                onError: function(text) {
+                    alert(text)
+                },
+                onTimeout: function() {
+                    alert('timeout')
+                }
+            });
+        }
+
+        // 播放按钮
+        function play() {
+            if (audio === null) {
+                alert('请先点击合成')
+            } else {
+                audio.play();
+            }
+        }
+
+
+        // 取消按钮
+        function cancel() {
+            tts("防守打法四大发");
+        }
+
+
+    </script>
+</head>
+
+<body>
+<div>
+    <input type="text" id='text' value='百度语音合成' style='width: 500px;'>
+    <button onclick='tts()'>合成</button>
+    <button onclick='play()' id='playBtn'>准备中</button>
+    <button onclick='cancel()'>取消</button>
+</div>
+</body>
+
+</html>
