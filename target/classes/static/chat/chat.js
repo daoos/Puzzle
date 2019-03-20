@@ -114,8 +114,6 @@ function tts(text) {
     });
 }
 
-
-// 取消按钮
-function cancel() {
-    tts("防守打法四大发");
+window.onload = function () {
+    tts("我是Puzzle医疗智能问答机器人，很高兴为您服务");
 }

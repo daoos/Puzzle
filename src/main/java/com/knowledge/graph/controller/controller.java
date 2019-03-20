@@ -42,4 +42,11 @@ public class controller {
         return "visualization";
     }
 
+    @CrossOrigin
+    @RequestMapping("/3dnodes")
+    public String nodes(HttpServletRequest request,Model model) {
+
+        return "3dnodes";
+    }
+
 }
