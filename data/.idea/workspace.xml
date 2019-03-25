@@ -14,6 +14,7 @@
     <SUITE FILE_PATH="coverage/data$question_classifier.coverage" NAME="question_classifier Coverage Results" MODIFIED="1551696268347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551065915866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QASystemOnMedicalKG$data_spider.coverage" NAME="data_spider Coverage Results" MODIFIED="1550996797004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prepare_data" />
+    <SUITE FILE_PATH="coverage/data$lac.coverage" NAME="lac Coverage Results" MODIFIED="1553429322629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QASystemOnMedicalKG$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551014272749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -36,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_spider.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data_spider.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prepare_data/data_spider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
@@ -44,6 +45,15 @@
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="medical.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/medical.json">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="345">
+              <caret line="23" column="63" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -80,6 +90,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="lac.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lac.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-305">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="question_parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/question_parser.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -90,6 +112,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -116,6 +145,8 @@
         <option value="$PROJECT_DIR$/question_classifier.py" />
         <option value="$PROJECT_DIR$/chatbot_graph.py" />
         <option value="$PROJECT_DIR$/prepare_data/data_spider.py" />
+        <option value="$PROJECT_DIR$/data/lac.py" />
+        <option value="$PROJECT_DIR$/lac.py" />
       </list>
     </option>
   </component>
@@ -146,21 +177,6 @@
               <item name="data" type="b2602c69:ProjectViewProjectNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="dict" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="prepare_data" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -186,7 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.chatbot_graph">
+  <component name="RunManager" selected="Python.lac">
     <configuration name="build_medicalgraph" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="data" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,6 +260,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="lac" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lac.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="question_classifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="data" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -268,9 +303,11 @@
       <item itemvalue="Python.build_medicalgraph" />
       <item itemvalue="Python.chatbot_graph" />
       <item itemvalue="Python.question_classifier" />
+      <item itemvalue="Python.lac" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lac" />
         <item itemvalue="Python.chatbot_graph" />
         <item itemvalue="Python.question_classifier" />
         <item itemvalue="Python.build_medicalgraph" />
@@ -302,21 +339,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32969698" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31318682" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" weight="0.32969698" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32969698" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31272727" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29756796" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3018598" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -333,10 +371,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/prepare_data/data_spider.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chatbot_graph.py" />
     <entry file="file://$PROJECT_DIR$/build_medicalgraph.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -534,13 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/medical.json">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="345">
-          <caret line="23" column="63" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dict/symptom.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5425" />
@@ -584,6 +611,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/prepare_data/data_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/medical.json">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="345">
+          <caret line="23" column="63" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/lac.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/question_classifier.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -594,12 +641,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_data/data_spider.py">
+    <entry file="file://$PROJECT_DIR$/lac.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="18" />
+        <state relative-caret-position="-305">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

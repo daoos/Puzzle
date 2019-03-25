@@ -9,6 +9,7 @@
         }
     </style>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
     <script src="https://unpkg.com/3d-force-graph@1.45.6/dist/3d-force-graph.min.js"></script>
 
     <style type="text/css">
@@ -95,15 +96,24 @@
         </div>
     </div>
 
+   
     <script>
+        var Graph;
         const elem = document.getElementById('3d-graph');
 
-        const Graph = ForceGraph3D()(elem)
-            .jsonUrl('https://vasturiano.github.io/3d-force-graph/example/datasets/blocks.json')
-            .nodeAutoColorBy('user')
-            .nodeLabel(node => `${node.user}: ${node.description}`)
-            .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null)
-            .onNodeClick(node => window.open(`https://bl.ocks.org/${node.user}/${node.id}`, '_blank'));
+        function init() {
+             Graph = ForceGraph3D()(elem)
+                    .jsonUrl('https://vasturiano.github.io/3d-force-graph/example/datasets/blocks.json')
+                    .nodeAutoColorBy('user')
+                    .nodeLabel(node => `${node.user}: ${node.description}`)
+                    .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null)
+                    .onNodeClick(node => window.open(`https://bl.ocks.org/${node.user}/${node.id}`, '_blank'));
+
+        }
+
+        init();
+
+
     </script>
 </body>
 
