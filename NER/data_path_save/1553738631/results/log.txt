@@ -1,0 +1,265 @@
+2019-03-28 10:03:51,565:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1521112368', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='train', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2019-03-28 10:04:12,606:INFO: 2019-03-28 10:03:53 epoch 1, step 1, loss: 651.5, global_step: 1
+2019-03-28 10:04:12,606:INFO: 2019-03-28 10:03:53 epoch 1, step 1, loss: 651.5, global_step: 1
+2019-03-28 10:15:26,181:INFO: 2019-03-28 10:03:53 epoch 1, step 44, loss: 152.0, global_step: 44
+2019-03-28 10:15:26,181:INFO: 2019-03-28 10:03:53 epoch 1, step 44, loss: 152.0, global_step: 44
+2019-03-28 10:15:27,192:INFO: ===========validation / test===========
+2019-03-28 10:15:27,192:INFO: ===========validation / test===========
+2019-03-28 10:15:27,237:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:15:27,237:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:15:45,910:INFO: 2019-03-28 10:15:27 epoch 2, step 1, loss: 157.9, global_step: 45
+2019-03-28 10:15:45,910:INFO: 2019-03-28 10:15:27 epoch 2, step 1, loss: 157.9, global_step: 45
+2019-03-28 10:28:07,129:INFO: 2019-03-28 10:15:27 epoch 2, step 44, loss: 112.8, global_step: 88
+2019-03-28 10:28:07,129:INFO: 2019-03-28 10:15:27 epoch 2, step 44, loss: 112.8, global_step: 88
+2019-03-28 10:28:09,730:INFO: ===========validation / test===========
+2019-03-28 10:28:09,730:INFO: ===========validation / test===========
+2019-03-28 10:28:09,797:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:28:09,797:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:28:28,268:INFO: 2019-03-28 10:28:09 epoch 3, step 1, loss: 80.24, global_step: 89
+2019-03-28 10:28:28,268:INFO: 2019-03-28 10:28:09 epoch 3, step 1, loss: 80.24, global_step: 89
+2019-03-28 10:40:29,109:INFO: 2019-03-28 10:28:09 epoch 3, step 44, loss: 74.55, global_step: 132
+2019-03-28 10:40:29,109:INFO: 2019-03-28 10:28:09 epoch 3, step 44, loss: 74.55, global_step: 132
+2019-03-28 10:40:29,824:INFO: ===========validation / test===========
+2019-03-28 10:40:29,824:INFO: ===========validation / test===========
+2019-03-28 10:40:29,917:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:40:29,917:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:40:44,874:INFO: 2019-03-28 10:40:29 epoch 4, step 1, loss: 68.53, global_step: 133
+2019-03-28 10:40:44,874:INFO: 2019-03-28 10:40:29 epoch 4, step 1, loss: 68.53, global_step: 133
+2019-03-28 10:52:33,455:INFO: 2019-03-28 10:40:29 epoch 4, step 44, loss: 70.66, global_step: 176
+2019-03-28 10:52:33,455:INFO: 2019-03-28 10:40:29 epoch 4, step 44, loss: 70.66, global_step: 176
+2019-03-28 10:52:33,992:INFO: ===========validation / test===========
+2019-03-28 10:52:33,992:INFO: ===========validation / test===========
+2019-03-28 10:52:34,015:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:52:34,015:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 10:52:48,194:INFO: 2019-03-28 10:52:34 epoch 5, step 1, loss: 67.49, global_step: 177
+2019-03-28 10:52:48,194:INFO: 2019-03-28 10:52:34 epoch 5, step 1, loss: 67.49, global_step: 177
+2019-03-28 11:04:02,842:INFO: 2019-03-28 10:52:34 epoch 5, step 44, loss: 61.33, global_step: 220
+2019-03-28 11:04:02,842:INFO: 2019-03-28 10:52:34 epoch 5, step 44, loss: 61.33, global_step: 220
+2019-03-28 11:04:03,367:INFO: ===========validation / test===========
+2019-03-28 11:04:03,367:INFO: ===========validation / test===========
+2019-03-28 11:04:03,395:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:04:03,395:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:04:18,442:INFO: 2019-03-28 11:04:03 epoch 6, step 1, loss: 54.13, global_step: 221
+2019-03-28 11:04:18,442:INFO: 2019-03-28 11:04:03 epoch 6, step 1, loss: 54.13, global_step: 221
+2019-03-28 11:15:29,495:INFO: 2019-03-28 11:04:03 epoch 6, step 44, loss: 45.49, global_step: 264
+2019-03-28 11:15:29,495:INFO: 2019-03-28 11:04:03 epoch 6, step 44, loss: 45.49, global_step: 264
+2019-03-28 11:15:30,008:INFO: ===========validation / test===========
+2019-03-28 11:15:30,008:INFO: ===========validation / test===========
+2019-03-28 11:15:30,033:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:15:30,033:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:15:44,916:INFO: 2019-03-28 11:15:30 epoch 7, step 1, loss: 48.58, global_step: 265
+2019-03-28 11:15:44,916:INFO: 2019-03-28 11:15:30 epoch 7, step 1, loss: 48.58, global_step: 265
+2019-03-28 11:27:29,030:INFO: 2019-03-28 11:15:30 epoch 7, step 44, loss: 40.94, global_step: 308
+2019-03-28 11:27:29,030:INFO: 2019-03-28 11:15:30 epoch 7, step 44, loss: 40.94, global_step: 308
+2019-03-28 11:27:29,592:INFO: ===========validation / test===========
+2019-03-28 11:27:29,592:INFO: ===========validation / test===========
+2019-03-28 11:27:29,617:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:27:29,617:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:27:48,565:INFO: 2019-03-28 11:27:29 epoch 8, step 1, loss: 47.36, global_step: 309
+2019-03-28 11:27:48,565:INFO: 2019-03-28 11:27:29 epoch 8, step 1, loss: 47.36, global_step: 309
+2019-03-28 11:39:37,994:INFO: 2019-03-28 11:27:29 epoch 8, step 44, loss: 50.44, global_step: 352
+2019-03-28 11:39:37,994:INFO: 2019-03-28 11:27:29 epoch 8, step 44, loss: 50.44, global_step: 352
+2019-03-28 11:39:38,562:INFO: ===========validation / test===========
+2019-03-28 11:39:38,562:INFO: ===========validation / test===========
+2019-03-28 11:39:38,620:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:39:38,620:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:39:53,699:INFO: 2019-03-28 11:39:38 epoch 9, step 1, loss: 49.58, global_step: 353
+2019-03-28 11:39:53,699:INFO: 2019-03-28 11:39:38 epoch 9, step 1, loss: 49.58, global_step: 353
+2019-03-28 11:51:47,531:INFO: 2019-03-28 11:39:38 epoch 9, step 44, loss: 39.51, global_step: 396
+2019-03-28 11:51:47,531:INFO: 2019-03-28 11:39:38 epoch 9, step 44, loss: 39.51, global_step: 396
+2019-03-28 11:51:48,055:INFO: ===========validation / test===========
+2019-03-28 11:51:48,055:INFO: ===========validation / test===========
+2019-03-28 11:51:48,111:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:51:48,111:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 11:52:03,169:INFO: 2019-03-28 11:51:48 epoch 10, step 1, loss: 49.88, global_step: 397
+2019-03-28 11:52:03,169:INFO: 2019-03-28 11:51:48 epoch 10, step 1, loss: 49.88, global_step: 397
+2019-03-28 12:03:18,194:INFO: 2019-03-28 11:51:48 epoch 10, step 44, loss: 39.07, global_step: 440
+2019-03-28 12:03:18,194:INFO: 2019-03-28 11:51:48 epoch 10, step 44, loss: 39.07, global_step: 440
+2019-03-28 12:03:18,789:INFO: ===========validation / test===========
+2019-03-28 12:03:18,789:INFO: ===========validation / test===========
+2019-03-28 12:03:18,817:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:03:18,817:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:03:40,464:INFO: 2019-03-28 12:03:18 epoch 11, step 1, loss: 41.99, global_step: 441
+2019-03-28 12:03:40,464:INFO: 2019-03-28 12:03:18 epoch 11, step 1, loss: 41.99, global_step: 441
+2019-03-28 12:15:11,623:INFO: 2019-03-28 12:03:18 epoch 11, step 44, loss: 48.4, global_step: 484
+2019-03-28 12:15:11,623:INFO: 2019-03-28 12:03:18 epoch 11, step 44, loss: 48.4, global_step: 484
+2019-03-28 12:15:12,099:INFO: ===========validation / test===========
+2019-03-28 12:15:12,099:INFO: ===========validation / test===========
+2019-03-28 12:15:12,171:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:15:12,171:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:15:27,845:INFO: 2019-03-28 12:15:12 epoch 12, step 1, loss: 35.22, global_step: 485
+2019-03-28 12:15:27,845:INFO: 2019-03-28 12:15:12 epoch 12, step 1, loss: 35.22, global_step: 485
+2019-03-28 12:26:50,806:INFO: 2019-03-28 12:15:12 epoch 12, step 44, loss: 37.46, global_step: 528
+2019-03-28 12:26:50,806:INFO: 2019-03-28 12:15:12 epoch 12, step 44, loss: 37.46, global_step: 528
+2019-03-28 12:26:51,370:INFO: ===========validation / test===========
+2019-03-28 12:26:51,370:INFO: ===========validation / test===========
+2019-03-28 12:26:51,401:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:26:51,401:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:27:06,765:INFO: 2019-03-28 12:26:51 epoch 13, step 1, loss: 39.98, global_step: 529
+2019-03-28 12:27:06,765:INFO: 2019-03-28 12:26:51 epoch 13, step 1, loss: 39.98, global_step: 529
+2019-03-28 12:38:26,941:INFO: 2019-03-28 12:26:51 epoch 13, step 44, loss: 33.76, global_step: 572
+2019-03-28 12:38:26,941:INFO: 2019-03-28 12:26:51 epoch 13, step 44, loss: 33.76, global_step: 572
+2019-03-28 12:38:27,409:INFO: ===========validation / test===========
+2019-03-28 12:38:27,409:INFO: ===========validation / test===========
+2019-03-28 12:38:27,462:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:38:27,462:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:38:40,783:INFO: 2019-03-28 12:38:27 epoch 14, step 1, loss: 28.29, global_step: 573
+2019-03-28 12:38:40,783:INFO: 2019-03-28 12:38:27 epoch 14, step 1, loss: 28.29, global_step: 573
+2019-03-28 12:49:06,935:INFO: 2019-03-28 12:38:27 epoch 14, step 44, loss: 33.83, global_step: 616
+2019-03-28 12:49:06,935:INFO: 2019-03-28 12:38:27 epoch 14, step 44, loss: 33.83, global_step: 616
+2019-03-28 12:49:07,314:INFO: ===========validation / test===========
+2019-03-28 12:49:07,314:INFO: ===========validation / test===========
+2019-03-28 12:49:07,332:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:49:07,332:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:49:20,956:INFO: 2019-03-28 12:49:07 epoch 15, step 1, loss: 30.51, global_step: 617
+2019-03-28 12:49:20,956:INFO: 2019-03-28 12:49:07 epoch 15, step 1, loss: 30.51, global_step: 617
+2019-03-28 12:59:55,490:INFO: 2019-03-28 12:49:07 epoch 15, step 44, loss: 23.16, global_step: 660
+2019-03-28 12:59:55,490:INFO: 2019-03-28 12:49:07 epoch 15, step 44, loss: 23.16, global_step: 660
+2019-03-28 12:59:55,863:INFO: ===========validation / test===========
+2019-03-28 12:59:55,863:INFO: ===========validation / test===========
+2019-03-28 12:59:55,881:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 12:59:55,881:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:00:10,184:INFO: 2019-03-28 12:59:55 epoch 16, step 1, loss: 31.23, global_step: 661
+2019-03-28 13:00:10,184:INFO: 2019-03-28 12:59:55 epoch 16, step 1, loss: 31.23, global_step: 661
+2019-03-28 13:10:45,659:INFO: 2019-03-28 12:59:55 epoch 16, step 44, loss: 24.97, global_step: 704
+2019-03-28 13:10:45,659:INFO: 2019-03-28 12:59:55 epoch 16, step 44, loss: 24.97, global_step: 704
+2019-03-28 13:10:46,122:INFO: ===========validation / test===========
+2019-03-28 13:10:46,122:INFO: ===========validation / test===========
+2019-03-28 13:10:46,144:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:10:46,144:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:10:59,150:INFO: 2019-03-28 13:10:46 epoch 17, step 1, loss: 26.07, global_step: 705
+2019-03-28 13:10:59,150:INFO: 2019-03-28 13:10:46 epoch 17, step 1, loss: 26.07, global_step: 705
+2019-03-28 13:21:37,101:INFO: 2019-03-28 13:10:46 epoch 17, step 44, loss: 20.98, global_step: 748
+2019-03-28 13:21:37,101:INFO: 2019-03-28 13:10:46 epoch 17, step 44, loss: 20.98, global_step: 748
+2019-03-28 13:21:37,576:INFO: ===========validation / test===========
+2019-03-28 13:21:37,576:INFO: ===========validation / test===========
+2019-03-28 13:21:37,596:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:21:37,596:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:21:51,939:INFO: 2019-03-28 13:21:37 epoch 18, step 1, loss: 26.19, global_step: 749
+2019-03-28 13:21:51,939:INFO: 2019-03-28 13:21:37 epoch 18, step 1, loss: 26.19, global_step: 749
+2019-03-28 13:32:45,048:INFO: 2019-03-28 13:21:37 epoch 18, step 44, loss: 35.91, global_step: 792
+2019-03-28 13:32:45,048:INFO: 2019-03-28 13:21:37 epoch 18, step 44, loss: 35.91, global_step: 792
+2019-03-28 13:32:45,541:INFO: ===========validation / test===========
+2019-03-28 13:32:45,541:INFO: ===========validation / test===========
+2019-03-28 13:32:45,573:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:32:45,573:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:32:58,965:INFO: 2019-03-28 13:32:45 epoch 19, step 1, loss: 29.72, global_step: 793
+2019-03-28 13:32:58,965:INFO: 2019-03-28 13:32:45 epoch 19, step 1, loss: 29.72, global_step: 793
+2019-03-28 13:43:22,607:INFO: 2019-03-28 13:32:45 epoch 19, step 44, loss: 22.05, global_step: 836
+2019-03-28 13:43:22,607:INFO: 2019-03-28 13:32:45 epoch 19, step 44, loss: 22.05, global_step: 836
+2019-03-28 13:43:22,999:INFO: ===========validation / test===========
+2019-03-28 13:43:22,999:INFO: ===========validation / test===========
+2019-03-28 13:43:23,017:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:43:23,017:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:43:37,374:INFO: 2019-03-28 13:43:23 epoch 20, step 1, loss: 26.69, global_step: 837
+2019-03-28 13:43:37,374:INFO: 2019-03-28 13:43:23 epoch 20, step 1, loss: 26.69, global_step: 837
+2019-03-28 13:54:43,628:INFO: 2019-03-28 13:43:23 epoch 20, step 44, loss: 21.02, global_step: 880
+2019-03-28 13:54:43,628:INFO: 2019-03-28 13:43:23 epoch 20, step 44, loss: 21.02, global_step: 880
+2019-03-28 13:54:44,200:INFO: ===========validation / test===========
+2019-03-28 13:54:44,200:INFO: ===========validation / test===========
+2019-03-28 13:54:44,217:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:54:44,217:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 13:55:00,905:INFO: 2019-03-28 13:54:44 epoch 21, step 1, loss: 21.12, global_step: 881
+2019-03-28 13:55:00,905:INFO: 2019-03-28 13:54:44 epoch 21, step 1, loss: 21.12, global_step: 881
+2019-03-28 14:06:38,502:INFO: 2019-03-28 13:54:44 epoch 21, step 44, loss: 23.15, global_step: 924
+2019-03-28 14:06:38,502:INFO: 2019-03-28 13:54:44 epoch 21, step 44, loss: 23.15, global_step: 924
+2019-03-28 14:06:39,040:INFO: ===========validation / test===========
+2019-03-28 14:06:39,040:INFO: ===========validation / test===========
+2019-03-28 14:06:39,069:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:06:39,069:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:07:06,753:INFO: 2019-03-28 14:06:39 epoch 22, step 1, loss: 19.71, global_step: 925
+2019-03-28 14:07:06,753:INFO: 2019-03-28 14:06:39 epoch 22, step 1, loss: 19.71, global_step: 925
+2019-03-28 14:18:22,231:INFO: 2019-03-28 14:06:39 epoch 22, step 44, loss: 25.97, global_step: 968
+2019-03-28 14:18:22,231:INFO: 2019-03-28 14:06:39 epoch 22, step 44, loss: 25.97, global_step: 968
+2019-03-28 14:18:22,814:INFO: ===========validation / test===========
+2019-03-28 14:18:22,814:INFO: ===========validation / test===========
+2019-03-28 14:18:22,851:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:18:22,851:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:18:40,577:INFO: 2019-03-28 14:18:22 epoch 23, step 1, loss: 20.8, global_step: 969
+2019-03-28 14:18:40,577:INFO: 2019-03-28 14:18:22 epoch 23, step 1, loss: 20.8, global_step: 969
+2019-03-28 14:30:35,494:INFO: 2019-03-28 14:18:22 epoch 23, step 44, loss: 20.13, global_step: 1012
+2019-03-28 14:30:35,494:INFO: 2019-03-28 14:18:22 epoch 23, step 44, loss: 20.13, global_step: 1012
+2019-03-28 14:30:36,113:INFO: ===========validation / test===========
+2019-03-28 14:30:36,113:INFO: ===========validation / test===========
+2019-03-28 14:30:36,147:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:30:36,147:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:30:54,752:INFO: 2019-03-28 14:30:36 epoch 24, step 1, loss: 24.32, global_step: 1013
+2019-03-28 14:30:54,752:INFO: 2019-03-28 14:30:36 epoch 24, step 1, loss: 24.32, global_step: 1013
+2019-03-28 14:42:45,816:INFO: 2019-03-28 14:30:36 epoch 24, step 44, loss: 16.09, global_step: 1056
+2019-03-28 14:42:45,816:INFO: 2019-03-28 14:30:36 epoch 24, step 44, loss: 16.09, global_step: 1056
+2019-03-28 14:42:46,412:INFO: ===========validation / test===========
+2019-03-28 14:42:46,412:INFO: ===========validation / test===========
+2019-03-28 14:42:46,438:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:42:46,438:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:43:07,799:INFO: 2019-03-28 14:42:46 epoch 25, step 1, loss: 21.9, global_step: 1057
+2019-03-28 14:43:07,799:INFO: 2019-03-28 14:42:46 epoch 25, step 1, loss: 21.9, global_step: 1057
+2019-03-28 14:54:35,685:INFO: 2019-03-28 14:42:46 epoch 25, step 44, loss: 21.67, global_step: 1100
+2019-03-28 14:54:35,685:INFO: 2019-03-28 14:42:46 epoch 25, step 44, loss: 21.67, global_step: 1100
+2019-03-28 14:54:36,245:INFO: ===========validation / test===========
+2019-03-28 14:54:36,245:INFO: ===========validation / test===========
+2019-03-28 14:54:36,270:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:54:36,270:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 14:54:53,463:INFO: 2019-03-28 14:54:36 epoch 26, step 1, loss: 18.26, global_step: 1101
+2019-03-28 14:54:53,463:INFO: 2019-03-28 14:54:36 epoch 26, step 1, loss: 18.26, global_step: 1101
+2019-03-28 15:06:11,145:INFO: 2019-03-28 14:54:36 epoch 26, step 44, loss: 19.39, global_step: 1144
+2019-03-28 15:06:11,145:INFO: 2019-03-28 14:54:36 epoch 26, step 44, loss: 19.39, global_step: 1144
+2019-03-28 15:06:11,708:INFO: ===========validation / test===========
+2019-03-28 15:06:11,708:INFO: ===========validation / test===========
+2019-03-28 15:06:11,735:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:06:11,735:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:06:24,585:INFO: 2019-03-28 15:06:11 epoch 27, step 1, loss: 18.34, global_step: 1145
+2019-03-28 15:06:24,585:INFO: 2019-03-28 15:06:11 epoch 27, step 1, loss: 18.34, global_step: 1145
+2019-03-28 15:18:14,029:INFO: 2019-03-28 15:06:11 epoch 27, step 44, loss: 17.68, global_step: 1188
+2019-03-28 15:18:14,029:INFO: 2019-03-28 15:06:11 epoch 27, step 44, loss: 17.68, global_step: 1188
+2019-03-28 15:18:14,718:INFO: ===========validation / test===========
+2019-03-28 15:18:14,718:INFO: ===========validation / test===========
+2019-03-28 15:18:14,745:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:18:14,745:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:18:32,279:INFO: 2019-03-28 15:18:14 epoch 28, step 1, loss: 18.69, global_step: 1189
+2019-03-28 15:18:32,279:INFO: 2019-03-28 15:18:14 epoch 28, step 1, loss: 18.69, global_step: 1189
+2019-03-28 15:30:22,756:INFO: 2019-03-28 15:18:14 epoch 28, step 44, loss: 18.39, global_step: 1232
+2019-03-28 15:30:22,756:INFO: 2019-03-28 15:18:14 epoch 28, step 44, loss: 18.39, global_step: 1232
+2019-03-28 15:30:23,303:INFO: ===========validation / test===========
+2019-03-28 15:30:23,303:INFO: ===========validation / test===========
+2019-03-28 15:30:23,331:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:30:23,331:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:30:42,517:INFO: 2019-03-28 15:30:23 epoch 29, step 1, loss: 15.43, global_step: 1233
+2019-03-28 15:30:42,517:INFO: 2019-03-28 15:30:23 epoch 29, step 1, loss: 15.43, global_step: 1233
+2019-03-28 15:41:52,778:INFO: 2019-03-28 15:30:23 epoch 29, step 44, loss: 18.24, global_step: 1276
+2019-03-28 15:41:52,778:INFO: 2019-03-28 15:30:23 epoch 29, step 44, loss: 18.24, global_step: 1276
+2019-03-28 15:41:53,356:INFO: ===========validation / test===========
+2019-03-28 15:41:53,356:INFO: ===========validation / test===========
+2019-03-28 15:41:53,379:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:41:53,379:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:42:09,461:INFO: 2019-03-28 15:41:53 epoch 30, step 1, loss: 19.84, global_step: 1277
+2019-03-28 15:42:09,461:INFO: 2019-03-28 15:41:53 epoch 30, step 1, loss: 19.84, global_step: 1277
+2019-03-28 15:53:57,419:INFO: 2019-03-28 15:41:53 epoch 30, step 44, loss: 18.02, global_step: 1320
+2019-03-28 15:53:57,419:INFO: 2019-03-28 15:41:53 epoch 30, step 44, loss: 18.02, global_step: 1320
+2019-03-28 15:53:57,978:INFO: ===========validation / test===========
+2019-03-28 15:53:57,978:INFO: ===========validation / test===========
+2019-03-28 15:53:58,008:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:53:58,008:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 15:54:10,794:INFO: 2019-03-28 15:53:58 epoch 31, step 1, loss: 14.72, global_step: 1321
+2019-03-28 15:54:10,794:INFO: 2019-03-28 15:53:58 epoch 31, step 1, loss: 14.72, global_step: 1321
+2019-03-28 16:05:36,712:INFO: 2019-03-28 15:53:58 epoch 31, step 44, loss: 20.67, global_step: 1364
+2019-03-28 16:05:36,712:INFO: 2019-03-28 15:53:58 epoch 31, step 44, loss: 20.67, global_step: 1364
+2019-03-28 16:05:37,321:INFO: ===========validation / test===========
+2019-03-28 16:05:37,321:INFO: ===========validation / test===========
+2019-03-28 16:05:37,347:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 16:05:37,347:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 16:05:53,529:INFO: 2019-03-28 16:05:37 epoch 32, step 1, loss: 15.16, global_step: 1365
+2019-03-28 16:05:53,529:INFO: 2019-03-28 16:05:37 epoch 32, step 1, loss: 15.16, global_step: 1365
+2019-03-28 16:16:58,410:INFO: 2019-03-28 16:05:37 epoch 32, step 44, loss: 15.8, global_step: 1408
+2019-03-28 16:16:58,410:INFO: 2019-03-28 16:05:37 epoch 32, step 44, loss: 15.8, global_step: 1408
+2019-03-28 16:16:59,095:INFO: ===========validation / test===========
+2019-03-28 16:16:59,095:INFO: ===========validation / test===========
+2019-03-28 16:16:59,191:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 16:16:59,191:INFO: processed 0 tokens with 0 phrases; found: 0 phrases; correct: 0.
+2019-03-28 16:17:15,941:INFO: 2019-03-28 16:16:59 epoch 33, step 1, loss: 18.42, global_step: 1409
+2019-03-28 16:17:15,941:INFO: 2019-03-28 16:16:59 epoch 33, step 1, loss: 18.42, global_step: 1409
+2019-03-29 22:13:51,817:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1553738631', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='demo', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2019-03-29 22:13:53,090:INFO: Restoring parameters from ./data_path_save/1553738631/checkpoints/model-1408
+2019-03-29 22:13:53,090:INFO: Restoring parameters from ./data_path_save/1553738631/checkpoints/model-1408
+2019-03-29 22:26:10,890:INFO: Namespace(CRF=True, batch_size=64, clip=5.0, demo_model='1553738631', dropout=0.5, embedding_dim=300, epoch=40, hidden_dim=300, lr=0.001, mode='demo', optimizer='Adam', pretrain_embedding='random', shuffle=True, test_data='data_path', train_data='data_path', update_embedding=True)
+2019-03-29 22:26:12,149:INFO: Restoring parameters from ./data_path_save/1553738631/checkpoints/model-1408
+2019-03-29 22:26:12,149:INFO: Restoring parameters from ./data_path_save/1553738631/checkpoints/model-1408

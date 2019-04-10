@@ -17,6 +17,45 @@ def get_entity(tag_seq, char_seq):
     ORG = get_ORG_entity(tag_seq, char_seq)
     return PER, LOC, ORG
 
+def get_entity_keys(tag_seq, char_seq, keys):
+    # entity = get_entity_one_(tag_seq, char_seq)
+    # return entity
+    entities = []
+    for key in keys:
+        entities.append(get_entity_key(tag_seq, char_seq, key))
+    return entities
+
+
+def get_entity_key(tag_seq, char_seq, key):
+    entities = []
+    entity = ''
+    for (char, tag) in zip(char_seq, tag_seq):
+        if tag == 'B-' + key or tag == 'I-' + key or tag == 'E-' + key:
+            entity += char
+        else:
+            if len(entity) != 0:
+                entities.append(entity)
+                entity = ''
+    if len(entity) != 0:
+        entities.append(entity)
+    return entities
+
+
+# 将实体提取出来
+def get_entity_one_(tag_seq, char_seq):
+    sequence = []
+    seq = ''
+    for i, tag in enumerate(tag_seq):
+        if tag == 'B' or tag == 'I':
+            seq += char_seq[i]
+        else:
+            if len(seq) != 0:
+                sequence.append(seq)
+                seq = ''
+    if len(seq) != 0:
+        sequence.append(seq)
+    return sequence
+
 
 def get_PER_entity(tag_seq, char_seq):
     length = len(char_seq)

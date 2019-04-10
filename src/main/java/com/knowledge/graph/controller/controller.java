@@ -45,8 +45,15 @@ public class controller {
     @CrossOrigin
     @RequestMapping("/3dnodes")
     public String nodes(HttpServletRequest request,Model model) {
-
         return "3dnodes";
     }
+
+    @CrossOrigin
+    @RequestMapping("/voice")
+    public String voice(HttpServletRequest request,Model model) {
+        return "voice";
+    }
+
+
 
 }

@@ -2,11 +2,14 @@ import sys, pickle, os, random
 import numpy as np
 
 ## tags, BIO
-tag2label = {"O": 0,
-             "B-PER": 1, "I-PER": 2,
-             "B-LOC": 3, "I-LOC": 4,
-             "B-ORG": 5, "I-ORG": 6
-             }
+# tag2label = {"O": 0,
+#              "B-PER": 1, "I-PER": 2,
+#              "B-LOC": 3, "I-LOC": 4,
+#              "B-ORG": 5, "I-ORG": 6
+#              }
+tag2label = {"B-BODY": 0, "B-CHECK": 1, "B-SIGNS": 2, "B-DISEASE": 3, "B-TREATMENT": 4,
+             "I-BODY": 5, "I-CHECK": 6, "I-SIGNS": 7, "I-DISEASE": 8, "I-TREATMENT": 9,
+             "O": 10}
 
 
 def read_corpus(corpus_path):
@@ -18,15 +21,19 @@ def read_corpus(corpus_path):
     data = []
     with open(corpus_path, encoding='utf-8') as fr:
         lines = fr.readlines()
+    print(len(lines))
     sent_, tag_ = [], []
     for line in lines:
-        if line != '\n':
-            [char, label] = line.strip().split()
-            sent_.append(char)
-            tag_.append(label)
-        else:
-            data.append((sent_, tag_))
-            sent_, tag_ = [], []
+        try:
+            if line != '\n':
+                char, label = line.strip().split()
+                sent_.append(char)
+                tag_.append(label)
+            else:
+                data.append((sent_, tag_))
+                sent_, tag_ = [], []
+        except:
+            pass
 
     return data
 

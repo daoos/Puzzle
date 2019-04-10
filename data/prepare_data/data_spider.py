@@ -3,8 +3,7 @@ import urllib.parse
 from lxml import etree
 import pymongo
 
-'''基于司法网的犯罪案件采集'''
-class CrimeSpider:
+class Spider:
     def __init__(self):
         self.conn = pymongo.MongoClient()
         self.db = self.conn['medical']
@@ -154,5 +153,5 @@ class CrimeSpider:
                 print(e)
 
 
-handler = CrimeSpider()
+handler = Spider()
 handler.inspect_crawl()

@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import os, argparse, time, random
 from model import BiLSTM_CRF
-from utils import str2bool, get_logger, get_entity
+from utils import *
 from data import read_corpus, read_dictionary, tag2label, random_embedding
 
 
@@ -34,7 +34,6 @@ parser.add_argument('--mode', type=str, default='demo', help='train/test/demo')
 parser.add_argument('--demo_model', type=str, default='1521112368', help='model for test and demo')
 args = parser.parse_args()
 
-
 ## get char embeddings
 word2id = read_dictionary(os.path.join('.', args.train_data, 'word2id.pkl'))
 if args.pretrain_embedding == 'random':
@@ -46,8 +45,9 @@ else:
 
 ## read corpus and get training data
 if args.mode != 'demo':
-    train_path = os.path.join('.', args.train_data, 'train_data')
-    test_path = os.path.join('.', args.test_data, 'test_data')
+    # train_path = os.path.join('.', args.train_data, 'train_data')
+    train_path = os.path.join('.', args.train_data, 'train_bio_char')
+    test_path = os.path.join('.', args.test_data, 'test_bio_char')
     train_data = read_corpus(train_path)
     test_data = read_corpus(test_path)
     test_size = len(test_data)
@@ -77,12 +77,6 @@ get_logger(log_path).info(str(args))
 if args.mode == 'train':
     model = BiLSTM_CRF(args, embeddings, tag2label, word2id, paths, config=config)
     model.build_graph()
-
-    ## hyperparameters-tuning, split train/dev
-    # dev_data = train_data[:5000]; dev_size = len(dev_data)
-    # train_data = train_data[5000:]; train_size = len(train_data)
-    # print("train data: {0}\ndev data: {1}".format(train_size, dev_size))
-    # model.train(train=train_data, dev=dev_data)
 
     ## train model on the whole training data
     print("train data: {}".format(len(train_data)))
@@ -119,5 +113,7 @@ elif args.mode == 'demo':
                 demo_sent = list(demo_sent.strip())
                 demo_data = [(demo_sent, ['O'] * len(demo_sent))]
                 tag = model.demo_one(sess, demo_data)
-                PER, LOC, ORG = get_entity(tag, demo_sent)
-                print('PER: {}\nLOC: {}\nORG: {}'.format(PER, LOC, ORG))
+                print(tag,demo_sent)
+                body, chec, cure, dise, symp = get_entity_keys(tag, demo_sent,['BODY', 'CHECK', 'TREATMENT', 'DISEASE', 'SIGNS'])
+                print('body:{}\nchec:{}\ncure:{}\ndise:{}\nsymp:{}\n'.format(body, chec, cure, dise, symp))
+                # print('PER: {}\nLOC: {}\nORG: {}'.format(PER, LOC, ORG))
