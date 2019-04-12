@@ -2033,7 +2033,7 @@ body {
 }
 
 .msg-host.photo{
-	background-image:url("/chat/head.png");
+	background-image:url("/chat/doctor.png");
 }
 
 .msg.robot .msg-host {
@@ -4255,19 +4255,11 @@ body.ifr.ifr2 .pnl-body .v5-pnlbtn .v5-btn-pnl .v5-pnl-box .v5-pnl-btn {
 	margin:1em auto;
 	border-radius:.3em
 }
-body[lang='en'] #humanBtn::after {
-	content:'Human Service' !important
-}
-body[lang='tw'] #humanBtn::after {
-	content:'转人工' !important
-}
-
-
 
 .headDefault{
     background-color:transparent !important;
     border-radius:5px;
-    background-image: url(/chat/head.png);
+    background-image: url('/chat/client.png');
 }
 
 

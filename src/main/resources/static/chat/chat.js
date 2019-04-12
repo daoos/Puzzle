@@ -3,12 +3,17 @@
 // 按Enter键发送信息
 $(document).keydown(function(event){
     if(event.keyCode == 13){
+        $('#submit2').text('语音输入');
         SendMsg();
+        recognizing = false;
+        recognition.stop();
+        final_transcript = '';
+        interim_transcript = '';
+        $('#text').val('');
     }
 });
 
 
-/////////////////////////////////////////////前台信息处理/////////////////////////////////////////////////////////
 // 发送信息
 function SendMsg()
 {
@@ -80,8 +85,7 @@ function AjaxSendMsg(question)
     return retStr;
 }
 
-// 初始化变量
-var audio = null;
+
 
 // 合成按钮
 function tts(text) {
@@ -114,6 +118,20 @@ function tts(text) {
     });
 }
 
-window.onload = function () {
-    tts("我是Puzzle医疗智能问答机器人，很高兴为您服务");
+var hasstarted = false
+function robotstart() {
+    if(hasstarted == false){
+        tts("我是Puzzle医疗智能问答机器人，很高兴为您服务");
+        hasstarted = true;
+    }
 }
+
+window.onload = function () {
+    hasstarted = false;
+    robotstart();
+}
+
+
+// window.onload = function () {
+//     tts("我是Puzzle医疗智能问答机器人，很高兴为您服务");
+// }
