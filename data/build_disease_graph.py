@@ -12,42 +12,42 @@ def printBar(name:str, num:int, total:int):
         sys.stdout.write('\n')
 
 
-class MedicalGraph:
+class DiseaseGraph:
     def __init__(self):
         cur_dir = '/'.join(os.path.abspath(__file__).split('/')[:-1])
         self.data_path = os.path.join(cur_dir, 'data/medical.json')
         self.g = Graph(
             host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
-            http_port=7474,  # neo4j 服务器监听的端口号
-            user="neo4j",  # 数据库user name，如果没有更改过，应该是neo4j
+            http_port=7474,        # neo4j 服务器监听的端口号
+            user="neo4j",          # 数据库user name，如果没有更改过，应该是neo4j
             password="302899")
 
     '''读取文件'''
     def read_nodes(self):
         # 共７类节点
-        drugs = [] # 药品
-        foods = [] #　食物
-        checks = [] # 检查
-        departments = [] #科室
-        producers = [] #药品大类
-        diseases = [] #疾病
-        symptoms = []#症状
+        drugs = []          # 药品
+        foods = []          # 食物
+        checks = []         # 检查
+        departments = []    # 科室
+        producers = []      # 药品大类
+        diseases = []       # 疾病
+        symptoms = []       # 症状
 
         disease_infos = []#疾病信息
 
         # 构建节点实体关系
-        rels_department = [] #　科室－科室关系
-        rels_noteat = [] # 疾病－忌吃食物关系
-        rels_doeat = [] # 疾病－宜吃食物关系
-        rels_recommandeat = [] # 疾病－推荐吃食物关系
-        rels_commonddrug = [] # 疾病－通用药品关系
+        rels_department = []    #　科室－科室关系
+        rels_noteat = []        # 疾病－忌吃食物关系
+        rels_doeat = []         # 疾病－宜吃食物关系
+        rels_recommandeat = []  # 疾病－推荐吃食物关系
+        rels_commonddrug = []   # 疾病－通用药品关系
         rels_recommanddrug = [] # 疾病－热门药品关系
-        rels_check = [] # 疾病－检查关系
+        rels_check = []         # 疾病－检查关系
         rels_drug_producer = [] # 厂商－药物关系
 
-        rels_symptom = [] #疾病症状关系
-        rels_acompany = [] # 疾病并发关系
-        rels_category = [] #　疾病与科室之间的关系
+        rels_symptom = []   # 疾病症状关系
+        rels_acompany = []  # 疾病并发关系
+        rels_category = []  # 疾病与科室之间的关系
 
         f = open(self.data_path)
         total = len(f.readlines())
@@ -276,7 +276,7 @@ class MedicalGraph:
 
 
 if __name__ == '__main__':
-    handler = MedicalGraph()
+    handler = DiseaseGraph()
     # handler.create_graphnodes()
     handler.create_graphrels()
     # handler.export_data()

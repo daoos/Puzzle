@@ -116,7 +116,7 @@ class doctorSpider:
         disease_name_urls = self.get_disease_name_url()
         n = len(disease_name_urls)
         print("疾病列表采集完毕，共", len(disease_name_urls),"项")
-        for i in range(1566,1600):
+        for i in range(n):
             disease_name = disease_name_urls[i][0]
             print(i,'/',n, disease_name)
             basic_url = disease_name_urls[i][1].replace('http://z.xywy.com/b-','http://z.xywy.com/bzhuanjia-').replace('.htm','')
@@ -133,18 +133,8 @@ class doctorSpider:
                         print(specialist_url)
 
 
+if __name__ == '__main__':
+    doctorSpider().craw()  # 爬取数据，并存入MongoDB
 
 
 
-
-
-
-
-
-
-
-
-s = doctorSpider()
-s.craw()
-# print(s.get_disease_name_url())
-# print(s.get_specialist_info('http://z.xywy.com/zhuanjia-anzhen-xinzangwaike-anzhenmaobin.htm'))

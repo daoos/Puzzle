@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# coding: utf-8
-# File: answer_search.py
-# Author: lhy<lhy_in_blcu@126.com,https://huangyong.github.io>
-# Date: 18-10-5
-
 from py2neo import Graph
 
 class AnswerSearcher:
@@ -25,6 +19,7 @@ class AnswerSearcher:
             for query in queries:
                 ress = self.g.run(query).data()
                 answers += ress
+                print(query,ress)
             final_answer = self.answer_prettify(question_type, answers)
             if final_answer:
                 final_answers.append(final_answer)
