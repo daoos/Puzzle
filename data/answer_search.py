@@ -27,7 +27,7 @@ class AnswerSearcher:
 
     '''根据对应的qustion_type，调用相应的回复模板'''
     def answer_prettify(self, question_type, answers):
-        final_answer = []
+        final_answer = ""
         if not answers:
             return ''
         if question_type == 'disease_symptom':
@@ -107,7 +107,7 @@ class AnswerSearcher:
         elif question_type == 'disease_drug':
             desc = [i['n.name'] for i in answers]
             subject = answers[0]['m.name']
-            final_answer = '{0}通常的使用的药品包括：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+            final_answer = '{0}可以使用的药品有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
         elif question_type == 'drug_disease':
             desc = [i['m.name'] for i in answers]
@@ -124,6 +124,21 @@ class AnswerSearcher:
             subject = answers[0]['n.name']
             final_answer = '通常可以通过{0}检查出来的疾病有{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
+        elif question_type == 'ask_how_doctor':
+            intro = [i['d.introduce'] for i in answers]
+            final_answer = intro[0]
+
+        elif question_type == 'recommend_doctor':
+            print('该地区推荐的医生有：')
+            i=0
+            for record in answers:
+                final_answer += str(i+1) + ". " + record['d.key'] + "\n"
+                if i > 10: # 最多显示十个医生
+                    break
+                i+=1
+
+
+        print(final_answer)
         return final_answer
 
 

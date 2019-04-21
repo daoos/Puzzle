@@ -12,9 +12,11 @@ class ChatBotGraph:
     def chat_main(self, sent):
         answer = '请输入问题'
         res_classify = self.classifier.classify(sent)
+        print('res_classify', res_classify)
         if not res_classify:
             return "你这个问题我回答不出来，请问的简单些。比如白血病是什么，白血病能治吗？谢谢，我是智障。"
         res_sql = self.parser.parser_main(res_classify)
+        print('res_sql',res_sql)
         final_answers = self.searcher.search_main(res_sql)
         if not final_answers:
             return "你这个问题我回答不出来，请问的简单些。比如白血病是什么，白血病能治吗？谢谢，我是智障。"

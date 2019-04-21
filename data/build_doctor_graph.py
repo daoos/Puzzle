@@ -48,7 +48,7 @@ class DoctorGraph:
                 records.append(record)
         return records
 
-    '''创建实体关联边'''
+    # 创建关系
     def create_relationship(self, start_node, end_node, edges, rel_type, rel_name, seg1, seg2):
         count = 0
         # 去重处理
@@ -63,15 +63,17 @@ class DoctorGraph:
             query = ("match(p:%s),(q:%s) where p."+seg1+"='%s'and q."+seg2+"='%s' create (p)-[rel:%s{rel_name:'%s'}]->(q)") % (
                 start_node, end_node, p, q, rel_type, rel_name)
             try:
-                self.g.run(query)
                 count += 1
+                if count < 170804 or count >= 200000:
+                    continue
+                self.g.run(query)
                 printBar(start_node+"->"+end_node,count,all)
             except Exception as e:
                 print(e)
         return
 
 
-    '''建立节点'''
+    # 建立节点
     def create_node(self, label, nodes):
         exists_node = [ n['node.name'] for n in self.g.run("match (node:" + label + ")return node.name").data()]
         timestamp = str(time.time())
@@ -131,8 +133,8 @@ class DoctorGraph:
                     diagnose.append([record['key'],disease])
             printBar("读入数据",i,total)
 
-        # self.create_relationship('doctor', 'Disease', diagnose, 'diagnose', '治疗', 'key', 'name')
-        self.create_relationship('Disease', 'doctor', option_doctor, 'optional', '可选医生', 'name', 'key')
+        self.create_relationship('doctor', 'Disease', diagnose, 'diagnose', '治疗', 'key', 'name')
+        self.create_relationship('Disease', 'doctor', option_doctor, 'specialist', '可选医生', 'name', 'key')
 
     def build(self):
         pass
@@ -141,16 +143,28 @@ class DoctorGraph:
         # self.relation_disease_doctor() # 创建疾病与医生的关系
 
 
+    # 导出医生名字节点
+    def export_doctor(self):
+        doctors = self.get_doctor_info()
+        dname_map = {}
+        with open('./dict/doctor.txt','w+') as f:
+            total = len(doctors)
+            for i in range(total):
+                d = doctors[i]
+                if d['name'] not in dname_map:
+                    f.write(d['name']+"\n")
+                    dname_map[d['name']] = 0
+                printBar("导出医生节点",i,total)
+
+
+
 
 if __name__ == '__main__':
     d = DoctorGraph()
+    d.export_doctor()
     # d.create_doctor_node()
 
-    d.relation_disease_doctor()
-    # d.create_node("test",["2"])
-
-    # d.create_relationship('Disease','doctor',[['偏头痛','海军总医院-陈涛']], 'optional', '可选医生', 'name','key')
-    # d.create_relationship('doctor', 'Disease', [['海军总医院-陈涛','偏头痛']], 'diagnose', '治疗', 'key', 'name')
+    # d.relation_disease_doctor()
 
 
 
