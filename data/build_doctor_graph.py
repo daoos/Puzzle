@@ -156,12 +156,25 @@ class DoctorGraph:
                     dname_map[d['name']] = 0
                 printBar("导出医生节点",i,total)
 
+    # 导出医院名字节点
+    def export_hospital(self):
+        doctors = self.get_doctor_info()
+        dname_map = {}
+        with open('./dict/hospital.txt', 'w+') as f:
+            total = len(doctors)
+            for i in range(total):
+                d = doctors[i]
+                if d['hospital'] not in dname_map:
+                    f.write(d['hospital'] + "\n")
+                    dname_map[d['hospital']] = 0
+                printBar("导出医院节点", i, total)
+
 
 
 
 if __name__ == '__main__':
     d = DoctorGraph()
-    d.export_doctor()
+    d.export_hospital()
     # d.create_doctor_node()
 
     # d.relation_disease_doctor()
