@@ -136,7 +136,11 @@ class Searcher:
         elif questionLabel == 'recommend_doctor':
             print('该地区推荐的医生有：')
             i=0
+            repeat = []
             for record in answers:
+                if record['d.key'] in repeat:
+                    continue
+                repeat.append(record['d.key'])
                 final_answer += str(i+1) + ". " + record['d.key'] + "\n"
                 if i > 10: # 最多显示十个医生
                     break
@@ -179,7 +183,7 @@ class Intent_Recognization:
         self.cureway_words = ['怎么治疗', '如何医治', '怎么医治', '怎么治', '怎么医', '如何治', '医治方式', '疗法', '咋治', '怎么办', '咋办', '咋治']
         self.cureprob_words = ['多大概率能治好', '多大几率能治好', '治好希望大么', '几率', '几成', '比例', '可能性', '能治', '可治', '可以治', '可以医']
         self.easyget_words = ['易感人群', '容易感染', '易发人群', '什么人', '哪些人', '感染', '染上', '得上']
-        self.check_words = ['检查', '检查项目', '查出', '检查', '测出', '试出']
+        self.detect_words = ['检查', '检查项目', '查出', '检查', '测出', '试出']
         self.cure_words = ['治啥', '治疗什么', '治疗啥', '医治啥', '治愈啥', '主治啥', '主治什么', '有什么用', '有何用', '用处', '用途', '有什么好处', '有什么益处', '有何益处', '用来', '用来做啥', '用来作甚']
         self.recommend_doctor = ['推荐的医生','医生推荐','推荐医生','专家','大夫','求推荐医生','推荐一下','好医生','好的医生','这方面的专家']
         self.how_doctor_words = ['医生怎么样', '资料', '介绍', '背景', '简介', '擅长', '医院']
@@ -248,12 +252,12 @@ class Intent_Recognization:
             questionLabels.append(question_label)
 
         # 疾病检查咨询
-        if self.check_words(self.check_words, question) and 'disease' in labels:
+        if self.check_words(self.detect_words, question) and 'disease' in labels:
             question_label = 'disease_check'
             questionLabels.append(question_label)
 
         # 已知检查项目查相应疾病
-        if self.check_words(self.check_words + self.cure_words, question) and 'check' in labels:
+        if self.check_words(self.detect_words + self.cure_words, question) and 'check' in labels:
             question_label = 'check_disease'
             questionLabels.append(question_label)
 
@@ -545,6 +549,8 @@ class SQL_Generator:
 
         # 询问疾病的推荐医生
         elif question_type == 'recommend_doctor':
+            if limit is None:
+                limit =['北京']
             sql = ["MATCH (d:doctor)-[r]-(e:Disease) where e.name='{0}' and d.region='{1}' "
                    "return d.key,d.hospital,d.introduce".format(entities[0],limit[0])]
 
