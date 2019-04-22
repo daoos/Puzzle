@@ -11,8 +11,8 @@ class Searcher:
             password="302899")
         self.num_limit = 20
 
-    '''执行cypher查询，并返回相应结果'''
-    def search_main(self, sqls):
+    # 生成sql模板进入neo4j 查询
+    def search_sql(self, sqls):
         final_answers = []
         for sql_ in sqls:
             question_type = sql_['question_type']
@@ -22,115 +22,118 @@ class Searcher:
                 ress = self.g.run(query).data()
                 answers += ress
                 print(query,ress)
-            final_answer = self.answer_prettify(question_type, answers)
+            final_answer = self.get_answer(question_type, answers)
             if final_answer:
                 final_answers.append(final_answer)
         return final_answers
 
-    '''根据对应的qustion_type，调用相应的回复模板'''
-    def answer_prettify(self, question_type, answers):
+    # 根据问题类型，搜索答案
+    def get_answer(self, questionLabel, answers):
         final_answer = ""
         if not answers:
             return ''
-        if question_type == 'disease_symptom':
+        if questionLabel == 'disease_symptom':
             desc = [i['n.name'] for i in answers]
             subject = answers[0]['m.name']
             final_answer = '{0}的症状包括：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'symptom_disease':
-            desc = [i['m.name'] for i in answers]
-            subject = answers[0]['n.name']
-            final_answer = '症状{0}可能染上的疾病有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
-
-        elif question_type == 'disease_cause':
-            desc = [i['m.cause'] for i in answers]
-            subject = answers[0]['m.name']
-            final_answer = '{0}可能的成因有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
-
-        elif question_type == 'disease_prevent':
-            desc = [i['m.prevent'] for i in answers]
-            subject = answers[0]['m.name']
-            final_answer = '{0}的预防措施包括：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
-
-        elif question_type == 'disease_lasttime':
-            desc = [i['m.cure_lasttime'] for i in answers]
-            subject = answers[0]['m.name']
-            final_answer = '{0}治疗可能持续的周期为：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
-
-        elif question_type == 'disease_cureway':
+        elif questionLabel == 'disease_cureway':
             desc = [';'.join(i['m.cure_way']) for i in answers]
             subject = answers[0]['m.name']
-            final_answer = '{0}可以尝试如下治疗：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+            final_answer = '{0}有以下治疗方法：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_cureprob':
+        elif questionLabel == 'disease_cureprob':
             desc = [i['m.cured_prob'] for i in answers]
             subject = answers[0]['m.name']
-            final_answer = '{0}治愈的概率为（仅供参考）：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+            final_answer = '{0}治愈的概率为：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_easyget':
-            desc = [i['m.easy_get'] for i in answers]
+        elif questionLabel == 'disease_lasttime':
+            desc = [i['m.cure_lasttime'] for i in answers]
             subject = answers[0]['m.name']
+            final_answer = '{0}治疗治疗周期为：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-            final_answer = '{0}的易感人群包括：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_desc':
+        elif questionLabel == 'disease_desc':
             desc = [i['m.desc'] for i in answers]
             subject = answers[0]['m.name']
-            final_answer = '{0},熟悉一下：{1}'.format(subject,  '；'.join(list(set(desc))[:self.num_limit]))
+            final_answer = '{0}科普介绍：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_acompany':
+        elif questionLabel == 'disease_acompany':
             desc1 = [i['n.name'] for i in answers]
             desc2 = [i['m.name'] for i in answers]
             subject = answers[0]['m.name']
             desc = [i for i in desc1 + desc2 if i != subject]
             final_answer = '{0}的症状包括：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_not_food':
+        elif questionLabel == 'disease_not_food':
             desc = [i['n.name'] for i in answers]
             subject = answers[0]['m.name']
             final_answer = '{0}忌食的食物包括有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_do_food':
+        elif questionLabel == 'disease_do_food':
             do_desc = [i['n.name'] for i in answers if i['r.name'] == '宜吃']
             recommand_desc = [i['n.name'] for i in answers if i['r.name'] == '推荐食谱']
             subject = answers[0]['m.name']
-            final_answer = '{0}宜食的食物包括有：{1}\n推荐食谱包括有：{2}'.format(subject, ';'.join(list(set(do_desc))[:self.num_limit]), ';'.join(list(set(recommand_desc))[:self.num_limit]))
+            final_answer = '{0}患者推荐的食物包括有：{1}\n推荐食谱包括有：{2}'.format(subject, ';'.join(list(set(do_desc))[:self.num_limit]),
+                                                                 ';'.join(list(set(recommand_desc))[:self.num_limit]))
 
-        elif question_type == 'food_not_disease':
+        elif questionLabel == 'food_not_disease':
             desc = [i['m.name'] for i in answers]
             subject = answers[0]['n.name']
-            final_answer = '患有{0}的人最好不要吃{1}'.format('；'.join(list(set(desc))[:self.num_limit]), subject)
+            final_answer = '{0}患者忌口食物有{1}'.format('；'.join(list(set(desc))[:self.num_limit]), subject)
 
-        elif question_type == 'food_do_disease':
+
+        elif questionLabel == 'disease_easyget':
+            desc = [i['m.easy_get'] for i in answers]
+            subject = answers[0]['m.name']
+
+            final_answer = '{0}的易感人群有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+
+        elif questionLabel == 'symptom_disease':
             desc = [i['m.name'] for i in answers]
             subject = answers[0]['n.name']
-            final_answer = '患有{0}的人建议多试试{1}'.format('；'.join(list(set(desc))[:self.num_limit]), subject)
+            final_answer = '症状{0}可能染上的疾病有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_drug':
+        elif questionLabel == 'disease_cause':
+            desc = [i['m.cause'] for i in answers]
+            subject = answers[0]['m.name']
+            final_answer = '{0}可能的成因有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+
+        elif questionLabel == 'disease_prevent':
+            desc = [i['m.prevent'] for i in answers]
+            subject = answers[0]['m.name']
+            final_answer = '{0}的预防措施包括：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+
+        elif questionLabel == 'food_do_disease':
+            desc = [i['m.name'] for i in answers]
+            subject = answers[0]['n.name']
+            final_answer = '{0}推荐食物有{1}'.format('；'.join(list(set(desc))[:self.num_limit]), subject)
+
+        elif questionLabel == 'disease_drug':
             desc = [i['n.name'] for i in answers]
             subject = answers[0]['m.name']
-            final_answer = '{0}可以使用的药品有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+            final_answer = '{0}推荐药品有：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'drug_disease':
+        elif questionLabel == 'drug_disease':
             desc = [i['m.name'] for i in answers]
             subject = answers[0]['n.name']
-            final_answer = '{0}主治的疾病有{1},可以试试'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
+            final_answer = '{0}治疗的疾病有{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'disease_check':
+        elif questionLabel == 'disease_check':
             desc = [i['n.name'] for i in answers]
             subject = answers[0]['m.name']
             final_answer = '{0}通常可以通过以下方式检查出来：{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'check_disease':
+        elif questionLabel == 'check_disease':
             desc = [i['m.name'] for i in answers]
             subject = answers[0]['n.name']
             final_answer = '通常可以通过{0}检查出来的疾病有{1}'.format(subject, '；'.join(list(set(desc))[:self.num_limit]))
 
-        elif question_type == 'ask_how_doctor':
+        elif questionLabel == 'ask_how_doctor':
             intro = [i['d.introduce'] for i in answers]
             final_answer = intro[0]
 
-        elif question_type == 'recommend_doctor':
+        elif questionLabel == 'recommend_doctor':
             print('该地区推荐的医生有：')
             i=0
             for record in answers:
@@ -164,22 +167,22 @@ class Intent_Recognization:
                        ]
         self.region_words = set(self.province + self.department_wds + self.disease_wds + self.check_wds + self.drug_wds + self.food_wds + self.producer_wds + self.symptom_wds + self.doctor_name)
         self.region_tree = self.build_actree(list(self.region_words))# 构造AC树
-        self.typeDict = self.build_wdtype_dict() # 类型字典
+        self.typeDict = self.word_type_index() # 类型字典
         # 问题意图关键字
-        self.symptom_qwds = ['症状', '表征', '现象', '临床现象', '特征', '特点']
-        self.cause_qwds = ['原因','成因', '咋样才', '怎样会', '如何会', '为什么', '怎么会', '怎样才', '为啥', '为何', '如何才会', '会造成']
-        self.acompany_qwds = ['并发症', '并发', '一起发生', '一并发生', '一起出现', '一并出现', '一同发生', '一同出现', '伴随发生', '伴随', '共现']
-        self.food_qwds = ['饮食', '饮用', '吃', '食', '伙食', '膳食', '喝', '菜' ,'忌口', '补品', '保健品', '食谱', '菜谱', '食用', '食物','补品']
-        self.drug_qwds = ['药', '药品', '药片', '好的药', '用药', '胶囊']
-        self.prevent_qwds = ['预防', '防范', '抵制', '抵御','怎样才能不', '如何才能不', '怎么才能不']
-        self.lasttime_qwds = ['周期', '多久', '多长时间', '多少时间', '几天', '几年', '多少天', '多少小时', '几个小时', '多少年']
-        self.cureway_qwds = ['怎么治疗', '如何医治', '怎么医治', '怎么治', '怎么医', '如何治', '医治方式', '疗法', '咋治', '怎么办', '咋办', '咋治']
-        self.cureprob_qwds = ['多大概率能治好', '多大几率能治好', '治好希望大么', '几率', '几成', '比例', '可能性', '能治', '可治', '可以治', '可以医']
-        self.easyget_qwds = ['易感人群', '容易感染', '易发人群', '什么人', '哪些人', '感染', '染上', '得上']
-        self.check_qwds = ['检查', '检查项目', '查出', '检查', '测出', '试出']
-        self.cure_qwds = ['治啥', '治疗什么', '治疗啥', '医治啥', '治愈啥', '主治啥', '主治什么', '有什么用', '有何用', '用处', '用途','有什么好处', '有什么益处', '有何益处', '用来', '用来做啥', '用来作甚']
+        self.symptom_words = ['症状', '表征', '现象', '临床现象', '特征', '特点']
+        self.cause_wrods = ['原因', '成因', '咋样才', '怎样会', '如何会', '为什么', '怎么会', '怎样才', '为啥', '为何', '如何才会', '会造成']
+        self.concurrent_words = ['并发症', '并发', '一起发生', '一并发生', '一起出现', '一并出现', '一同发生', '一同出现', '伴随发生', '伴随', '共现']
+        self.food_words = ['饮食', '饮用', '吃', '食', '伙食', '膳食', '喝', '菜' , '忌口', '补品', '保健品', '食谱', '菜谱', '食用', '食物', '补品']
+        self.drug_words = ['药', '药品', '药片', '好的药', '用药', '胶囊']
+        self.prevent_words = ['预防', '防范', '抵制', '抵御', '怎样才能不', '如何才能不', '怎么才能不']
+        self.lasttime_words = ['周期', '多久', '多长时间', '多少时间', '几天', '几年', '多少天', '多少小时', '几个小时', '多少年']
+        self.cureway_words = ['怎么治疗', '如何医治', '怎么医治', '怎么治', '怎么医', '如何治', '医治方式', '疗法', '咋治', '怎么办', '咋办', '咋治']
+        self.cureprob_words = ['多大概率能治好', '多大几率能治好', '治好希望大么', '几率', '几成', '比例', '可能性', '能治', '可治', '可以治', '可以医']
+        self.easyget_words = ['易感人群', '容易感染', '易发人群', '什么人', '哪些人', '感染', '染上', '得上']
+        self.check_words = ['检查', '检查项目', '查出', '检查', '测出', '试出']
+        self.cure_words = ['治啥', '治疗什么', '治疗啥', '医治啥', '治愈啥', '主治啥', '主治什么', '有什么用', '有何用', '用处', '用途', '有什么好处', '有什么益处', '有何益处', '用来', '用来做啥', '用来作甚']
         self.recommend_doctor = ['推荐的医生','医生推荐','推荐医生','专家','大夫','求推荐医生','推荐一下','好医生','好的医生','这方面的专家']
-        self.how_doctor_qwds = ['医生怎么样','资料','介绍','背景','简介','擅长']
+        self.how_doctor_words = ['医生怎么样', '资料', '介绍', '背景', '简介', '擅长', '医院']
 
         print('初始化完成...')
 
@@ -188,146 +191,137 @@ class Intent_Recognization:
     # 意图提取 AC
     def classify(self, question):
         data = {}
-        medical_dict = self.check_medical(question)
-        if not medical_dict:
+        medical_dict = self.label_keyword(question)
+        if medical_dict is None:
             return {}
 
         print('medical_dict',medical_dict)
 
         data['args'] = medical_dict
         #收集问句当中所涉及到的实体类型
-        types = []
-        for type_ in medical_dict.values():
-            types += type_
+        labels = []
+        questionLabels = []
+        for label in medical_dict.values():
+            labels += label
 
-        question_types = []
-
-        print('types',types)
+        print('types',labels)
 
         # 医生情况介绍
-        if self.check_words(self.how_doctor_qwds, question) and ('doctor' in types):
-            question_type = 'ask_how_doctor'
-            question_types.append(question_type)
+        if self.check_words(self.how_doctor_words, question) and ('doctor' in labels):
+            question_label = 'ask_how_doctor'
+            questionLabels.append(question_label)
 
         # 根据疾病推荐医生
-        if self.check_words(self.recommend_doctor, question) and ('disease' in types):
-            question_type = 'recommend_doctor'
-            question_types.append(question_type)
+        if self.check_words(self.recommend_doctor, question) and ('disease' in labels):
+            question_label = 'recommend_doctor'
+            questionLabels.append(question_label)
 
-        # 症状
-        if self.check_words(self.symptom_qwds, question) and ('disease' in types):
-            question_type = 'disease_symptom'
-            question_types.append(question_type)
+        # 疾病症状咨询
+        if self.check_words(self.symptom_words, question) and ('disease' in labels):
+            question_label = 'disease_symptom'
+            questionLabels.append(question_label)
 
-        if self.check_words(self.symptom_qwds, question) and ('symptom' in types):
-            question_type = 'symptom_disease'
-            question_types.append(question_type)
+        # 疾病成因咨询
+        if self.check_words(self.cause_wrods, question) and ('disease' in labels):
+            question_label = 'disease_cause'
+            questionLabels.append(question_label)
 
-        # 原因
-        if self.check_words(self.cause_qwds, question) and ('disease' in types):
-            question_type = 'disease_cause'
-            question_types.append(question_type)
-        # 并发症
-        if self.check_words(self.acompany_qwds, question) and ('disease' in types):
-            question_type = 'disease_acompany'
-            question_types.append(question_type)
+        # 疾病并发症咨询
+        if self.check_words(self.concurrent_words, question) and ('disease' in labels):
+            question_label = 'disease_acompany'
+            questionLabels.append(question_label)
 
-        # 推荐食品
-        if self.check_words(self.food_qwds, question) and 'disease' in types:
+        # 疾病推荐因素
+        if self.check_words(self.food_words, question) and 'disease' in labels:
             deny_status = self.check_words(self.deny_words, question)
-            question_type = 'disease_not_food' if deny_status else 'disease_do_food'
-            question_types.append(question_type)
+            question_label = 'disease_not_food' if deny_status else 'disease_do_food'
+            questionLabels.append(question_label)
 
-        #已知食物找疾病
-        if self.check_words(self.food_qwds+self.cure_qwds, question) and 'food' in types:
-            deny_status = self.check_words(self.deny_words, question)
-            question_type = 'food_not_disease' if deny_status else 'food_do_disease'
-            question_types.append(question_type)
+        # 疾病推荐药品
+        if self.check_words(self.drug_words, question) and 'disease' in labels:
+            question_label = 'disease_drug'
+            questionLabels.append(question_label)
 
-        # 推荐药品
-        if self.check_words(self.drug_qwds, question) and 'disease' in types:
-            question_type = 'disease_drug'
-            question_types.append(question_type)
+        # 最药品的咨询
+        if self.check_words(self.cure_words, question) and 'drug' in labels:
+            question_label = 'drug_disease'
+            questionLabels.append(question_label)
 
-        # 药品治啥病
-        if self.check_words(self.cure_qwds, question) and 'drug' in types:
-            question_type = 'drug_disease'
-            question_types.append(question_type)
-
-        # 疾病接受检查项目
-        if self.check_words(self.check_qwds, question) and 'disease' in types:
-            question_type = 'disease_check'
-            question_types.append(question_type)
+        # 疾病检查咨询
+        if self.check_words(self.check_words, question) and 'disease' in labels:
+            question_label = 'disease_check'
+            questionLabels.append(question_label)
 
         # 已知检查项目查相应疾病
-        if self.check_words(self.check_qwds+self.cure_qwds, question) and 'check' in types:
-            question_type = 'check_disease'
-            question_types.append(question_type)
+        if self.check_words(self.check_words + self.cure_words, question) and 'check' in labels:
+            question_label = 'check_disease'
+            questionLabels.append(question_label)
 
-        #　症状防御
-        if self.check_words(self.prevent_qwds, question) and 'disease' in types:
-            question_type = 'disease_prevent'
-            question_types.append(question_type)
+        # 疾病预防信息咨询
+        if self.check_words(self.prevent_words, question) and 'disease' in labels:
+            question_label = 'disease_prevent'
+            questionLabels.append(question_label)
 
-        # 疾病医疗周期
-        if self.check_words(self.lasttime_qwds, question) and 'disease' in types:
-            question_type = 'disease_lasttime'
-            question_types.append(question_type)
+        # 疾病治疗周期咨询
+        if self.check_words(self.lasttime_words, question) and 'disease' in labels:
+            question_label = 'disease_lasttime'
+            questionLabels.append(question_label)
 
         # 疾病治疗方式
-        if self.check_words(self.cureway_qwds, question) and 'disease' in types:
-            question_type = 'disease_cureway'
-            question_types.append(question_type)
+        if self.check_words(self.cureway_words, question) and 'disease' in labels:
+            question_label = 'disease_cureway'
+            questionLabels.append(question_label)
 
         # 疾病治愈可能性
-        if self.check_words(self.cureprob_qwds, question) and 'disease' in types:
-            question_type = 'disease_cureprob'
-            question_types.append(question_type)
+        if self.check_words(self.cureprob_words, question) and 'disease' in labels:
+            question_label = 'disease_cureprob'
+            questionLabels.append(question_label)
 
         # 疾病易感染人群
-        if self.check_words(self.easyget_qwds, question) and 'disease' in types :
-            question_type = 'disease_easyget'
-            question_types.append(question_type)
+        if self.check_words(self.easyget_words, question) and 'disease' in labels :
+            question_label = 'disease_easyget'
+            questionLabels.append(question_label)
 
         # 若没有查到相关的外部查询信息，那么则将该疾病的描述信息返回
-        if question_types == [] and 'disease' in types:
-            question_types = ['disease_desc']
+        if questionLabels == [] and 'disease' in labels:
+            questionLabels = ['disease_desc']
 
         # 若没有查到相关的外部查询信息，那么则将该疾病的描述信息返回
-        if question_types == [] and 'symptom' in types:
-            question_types = ['symptom_disease']
+        if questionLabels == [] and 'symptom' in labels:
+            questionLabels = ['symptom_disease']
 
         # 将多个分类结果进行合并处理，组装成一个字典
-        data['question_types'] = question_types
+        data['questionLabels'] = questionLabels
 
         return data
 
-    '''构造词对应的类型'''
-    def build_wdtype_dict(self):
-        wd_dict = dict()
+    # 内存类型字典，label word
+    def word_type_index(self):
+        typeDict = {}
         for word in self.region_words:
-            wd_dict[word] = []
+            typeDict[word] = []
             if word in self.disease_wds:
-                wd_dict[word].append('disease')
+                typeDict[word].append('disease')
             if word in self.department_wds:
-                wd_dict[word].append('department')
+                typeDict[word].append('department')
             if word in self.check_wds:
-                wd_dict[word].append('check')
+                typeDict[word].append('check')
             if word in self.drug_wds:
-                wd_dict[word].append('drug')
+                typeDict[word].append('drug')
             if word in self.food_wds:
-                wd_dict[word].append('food')
+                typeDict[word].append('food')
             if word in self.symptom_wds:
-                wd_dict[word].append('symptom')
+                typeDict[word].append('symptom')
             if word in self.producer_wds:
-                wd_dict[word].append('producer')
+                typeDict[word].append('producer')
             if word in self.doctor_name:
-                wd_dict[word].append('doctor')
+                typeDict[word].append('doctor')
             if word in self.province:
-                wd_dict[word].append('province')
-        return wd_dict
+                typeDict[word].append('province')
+        return typeDict
 
-    '''构造actree，加速过滤'''
+
+    # 根据wordlist 构造AC自动机模型
     def build_actree(self, wordlist):
         actree = ahocorasick.Automaton()
         for index, word in enumerate(wordlist):
@@ -335,17 +329,17 @@ class Intent_Recognization:
         actree.make_automaton()
         return actree
 
-    '''问句过滤'''
-    def check_medical(self, question):
+    # 从问句中提出关键字并标注类型
+    def label_keyword(self, question):
         region_wds = []
         for i in self.region_tree.iter(question):
             wd = i[1][1]
             region_wds.append(wd)
         stop_wds = []
-        for wd1 in region_wds:
-            for wd2 in region_wds:
-                if wd1 in wd2 and wd1 != wd2:
-                    stop_wds.append(wd1)
+        for w1 in region_wds:
+            for w2 in region_wds:
+                if w1 in w2 and w1 != w2:
+                    stop_wds.append(w1)
 
         print('stop_wds', stop_wds)
         final_wds = [i for i in region_wds if i not in stop_wds]
@@ -354,16 +348,16 @@ class Intent_Recognization:
         print(final_dict)
         return final_dict
 
-    '''基于特征词进行分类'''
-    def check_words(self, wds, sent):
-        for wd in wds:
-            if wd in sent:
+    # 查看问句中是否有关键词
+    def check_words(self, region_words, qustion):
+        for word in region_words:
+            if word in qustion:
                 return True
         return False
 
 class SQL_Generator:
 
-    '''构建实体节点'''
+    # 构建实体词典
     def build_entitydict(self, args):
         entity_dict = {}
         for arg, types in args.items():
@@ -376,11 +370,11 @@ class SQL_Generator:
         print('entity_dict',entity_dict)
         return entity_dict
 
-    '''解析主函数'''
-    def parser_main(self, res_classify):
+    # 生成sql搜索模板
+    def generate_sql(self, res_classify):
         args = res_classify['args']
         entity_dict = self.build_entitydict(args)
-        question_types = res_classify['question_types']
+        question_types = res_classify['questionLabels']
         sqls = []
         for question_type in question_types:
             sql_ = {}
@@ -452,7 +446,7 @@ class SQL_Generator:
 
         return sqls
 
-    '''针对不同的问题，分开进行处理'''
+    # 根据问题类型嵌套模板
     def sql_transfer(self, question_type, entities, limit=None):
         if not entities:
             return []

@@ -9,13 +9,13 @@ class ChatBotGraph:
 
     def chat_main(self, question: str):
         answer = '请输入问题'
-        res_classify = self.Intent_Recognization.classify(question)
-        print('res_classify', res_classify)
-        if not res_classify:
+        question_label = self.Intent_Recognization.classify(question)
+        print('res_classify', question_label)
+        if not question_label:
             return "你这个问题我回答不出来，请问的简单些。比如白血病是什么，白血病能治吗？谢谢，我是智障。"
-        res_sql = self.SQL_Generator.parser_main(res_classify)
-        print('res_sql',res_sql)
-        final_answers = self.Searcher.search_main(res_sql)
+        sql = self.SQL_Generator.generate_sql(question_label)
+        print('sql_template',sql)
+        final_answers = self.Searcher.search_sql(sql)
         if not final_answers:
             return "你这个问题我回答不出来，请问的简单些。比如白血病是什么，白血病能治吗？谢谢，我是智障。"
         else:
