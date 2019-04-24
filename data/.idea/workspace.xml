@@ -18,7 +18,7 @@
     <SUITE FILE_PATH="coverage/data$build_doctor_graph.coverage" NAME="build_doctor_graph Coverage Results" MODIFIED="1555894215942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data$doctorspider.coverage" NAME="doctorspider Coverage Results" MODIFIED="1554642829170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prepare_data" />
     <SUITE FILE_PATH="coverage/data$lac.coverage" NAME="lac Coverage Results" MODIFIED="1553429322629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/data$robotQA.coverage" NAME="robotQA Coverage Results" MODIFIED="1555937459511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data$robotQA.coverage" NAME="robotQA Coverage Results" MODIFIED="1555937911417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QASystemOnMedicalKG$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551014272749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -38,8 +38,8 @@
       <file leaf-file-name="robotQA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robotQA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="149">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -334,7 +334,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" weight="0.32969698" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32969698" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.31043956" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.31043956" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34120172" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -612,8 +612,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robotQA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="149">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
         </state>
       </provider>
     </entry>

@@ -9,7 +9,9 @@ import (
 	"net/http"
 	"net/rpc"
 	"os"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/DistributedClocks/GoVector/govec"
 	"github.com/DistributedClocks/GoVector/govec/vrpc"
@@ -25,57 +27,105 @@ var ModuleID string
 var config Config
 var logger *govec.GoLog
 var loggerOptions govec.GoLogOptions
+var nodeStatus map[string]bool
 
-//managerRPCServer RPC句柄
-type managerRPCServer int
+//ManagerRPCServer RPC句柄
+type ManagerRPCServer int
 
 // 初始化
 func initialize() {
 	ModuleID = os.Args[1]
 	ReadMinerConfig("config.json", &config)
 	fmt.Printf("%+v\n", config)
+	println("本机IP", config.ModuleIDs[ModuleID][0])
+	nodeStatus = make(map[string]bool)
+	for node := range config.ModuleIDs {
+		if node == ModuleID {
+			nodeStatus[node] = true
+		} else {
+			nodeStatus[node] = false
+		}
+	}
 	logger = govec.InitGoVector(ModuleID, ModuleID+"-logfile", govec.GetDefaultConfig())
 	loggerOptions = govec.GetDefaultLogOptions()
+	go DetectHeatbeat()
 	go spawnRPCServer()
 }
 
-// spawnRPCServer RPC 端口监听, 监听IP为config.MinerIPPort
-func spawnRPCServer() {
-	mrpc := new(managerRPCServer)
-	server := rpc.NewServer()
-	server.Register(mrpc)
-	// println(config.ModuleIDs[ModuleID])
-	l, e := net.Listen("tcp", config.ModuleIDs[ModuleID][0])
-	if e != nil {
-		log.Fatal("listen error:", e)
+// DetectHeatbeat 定时触发检测
+func DetectHeatbeat() {
+	tick := time.NewTicker(2 * time.Second)
+	for {
+		select {
+		//此处在等待channel中的信号，因此执行此段代码时会阻塞120秒
+		case <-tick.C:
+			for nodename, ip := range config.ModuleIDs {
+				if nodename == ModuleID {
+					continue
+				}
+				client, err := vrpc.RPCDial("tcp", ip[0], logger, loggerOptions)
+				if err != nil {
+					println(nodename, ip[0], "宕机")
+					nodeStatus[nodename] = false
+					continue
+				}
+				var result int
+				err = client.Call("ManagerRPCServer.HeartBeat", 5, &result)
+				if err != nil {
+					println(nodename, ip[0], "宕机")
+					nodeStatus[nodename] = false
+					continue
+				}
+				nodeStatus[nodename] = true
+				println(nodename, ip[0], "正常运行")
+			}
+		}
 	}
+}
 
-	options := govec.GetDefaultLogOptions()
-	vrpc.ServeRPCConn(server, l, logger, options)
+// HeartBeat 监听是否宕机
+func (brpc *ManagerRPCServer) HeartBeat(query *int, ack *int) error {
+	*ack = 1
+	return nil
 }
 
 func main() {
 	if len(os.Args) != 2 {
 		log.Fatal("go run *.go -id")
 	}
-	initialize()
+	// initialize()
+	// http.HandleFunc("/", distribute)
+	// err := http.ListenAndServe(config.ModuleIDs[ModuleID][1], nil) //设置监听的端口
+	// if err != nil {
+	// 	log.Fatal("ListenAndServe: ", err)
+	// }
+	idle0, total0 := getCPUSample()
+	time.Sleep(3 * time.Second)
+	idle1, total1 := getCPUSample()
 
-	http.HandleFunc("/puzzle/distribute", distribute)
-	err := http.ListenAndServe(config.ModuleIDs[ModuleID][1], nil) //设置监听的端口
-	if err != nil {
-		log.Fatal("ListenAndServe: ", err)
-	}
+	idleTicks := float64(idle1 - idle0)
+	totalTicks := float64(total1 - total0)
+	cpuUsage := 100 * (totalTicks - idleTicks) / totalTicks
+
+	fmt.Printf("CPU usage is %f%% [busy: %f, total: %f]\n", cpuUsage, totalTicks-idleTicks, totalTicks)
 }
 
 func distribute(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm() //解析url传递的参数，对于POST则解析响应包的主体（request body）
 	//注意:如果没有调用ParseForm方法，下面无法获取表单的数据
-
 	for k, v := range r.Form {
 		fmt.Println("key:", k)
 		fmt.Println("val:", strings.Join(v, ""))
 	}
-	fmt.Fprintf(w, "Hello astaxie!") //这个写入到w的是输出到客户端的
+	status := ""
+	for nodename := range config.ModuleIDs {
+		if len(status) > 0 {
+			status += ";"
+		}
+		status += nodename + "," + strconv.FormatBool(nodeStatus[nodename])
+	}
+
+	fmt.Fprintf(w, status) //这个写入到w的是输出到客户端的
 }
 
 /*
@@ -103,4 +153,45 @@ func ReadMinerConfig(configFile string, config *Config) {
 	json.Unmarshal([]byte(ReadFileByte(configFile)), config)
 	// fmt.Println(config) // print the json setting
 	defer jsonFile.Close()
+}
+
+// spawnRPCServer RPC 端口监听, 监听IP为config.MinerIPPort
+func spawnRPCServer() {
+	mrpc := new(ManagerRPCServer)
+	server := rpc.NewServer()
+	server.Register(mrpc)
+	// println(config.ModuleIDs[ModuleID])
+	l, e := net.Listen("tcp", config.ModuleIDs[ModuleID][0])
+	if e != nil {
+		log.Fatal("listen error:", e)
+	}
+
+	options := govec.GetDefaultLogOptions()
+	vrpc.ServeRPCConn(server, l, logger, options)
+}
+
+func getCPUSample() (idle, total uint64) {
+	contents, err := ioutil.ReadFile("/proc/stat")
+	if err != nil {
+		return
+	}
+	lines := strings.Split(string(contents), "\n")
+	for _, line := range lines {
+		fields := strings.Fields(line)
+		if fields[0] == "cpu" {
+			numFields := len(fields)
+			for i := 1; i < numFields; i++ {
+				val, err := strconv.ParseUint(fields[i], 10, 64)
+				if err != nil {
+					fmt.Println("Error: ", i, fields[i], err)
+				}
+				total += val // tally up all the numbers to get total ticks
+				if i == 4 {  // idle is the 5th field in the cpu line
+					idle = val
+				}
+			}
+			return
+		}
+	}
+	return
 }

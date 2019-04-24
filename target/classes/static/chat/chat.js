@@ -17,6 +17,12 @@ $(document).keydown(function(event){
 // 发送信息
 function SendMsg()
 {
+    var audios = document.getElementsByTagName("audio");
+    console.log(audios);
+    for(var i=0; i<audios.length;i++){
+        audios[i].pause();
+        audios[i].remove();
+    }
     var text = document.getElementById("text");
     if (text.value == "" || text.value == null)
     {
