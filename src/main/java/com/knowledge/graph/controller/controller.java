@@ -55,5 +55,8 @@ public class controller {
     }
 
 
-
+    @RequestMapping("/monitor")
+    public String monitor(HttpServletRequest request,Model model) {
+        return "monitor";
+    }
 }
