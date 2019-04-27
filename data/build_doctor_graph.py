@@ -13,7 +13,8 @@ def printBar(name:str, num:int, total:int):
 class DoctorGraph:
     def __init__(self):
         self.g = Graph(
-            host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            # host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            host="34.92.13.105",
             http_port=7474,        # neo4j 服务器监听的端口号
             user="neo4j",          # 数据库user name，如果没有更改过，应该是neo4j
             password="302899")
@@ -64,8 +65,8 @@ class DoctorGraph:
                 start_node, end_node, p, q, rel_type, rel_name)
             try:
                 count += 1
-                if count < 170804 or count >= 200000:
-                    continue
+                # if count < 170804 or count >= 200000:
+                #     continue
                 self.g.run(query)
                 printBar(start_node+"->"+end_node,count,all)
             except Exception as e:
@@ -90,11 +91,15 @@ class DoctorGraph:
         print("创建地域节点完成")
 
     def create_hospital_node(self):
-        hospitals = []
-        for record in self.get_doctor_info():
+        hospitals = {}
+        records = self.get_doctor_info()
+        for i in range(len(records)):
+            record = records[i]
             if record['hospital'] not in hospitals:
-                hospitals.append(record['hospital'])
-        self.create_node('hospital', hospitals)
+                self.create_node('hospital', [record['hospital']])
+                hospitals[record['hospital']] = 1
+            printBar("读入医院",i, total=len(records))
+
         print("创建医院节点完成")
 
     def create_doctor_node(self):
@@ -133,14 +138,14 @@ class DoctorGraph:
                     diagnose.append([record['key'],disease])
             printBar("读入数据",i,total)
 
-        self.create_relationship('doctor', 'Disease', diagnose, 'diagnose', '治疗', 'key', 'name')
+        # self.create_relationship('doctor', 'Disease', diagnose, 'diagnose', '治疗', 'key', 'name')
         self.create_relationship('Disease', 'doctor', option_doctor, 'specialist', '可选医生', 'name', 'key')
 
     def build(self):
-        pass
+        # pass
         # self.create_region_node() # 创建地域节点
         # self.create_hospital_node()  # 创建医院节点
-        # self.relation_disease_doctor() # 创建疾病与医生的关系
+        self.relation_disease_doctor() # 创建疾病与医生的关系
 
 
     # 导出医生名字节点
@@ -174,7 +179,8 @@ class DoctorGraph:
 
 if __name__ == '__main__':
     d = DoctorGraph()
-    d.export_hospital()
+
+    # d.export_hospital()
     # d.create_doctor_node()
 
     # d.relation_disease_doctor()

@@ -24,6 +24,8 @@ type Config struct {
 
 // ModuleID 该模块ID
 var ModuleID string
+var configname string
+
 var config Config
 var logger *govec.GoLog
 var loggerOptions govec.GoLogOptions
@@ -35,7 +37,8 @@ type ManagerRPCServer int
 // 初始化
 func initialize() {
 	ModuleID = os.Args[1]
-	ReadMinerConfig("config.json", &config)
+	configname = os.Args[2]
+	ReadMinerConfig(configname, &config)
 	fmt.Printf("%+v\n", config)
 	println("本机IP", config.ModuleIDs[ModuleID][0])
 	nodeStatus = make(map[string]bool)

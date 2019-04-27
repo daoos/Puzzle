@@ -15,7 +15,7 @@
     <SUITE FILE_PATH="coverage/data$build_medicalgraph.coverage" NAME="build_medicalgraph Coverage Results" MODIFIED="1551065915866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/QASystemOnMedicalKG$data_spider.coverage" NAME="data_spider Coverage Results" MODIFIED="1550996797004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prepare_data" />
     <SUITE FILE_PATH="coverage/data$deeppavlov.coverage" NAME="deeppavlov Coverage Results" MODIFIED="1555843092861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/data$build_doctor_graph.coverage" NAME="build_doctor_graph Coverage Results" MODIFIED="1555894215942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data$build_doctor_graph.coverage" NAME="build_doctor_graph Coverage Results" MODIFIED="1556335033465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data$doctorspider.coverage" NAME="doctorspider Coverage Results" MODIFIED="1554642829170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prepare_data" />
     <SUITE FILE_PATH="coverage/data$lac.coverage" NAME="lac Coverage Results" MODIFIED="1553429322629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data$robotQA.coverage" NAME="robotQA Coverage Results" MODIFIED="1555937911417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -23,23 +23,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build_doctor_graph.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build_doctor_graph.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build_doctor_graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
+            <state relative-caret-position="351">
+              <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+                <marker date="1556335033455" expanded="true" signature="6212:6237" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="robotQA.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="robotQA.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robotQA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+            <state relative-caret-position="-1">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -52,7 +53,7 @@
       <file leaf-file-name="search.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
+            <state relative-caret-position="3270">
               <caret line="219" column="46" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="46" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -72,8 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.g</find>
-      <find>parser</find>
       <find>par</find>
       <find>remove</find>
       <find>create_relationship</find>
@@ -102,6 +101,8 @@
       <find>recommen</find>
       <find>recommend</find>
       <find>recommend_doctor</find>
+      <find>relation_disease_doctor</find>
+      <find>create_hospital_node</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,11 +126,11 @@
         <option value="$PROJECT_DIR$/dict/doctor.txt" />
         <option value="$PROJECT_DIR$/deeppavlov.py" />
         <option value="$PROJECT_DIR$/question_classifier.py" />
-        <option value="$PROJECT_DIR$/build_doctor_graph.py" />
         <option value="$PROJECT_DIR$/question_parser.py" />
         <option value="$PROJECT_DIR$/answer_search.py" />
         <option value="$PROJECT_DIR$/search.py" />
         <option value="$PROJECT_DIR$/robotQA.py" />
+        <option value="$PROJECT_DIR$/build_doctor_graph.py" />
       </list>
     </option>
   </component>
@@ -142,7 +143,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="825" />
@@ -152,7 +153,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,10 +160,16 @@
               <item name="data" type="b2602c69:ProjectViewProjectNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="data" type="b2602c69:ProjectViewProjectNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="dict" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -190,7 +196,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.robotQA">
+  <component name="RunManager" selected="Python.build_doctor_graph">
     <configuration name="build_doctor_graph" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="data" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -295,8 +301,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.robotQA" />
         <item itemvalue="Python.build_doctor_graph" />
+        <item itemvalue="Python.robotQA" />
         <item itemvalue="Python.deeppavlov" />
         <item itemvalue="Python.question_classifier" />
         <item itemvalue="Python.doctorspider" />
@@ -334,12 +340,11 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" weight="0.32969698" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32969698" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.31043956" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.31043956" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34120172" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34620887" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32967034" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -350,6 +355,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32967034" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,16 +371,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/chatbot_graph.py" />
-    <entry file="file://$PROJECT_DIR$/question_parser.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/question_classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/question_parser.py" />
+    <entry file="file://$PROJECT_DIR$/question_classifier.py" />
     <entry file="file://$PROJECT_DIR$/search.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -530,25 +528,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QAend.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dict/hospital.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lac.py" />
     <entry file="file://$PROJECT_DIR$/build_disease_graph.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -556,20 +542,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/question_classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/question_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <caret line="220" column="16" lean-forward="true" selection-start-line="220" selection-start-column="6" selection-end-line="220" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/question_classifier.py" />
+    <entry file="file://$PROJECT_DIR$/question_parser.py" />
     <entry file="file://$PROJECT_DIR$/prepare_data/data_spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
@@ -581,28 +555,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1301">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QAstart.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/build_doctor_graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="3270">
           <caret line="219" column="46" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="46" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -612,8 +573,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robotQA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        <state relative-caret-position="-1">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dict/hospital.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build_doctor_graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <marker date="1556335033455" expanded="true" signature="6212:6237" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
