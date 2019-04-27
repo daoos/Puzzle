@@ -2,6 +2,7 @@ from py2neo import *
 import pymongo
 import time
 import sys
+import os
 
 def printBar(name:str, num:int, total:int):
     sys.stdout.write('\r')
@@ -91,6 +92,14 @@ class DoctorGraph:
         print("创建地域节点完成")
 
     def create_hospital_node(self):
+        if os.path.exists("./dict/hospital.txt"):
+            with open("./dict/hospital.txt") as f:
+                for line in f.readlines():
+                    line = line.replace("\n","")
+                    if len(line) > 0:
+                        self.create_node('hospital', [line])
+            return
+
         hospitals = {}
         records = self.get_doctor_info()
         for i in range(len(records)):
@@ -144,8 +153,8 @@ class DoctorGraph:
     def build(self):
         # pass
         # self.create_region_node() # 创建地域节点
-        # self.create_hospital_node()  # 创建医院节点
-        self.relation_disease_doctor() # 创建疾病与医生的关系
+        self.create_hospital_node()  # 创建医院节点
+        # self.relation_disease_doctor() # 创建疾病与医生的关系
 
 
     # 导出医生名字节点
