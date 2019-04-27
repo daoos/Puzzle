@@ -1,6 +1,7 @@
 package com.knowledge.graph.controller;
 
-import net.sf.json.JSONArray;
+//import net.sf.json.JSONArray;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,42 +20,59 @@ public class Neo4jNode {
 
     @GetMapping("/neo4j/{keyword}")
     public JSONArray neo4jSearch(@PathVariable String keyword) throws SQLException{
-        String res = "[";
+
+        StringBuffer res = new StringBuffer("[");
         Connection con = DriverManager.getConnection("jdbc:neo4j:http://120.77.220.71:7474", "neo4j", "302899");
         // Querying
+        String sql;
         try (Statement stmt = con.createStatement()) {
-            ResultSet rs = stmt.executeQuery("match (source)-[rela]->(target) where target.name=\""+keyword+"\" return source.name,rela.name,target.name");
+            sql = String.format("match (source)-[rela]->(target) where target.name= \"%s\" return source.name,rela.name,target.name", keyword);
+            System.out.println(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            int i=0;
             while (rs.next()) {
                 if(res.length() > 1){
-                    res += ",";
+                    res.append(",");
                 }
                 String source = rs.getString(1);
                 String rela = rs.getString(2);
-                res += "{source: \"" + source + "\",target:\"" + keyword + "\",type:\"resolved\",rela: \"" + rela + "\"}";
+                res.append("{source: \"" + source + "\",target:\"" + keyword + "\",type:\"resolved\",rela: \"" + rela + "\"}");
+                if(i++ > 30){
+                    break;
+                }
             }
-        }finally {
+        }catch (Exception e){
+            System.out.println("读取异常1");
+        }
+        finally {
             con.close();
         }
 
         con = DriverManager.getConnection("jdbc:neo4j:http://120.77.220.71:7474", "neo4j", "302899");
         try (Statement stmt = con.createStatement()) {
-            ResultSet rs = stmt.executeQuery("match (source)-[rela]->(target) where source.name=\""+keyword+"\" return source.name,rela.name,target.name");
+            ResultSet rs = stmt.executeQuery(String.format("match (source)-[rela]->(target) where source.name= \"%s\" return source.name,rela.name,target.name", keyword));
+            int i=0;
             while (rs.next()) {
                 if(res.length() > 1){
-                    res += ",";
+                    res.append(",");
                 }
                 String target = rs.getString(3);
                 String rela = rs.getString(2);
-                res += "{source: \"" + keyword + "\",target:\"" + target + "\",type:\"resolved\",rela: \"" + rela + "\"}";
+                res.append("{source: \"" + keyword + "\",target:\"" + target + "\",type:\"resolved\",rela: \"" + rela + "\"}");
+                if(i++ > 30){
+                    break;
+                }
             }
-        }finally {
+        }catch (Exception e){
+            System.out.println("读取异常2");
+        }
+        finally {
             con.close();
         }
 
-
-        res+="]";
-
-        return JSONArray.fromObject(res);
+        res.append("]");
+        System.out.println(res.toString());
+        return JSONArray.parseArray(res.toString());
     }
 
     public static void main(String[] args) throws SQLException  {
