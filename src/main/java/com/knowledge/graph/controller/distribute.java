@@ -88,6 +88,7 @@ public class distribute {
         try {
 
             String res = String.format("[{cpu:%s,ram:%s}]", getProcessCpuLoad(), getRAMLoad());
+            System.out.println(res);
             JSONArray jsonarray = JSONArray.parseArray(res);
             return jsonarray;
 //            return ""+getProcessCpuLoad()+";"+generateRAM();
