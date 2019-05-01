@@ -80,7 +80,7 @@ public class distribute {
         if (value == -1.0)      return (int)Double.NaN;
         // returns a percentage value with 1 decimal point precision
         System.out.println(value);
-        return ((int)(value * 10000));
+        return ((int)(value * 1000));
     }
 
 

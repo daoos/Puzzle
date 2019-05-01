@@ -84,7 +84,7 @@
         <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
         <script type="text/javascript">
             var i = 0;
-            var max_size = 50;
+            var max_size = 30;
 
             function cpu_update(){
                  $.ajax({
@@ -117,6 +117,11 @@
             var date = [];
             var data = [];
 
+            for(var s=0;s<max_size;s++){
+                date.push('');
+                data.push(0);
+            }
+
             init(data, date);
 
             function init(data, date) {
@@ -139,7 +144,7 @@
                     series: [{
                         name: '模拟数据',
                         type: 'line',
-                        smooth: false,
+                        smooth: true,
                         symbol: 'none',
                         sampling: 'average',
                         itemStyle: {
