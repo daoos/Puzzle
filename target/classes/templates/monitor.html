@@ -101,7 +101,7 @@
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
     <script type="text/javascript">
-        var max_size = 30;
+        var max_size = 200;
         var server_size = 3;
         var servername = ["M0-深圳 CPU占有率", "M1-洛杉矶 CPU占有率", "M2-香港 CPU占有率"];
         var date = []; // 二维数组，存储cpu 时间与cpu load关系
@@ -127,7 +127,7 @@
                     date[0].push('');
                     data[0].push(response[0]["cpu"]);
                     $("#cpu_0").text(response[0]["cpu"]+"%");
-                    if (date.length > max_size) {
+                    if (date[0].length > max_size) {
                         data[0] = data[0].slice(-max_size);
                         date[0] = date[0].slice(-max_size);
                     }
