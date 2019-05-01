@@ -46,19 +46,7 @@
 
     <main role="main" style="text-align: center">
 
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-                <div class="btn-group mr-2">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                </div>
-
-            </div>
-        </div>
-
-
-        <h2>Section title</h2>
+        <h2>分布式系统情况监控</h2>
         <div class="table-responsive" style="width: 70%; margin:0 auto">
             <table class="table table-striped table-sm">
                 <thead>
@@ -82,8 +70,104 @@
                 </tbody>
             </table>
         </div>
+
+        <h2 class="h2">CPU 使用率</h2>
+        <div id="container" style="height: 300px; width: 70%; margin:0 auto"></div>
+        <button onclick="cpu_update()">add</button>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+        <script type="text/javascript">
+            var i = 0;
+            var max_size = 50;
+
+            function cpu_update(){
+                 $.ajax({
+                     url: "/cpu",
+                     async: false,
+                     success: function(response) {
+                         date.push('');
+                         data.push(response[0]["cpu"]);
+                         console.log(data);
+                         if (date.length > max_size) {
+                             data = data.slice(-max_size);
+                             date = date.slice(-max_size);
+                         }
+                         myChart.setOption({
+                             xAxis: {
+                                 data: date
+                             },
+                             series: [{
+                                 data: data
+                             }]
+                         });
+                     }
+                 });
+            }
+
+            var dom = document.getElementById("container");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            var date = [];
+            var data = [];
+
+            init(data, date);
+
+            function init(data, date) {
+                option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        position: function(pt) {
+                            return [pt[0], '10%'];
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: date
+                    },
+                    yAxis: {
+                        type: 'value',
+                        boundaryGap: [0, '50%']
+                    },
+                    series: [{
+                        name: '模拟数据',
+                        type: 'line',
+                        smooth: false,
+                        symbol: 'none',
+                        sampling: 'average',
+                        itemStyle: {
+                            color: 'rgb(255, 70, 131)'
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgb(255, 158, 68)'
+                            }, {
+                                offset: 1,
+                                color: 'rgb(255, 70, 131)'
+                            }])
+                        },
+                        data: data
+                    }]
+                };;
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+                window.setInterval(cpu_update, 1000);
+            }
+        </script>
+
+
     </main>
 
 </body>
+
 
 </html>

@@ -1,9 +1,12 @@
 package com.knowledge.graph.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import org.neo4j.cypher.internal.frontend.v2_3.ast.functions.Str;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -62,47 +65,45 @@ public class distribute {
     }
 
     // 获取CPU占用率
-    public static double getProcessCpuLoad() throws Exception {
+    public static int getProcessCpuLoad() throws Exception {
 
         MBeanServer mbs    = ManagementFactory.getPlatformMBeanServer();
         ObjectName name    = ObjectName.getInstance("java.lang:type=OperatingSystem");
         AttributeList list = mbs.getAttributes(name, new String[]{ "ProcessCpuLoad" });
 
-        if (list.isEmpty())     return Double.NaN;
+        if (list.isEmpty())     return (int)Double.NaN;
 
         Attribute att = (Attribute)list.get(0);
         Double value  = (Double)att.getValue();
 
         // usually takes a couple of seconds before we get real values
-        if (value == -1.0)      return Double.NaN;
+        if (value == -1.0)      return (int)Double.NaN;
         // returns a percentage value with 1 decimal point precision
         System.out.println(value);
-        return ((int)(value * 100000) / 10.0);
+        return ((int)(value * 10000));
     }
 
 
-    private static String generateRAM()
+    private static String getRAMLoad()
     {
         final long RAM_TOTAL = Runtime.getRuntime().totalMemory();
         final long RAM_FREE = Runtime.getRuntime().freeMemory();
         final long RAM_USED = RAM_TOTAL - RAM_FREE;
-//        final long RAM_TOTAL_MB = RAM_TOTAL / 8 / 1024;
-//        final long RAM_FREE_MB = RAM_FREE / 8 / 1024;
-//        final long RAM_USED_MB = RAM_USED / 8 / 1024;
         final double RAM_USED_PERCENTAGE = ((RAM_USED * 1.0) / RAM_TOTAL) * 100;
-        return (int)(RAM_USED_PERCENTAGE*100)/100.0 + "%";
+        return (int)(RAM_USED_PERCENTAGE) + "";
     }
 
 
-    @RequestMapping("/cpu")
-    public String monitor(HttpServletRequest request,Model model) {
+    @GetMapping("/cpu")
+    public static JSONArray monitor(HttpServletRequest request,Model model) {
         try {
-            return ""+getProcessCpuLoad()+";"+generateRAM();
+            String res = String.format("[{cpu:%s,ram:%s}]", getProcessCpuLoad(), getRAMLoad());
+            JSONArray jsonarray = JSONArray.parseArray(res);
+            return jsonarray;
+//            return ""+getProcessCpuLoad()+";"+generateRAM();
         }catch (Exception e){
-        }finally {
-
+            e.printStackTrace();
         }
-
-        return "monitor";
+        return null;
     }
 }

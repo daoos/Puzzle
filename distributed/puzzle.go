@@ -15,6 +15,7 @@ import (
 
 	"github.com/DistributedClocks/GoVector/govec"
 	"github.com/DistributedClocks/GoVector/govec/vrpc"
+	bolt "github.com/johnnadratowski/golang-neo4j-bolt-driver"
 )
 
 // Config 配置
@@ -93,15 +94,16 @@ func (brpc *ManagerRPCServer) HeartBeat(query *int, ack *int) error {
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		log.Fatal("go run *.go -id")
-	}
-	initialize()
-	http.HandleFunc("/", distribute)
-	err := http.ListenAndServe(config.ModuleIDs[ModuleID][1], nil) //设置监听的端口
-	if err != nil {
-		log.Fatal("ListenAndServe: ", err)
-	}
+	quickNDirty()
+	// if len(os.Args) != 3 {
+	// 	log.Fatal("go run *.go -id")
+	// }
+	// initialize()
+	// http.HandleFunc("/", distribute)
+	// err := http.ListenAndServe(config.ModuleIDs[ModuleID][1], nil) //设置监听的端口
+	// if err != nil {
+	// 	log.Fatal("ListenAndServe: ", err)
+	// }
 }
 
 func distribute(w http.ResponseWriter, r *http.Request) {
@@ -162,4 +164,18 @@ func spawnRPCServer() {
 
 	options := govec.GetDefaultLogOptions()
 	vrpc.ServeRPCConn(server, l, logger, options)
+}
+
+func quickNDirty() {
+	driver := bolt.NewDriver()
+	conn, _ := driver.OpenNeo("bolt://neo4j:302899@34.92.13.105:7687")
+	defer conn.Close()
+
+	// Lets get the node
+	datas, rowsMetadata, _, _ := conn.QueryNeoAll("MATCH (n:doctor) RETURN n.name, n.hospital limit 10", nil)
+	fmt.Printf("COLUMNS: %+v\n", rowsMetadata["fields"].([]interface{})) // COLUMNS: n.foo,n.bar
+	for _, data := range datas {
+		fmt.Printf("FIELDS: %s %s\n", data[0].(string), data[1].(string)) // FIELDS: 1 2.2
+	}
+
 }

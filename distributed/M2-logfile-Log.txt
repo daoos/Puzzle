@@ -1,0 +1,90 @@
+M2 {"M2":1}
+Initialization Complete
+M2 {"M2":2}
+Making RPC call
+M2 {"M1":3, "M2":3}
+Received RPC Call response from server
+M2 {"M2":4, "M1":4}
+Received RPC request
+M2 {"M1":4, "M2":5}
+Sending response to RPC request
+M2 {"M2":6, "M1":4}
+Making RPC call
+M2 {"M2":7, "M1":7}
+Received RPC Call response from server
+M2 {"M2":8, "M1":10, "M0":3}
+Received RPC request
+M2 {"M2":9, "M1":10, "M0":3}
+Sending response to RPC request
+M2 {"M2":10, "M1":10, "M0":3}
+Making RPC call
+M2 {"M1":10, "M0":5, "M2":11}
+Received RPC Call response from server
+M2 {"M1":10, "M0":5, "M2":12}
+Making RPC call
+M2 {"M0":5, "M2":13, "M1":13}
+Received RPC Call response from server
+M2 {"M2":14, "M1":13, "M0":6}
+Received RPC request
+M2 {"M2":15, "M1":13, "M0":6}
+Sending response to RPC request
+M2 {"M2":16, "M1":18, "M0":11}
+Received RPC request
+M2 {"M2":17, "M1":18, "M0":11}
+Sending response to RPC request
+M2 {"M2":18, "M1":18, "M0":11}
+Making RPC call
+M2 {"M0":13, "M2":19, "M1":18}
+Received RPC Call response from server
+M2 {"M2":20, "M1":18, "M0":13}
+Making RPC call
+M2 {"M2":21, "M1":21, "M0":13}
+Received RPC Call response from server
+M2 {"M0":14, "M2":22, "M1":21}
+Received RPC request
+M2 {"M2":23, "M1":21, "M0":14}
+Sending response to RPC request
+M2 {"M2":24, "M1":24, "M0":16}
+Received RPC request
+M2 {"M2":25, "M1":24, "M0":16}
+Sending response to RPC request
+M2 {"M2":26, "M1":24, "M0":16}
+Making RPC call
+M2 {"M2":27, "M1":29, "M0":19}
+Received RPC Call response from server
+M2 {"M0":19, "M2":28, "M1":29}
+Making RPC call
+M2 {"M2":29, "M1":29, "M0":21}
+Received RPC Call response from server
+M2 {"M0":24, "M2":30, "M1":31}
+Received RPC request
+M2 {"M2":31, "M1":31, "M0":24}
+Sending response to RPC request
+M2 {"M2":32, "M1":34, "M0":27}
+Received RPC request
+M2 {"M2":33, "M1":34, "M0":27}
+Sending response to RPC request
+M2 {"M0":27, "M2":34, "M1":34}
+Making RPC call
+M2 {"M2":35, "M1":34, "M0":29}
+Received RPC Call response from server
+M2 {"M2":36, "M1":34, "M0":29}
+Making RPC call
+M2 {"M2":37, "M1":37, "M0":29}
+Received RPC Call response from server
+M2 {"M2":38, "M1":39, "M0":32}
+Received RPC request
+M2 {"M2":39, "M1":39, "M0":32}
+Sending response to RPC request
+M2 {"M2":40, "M1":42, "M0":35}
+Received RPC request
+M2 {"M0":35, "M2":41, "M1":42}
+Sending response to RPC request
+M2 {"M2":42, "M1":42, "M0":35}
+Making RPC call
+M2 {"M2":43, "M1":42, "M0":37}
+Received RPC Call response from server
+M2 {"M2":44, "M1":42, "M0":37}
+Making RPC call
+M2 {"M1":45, "M0":37, "M2":45}
+Received RPC Call response from server

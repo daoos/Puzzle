@@ -14,8 +14,8 @@ def printBar(name:str, num:int, total:int):
 class DoctorGraph:
     def __init__(self):
         self.g = Graph(
-            host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
-            # host="34.92.13.105",
+            # host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            host="34.92.13.105", #goole
             http_port=7474,        # neo4j 服务器监听的端口号
             user="neo4j",          # 数据库user name，如果没有更改过，应该是neo4j
             password="302899")
@@ -115,20 +115,23 @@ class DoctorGraph:
         timestamp = str(time.time())
         doctors = self.get_doctor_info()
         total = len(doctors)
-        doctorkey = []
+        doctorkey = {}
         # 建议这里改成多线程，不然太慢了。本次实验我是手动多线程了
         count = 0
         for i in range(count,total):
             count += 1
             doctor = doctors[i]
+            printBar("创建医生节点", count, total)
             if doctor['key'] not in doctorkey:
-                doctorkey.append(doctor['key'])
+                doctorkey[doctor['key']] = 1
+                if i < 286025:
+                    continue
                 node = Node("doctor", name=doctor['name'], timestamp=timestamp, region=doctor['region'],
                             key=doctor['key'], title=doctor['title'], hospital=doctor['hospital'],
                             goodat=doctor['goodat'], introduce=doctor['introduce']
                             )
                 self.g.create(node)
-            printBar("创建医生节点",count,total)
+
         print("创建医生节点完成,共有医生实体",len(doctorkey))
 
 
@@ -153,8 +156,9 @@ class DoctorGraph:
     def build(self):
         # pass
         # self.create_region_node() # 创建地域节点
-        self.create_hospital_node()  # 创建医院节点
-        # self.relation_disease_doctor() # 创建疾病与医生的关系
+        # self.create_hospital_node()  # 创建医院节点
+        # self.create_doctor_node()  # 创建医生节点
+        self.relation_disease_doctor() # 创建疾病与医生的关系
 
 
     # 导出医生名字节点

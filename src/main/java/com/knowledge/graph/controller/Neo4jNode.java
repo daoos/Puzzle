@@ -59,7 +59,7 @@ public class Neo4jNode {
                 String target = rs.getString(3);
                 String rela = rs.getString(2);
                 res.append("{source: \"" + keyword + "\",target:\"" + target + "\",type:\"resolved\",rela: \"" + rela + "\"}");
-                if(i++ > 30){
+                if(i++ > 50){
                     break;
                 }
             }

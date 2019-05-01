@@ -15,9 +15,10 @@ def printBar(name:str, num:int, total:int):
 class DiseaseGraph:
     def __init__(self):
         cur_dir = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-        self.data_path = os.path.join(cur_dir, 'data/medical.json')
+        self.data_path = os.path.join(cur_dir, './dict/medical.json')
         self.g = Graph(
-            host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            # host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            host="34.92.13.105",  # goole
             http_port=7474,        # neo4j 服务器监听的端口号
             user="neo4j",          # 数据库user name，如果没有更改过，应该是neo4j
             password="302899")
@@ -277,7 +278,7 @@ class DiseaseGraph:
 
 if __name__ == '__main__':
     handler = DiseaseGraph()
-    # handler.create_graphnodes()
+    handler.create_graphnodes()
     handler.create_graphrels()
     # handler.export_data()
 
