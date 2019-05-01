@@ -61,8 +61,22 @@
                 <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
+                    <td>M0-深圳</td>
+                    <td id="cpu_0"></td>
+                    <td>dolor</td>
+                    <td>sit</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>M1-洛杉矶</td>
+                    <td id="cpu_1"></td>
+                    <td>dolor</td>
+                    <td>sit</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>M2-香港</td>
+                    <td id="cpu_2"></td>
                     <td>dolor</td>
                     <td>sit</td>
                 </tr>
@@ -72,7 +86,10 @@
         </div>
 
         <h2 class="h2">CPU 使用率</h2>
-        <div id="container" style="height: 300px; width: 70%; margin:0 auto"></div>
+        <div id="container_0" style="height: 300px; width: 30%;"></div>
+        <div id="container_1" style="height: 300px; width: 30%;"></div>
+        <div id="container_2" style="height: 300px; width: 30%;"></div>
+
         <button onclick="cpu_update()">add</button>
         <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
         <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
@@ -93,6 +110,7 @@
                      success: function(response) {
                          date.push('');
                          data.push(response[0]["cpu"]);
+                         $("#cpu_0").text(response[0]["cpu"]+"%");
                          console.log(data);
                          if (date.length > max_size) {
                              data = data.slice(-max_size);
@@ -110,9 +128,8 @@
                  });
             }
 
-            var dom = document.getElementById("container");
+            var dom = document.getElementById("container_0");
             var myChart = echarts.init(dom);
-            var app = {};
             option = null;
             var date = [];
             var data = [];
@@ -125,7 +142,7 @@
             init(data, date);
 
             function init(data, date) {
-                option = {
+                myChart.setOption({
                     tooltip: {
                         trigger: 'axis',
                         position: function(pt) {
@@ -142,9 +159,9 @@
                         boundaryGap: [0, '50%']
                     },
                     series: [{
-                        name: '模拟数据',
+                        name: 'CPU占有率',
                         type: 'line',
-                        smooth: true,
+                        smooth: false,
                         symbol: 'none',
                         sampling: 'average',
                         itemStyle: {
@@ -161,10 +178,7 @@
                         },
                         data: data
                     }]
-                };;
-                if (option && typeof option === "object") {
-                    myChart.setOption(option, true);
-                }
+                });
                 window.setInterval(cpu_update, 1000);
             }
         </script>

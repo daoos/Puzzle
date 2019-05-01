@@ -19,7 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
+import com.sun.management.OperatingSystemMXBean;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
@@ -65,22 +65,11 @@ public class distribute {
     }
 
     // 获取CPU占用率
-    public static int getProcessCpuLoad() throws Exception {
-
-        MBeanServer mbs    = ManagementFactory.getPlatformMBeanServer();
-        ObjectName name    = ObjectName.getInstance("java.lang:type=OperatingSystem");
-        AttributeList list = mbs.getAttributes(name, new String[]{ "ProcessCpuLoad" });
-
-        if (list.isEmpty())     return (int)Double.NaN;
-
-        Attribute att = (Attribute)list.get(0);
-        Double value  = (Double)att.getValue();
-
-        // usually takes a couple of seconds before we get real values
-        if (value == -1.0)      return (int)Double.NaN;
-        // returns a percentage value with 1 decimal point precision
-        System.out.println(value);
-        return ((int)(value * 1000));
+    public static double getProcessCpuLoad() throws Exception {
+        OperatingSystemMXBean bean = (com.sun.management.OperatingSystemMXBean) ManagementFactory
+                .getOperatingSystemMXBean();
+        double value = (int)(bean.getSystemCpuLoad()*100);
+        return value;
     }
 
 
@@ -97,6 +86,7 @@ public class distribute {
     @GetMapping("/cpu")
     public static JSONArray monitor(HttpServletRequest request,Model model) {
         try {
+
             String res = String.format("[{cpu:%s,ram:%s}]", getProcessCpuLoad(), getRAMLoad());
             JSONArray jsonarray = JSONArray.parseArray(res);
             return jsonarray;
