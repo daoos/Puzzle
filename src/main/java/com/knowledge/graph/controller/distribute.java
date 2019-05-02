@@ -97,4 +97,11 @@ public class distribute {
         }
         return null;
     }
+
+    @GetMapping("/heartbeat")
+    public static JSONArray heartbeat(HttpServletRequest request,Model model) {
+
+        return null;
+    }
+
 }
