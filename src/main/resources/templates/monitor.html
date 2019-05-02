@@ -12,9 +12,21 @@
     <link rel="stylesheet" id="pretty-photo-css-css" href="/css/back/prettyPhotoaeb9.css" type="text/css" media="all">
     <link rel="stylesheet" id="main-css-css" href="/css/back/main5152.css" type="text/css" media="all">
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
     <style>
         body{
             background: white !important;
+        }
+        .circle{
+            margin-top: 8px !important;
+            width: 10px;
+            height: 10px;
+            background: #6FCE7F;
+            /*background: #ffa748;*/
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
         }
     </style>
 </head>
@@ -63,22 +75,28 @@
                 <td>1</td>
                 <td>M0-深圳</td>
                 <td id="cpu_0"></td>
-                <td>dolor</td>
-                <td>sit</td>
+                <td id="ram_0"></td>
+                <td>
+                    <p id="status_0" style="padding:0px; margin:0px;" class="circle"></p>
+                </td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>M1-洛杉矶</td>
                 <td id="cpu_1"></td>
-                <td>dolor</td>
-                <td>sit</td>
+                <td id="ram_1"></td>
+                <td>
+                    <p id="status_1" style="padding:0px; margin:0px;" class="circle"></p>
+                </td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>M2-香港</td>
                 <td id="cpu_2"></td>
-                <td>dolor</td>
-                <td>sit</td>
+                <td id="ram_2"></td>
+                <td>
+                    <p id="status_2" style="padding:0px; margin:0px;" class="circle"></p>
+                </td>
             </tr>
 
             </tbody>
@@ -86,12 +104,17 @@
     </div>
 
     <div style="display:flex; margin-left: 5%">
-        <div id="container_0" style="height: 300px; width: 30%;float:left;background-color: lightblue"></div>
-        <div id="container_1" style="height: 300px; width: 30%;float:left;background-color: lightgoldenrodyellow"></div>
-        <div id="container_2" style="height: 300px; width: 30%;float:left;background-color: #ffe3db"></div>
+        <div id="container_0" style="height: 260px; width: 30%;float:left;background-color: lightblue"></div>
+        <div id="container_1" style="height: 260px; width: 30%;float:left;background-color: lightgoldenrodyellow"></div>
+        <div id="container_2" style="height: 260px; width: 30%;float:left;background-color: #ffe3db"></div>
     </div>
 
-    <button onclick="cpu_update()">add</button>
+    <div style="display:flex; margin-left: 5%">
+        <div id="mem_0" style="height: 180px; width: 30%;float:left"></div>
+        <div id="mem_1" style="height: 180px; width: 30%;float:left"></div>
+        <div id="mem_2" style="height: 180px; width: 30%;float:left"></div>
+    </div>
+
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
@@ -101,67 +124,140 @@
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
     <script type="text/javascript">
-        var max_size = 200;
+
+        var max_size = 100;
         var server_size = 3;
         var servername = ["M0-深圳 CPU占有率", "M1-洛杉矶 CPU占有率", "M2-香港 CPU占有率"];
         var date = []; // 二维数组，存储cpu 时间与cpu load关系
         var data = [];
 
         var cpuChart = [];
+        var ramChart = [];
+
+        // 初始化
         for(var i=0;i<server_size;i++){
             cpuChart.push(echarts.init(document.getElementById("container_"+i)));
+            ramChart.push(echarts.init(document.getElementById("mem_"+i)));
+
             data[i] = []; // 二维数组初始化
             date[i] = [];
             for(var j=0;j<max_size;j++){
                 data[i].push(0);
                 date[i].push("");
             }
-            init(cpuChart[i],data[i], date[i]);
-        }
+            init(cpuChart[i],data[i], date[i], servername[i]); // cpu 图像初始化
 
-        function cpu_update(){
-            $.ajax({
-                url: "/cpu",
-                async: false,
-                success: function(response) {
-                    date[0].push('');
-                    data[0].push(response[0]["cpu"]);
-                    $("#cpu_0").text(response[0]["cpu"]+"%");
-                    if (date[0].length > max_size) {
-                        data[0] = data[0].slice(-max_size);
-                        date[0] = date[0].slice(-max_size);
-                    }
-                    cpuChart[0].setOption({
-                        xAxis: {
-                            data: date[0]
-                        },
-                        series: [{
-                            data: data[0]
-                        }]
-                    });
-                },
-                error: function(response) {
-                    date[0].push('');
-                    data[0].push(-5);
-                    $("#cpu_0").text(response[0]["cpu"]+"%");
-                    if (date.length > max_size) {
-                        data[0] = data[0].slice(-max_size);
-                        date[0] = date[0].slice(-max_size);
-                    }
-                    cpuChart[0].setOption({
-                        xAxis: {
-                            data: date[0]
-                        },
-                        series: [{
-                            data: data[0]
-                        }]
-                    });
+            ramChart[i].setOption( // 内存图像初始化
+                {
+                    graphic:{
+                        type:'text',
+                        left:'center',
+                        top:'center',
+                        style:{
+                            text:'50%',
+                            textAlign:'center',
+                            fontSize: '30',
+                            fill:'#62C4DD',
+                            width:50,
+                            height:50
+                        }
+                    },
+                    series : [
+                        {
+                            name: '访问来源',
+                            type: 'pie',
+                            clockwise: false,
+                            radius : ['70%', '80%'],
+                            data:[
+                                {value:335, name:'已使用内存'},
+                                {value:310, name:'剩余内存'},
+                            ],
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            },
+                            color:['#62C4DD', '#DEE6F1']
+                        }
+                    ]
                 }
-            });
+            );
+        }
+
+        // 更新回调函数
+        window.setInterval(update, 1000);
+
+        function update(){
+            for(var i=0;i<server_size;i++) {
+                $.ajax({
+                    url: "/cpu",
+                    async: false,
+                    success: function (response) {
+                        date[i].push('');
+                        data[i].push(response[0]["cpu"]);
+                        $("#cpu_"+i).text(response[0]["cpu"] + "%");
+                        $("#ram_"+i).text(response[0]["ram"] + "%");
+                        $("#status_"+i).css("background" ,"#6FCE7F");
+                        if (date[i].length > max_size) {
+                            data[i] = data[i].slice(-max_size);
+                            date[i] = date[i].slice(-max_size);
+                        }
+
+                        cpuChart[i].setOption({
+                            xAxis: {
+                                data: date[i]
+                            },
+                            series: [{
+                                data: data[i]
+                            }]
+                        });
+
+                        var ram = response[0]["ram"];
+                        ramChart[i].setOption(
+                            {
+                                graphic:{
+                                    style: {
+                                        text:ram + "%"
+                                    }
+                                },
+                                series : [
+                                    {
+                                        data:[
+                                            {value:ram, name:'已使用内存'},
+                                            {value:100-ram, name:'剩余内存'},
+                                        ],
+                                    }
+                                ]
+                            }
+                        );
+
+                    },
+                    error: function (response) {
+                        date[i].push('');
+                        data[i].push(-5);
+                        $("#cpu_"+i).text("-5%");
+                        $("#status_"+i).css("background" ,"#ffa748");
+                        if (date.length > max_size) {
+                            data[i] = data[i].slice(-max_size);
+                            date[i] = date[i].slice(-max_size);
+                        }
+                        cpuChart[i].setOption({
+                            xAxis: {
+                                data: date[i]
+                            },
+                            series: [{
+                                data: data[i]
+                            }]
+                        });
+                    }
+                });
+            }
         }
 
 
-        function init(chart, data, date) {
+        function init(chart, data, date, servername) {
             chart.setOption({
                 tooltip: {
                     trigger: 'axis',
@@ -171,7 +267,7 @@
                 },
                 title: {
                     left: 'center',
-                    text: servername[0]
+                    text: servername
                 },
                 xAxis: {
                     type: 'category',
@@ -203,9 +299,11 @@
                     data: data
                 }]
             });
-
-            window.setInterval(cpu_update, 1000);
         }
+    </script>
+
+    <script type="text/javascript">
+
     </script>
 
 
