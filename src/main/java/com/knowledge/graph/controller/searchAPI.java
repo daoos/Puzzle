@@ -26,10 +26,9 @@ public class searchAPI {
     String baseURL = "https://api.ownthink.com/kg/knowledge?entity=";
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    public String crawl(URL url){
+    static public String crawl(URL url){
         String res="None";
         try {
-
             HttpURLConnection conn = (HttpURLConnection)url.openConnection();
             //设置超时间为3秒
             conn.setConnectTimeout(3*1000);
@@ -39,7 +38,7 @@ public class searchAPI {
             InputStream inputStream = conn.getInputStream();
             res = readInputStream(inputStream);
         } catch (Exception e) {
-            logger.error("crawl: 通过url地址获取文本内容失败 Exception：" + e);
+//            logger.error("crawl: 通过url地址获取文本内容失败 Exception：" + e);
         }
         return res;
     }
@@ -172,7 +171,7 @@ public class searchAPI {
     }
 
 
-    public String readInputStream(InputStream inputStream) throws IOException {
+    public static String readInputStream(InputStream inputStream) throws IOException {
         byte[] buffer = new byte[1024];
         int len = 0;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -180,7 +179,6 @@ public class searchAPI {
             bos.write(buffer, 0, len);
         }
         bos.close();
-        logger.info(new String(bos.toByteArray(),"utf-8"));
         return new String(bos.toByteArray(),"utf-8");
     }
 

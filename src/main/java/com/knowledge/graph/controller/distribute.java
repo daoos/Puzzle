@@ -32,38 +32,6 @@ import java.net.URL;
 @RestController
 public class distribute {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
-    public String crawl(URL url){
-        String res="None";
-        try {
-
-            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-            //设置超时间为3秒
-            conn.setConnectTimeout(3*1000);
-            //防止屏蔽程序抓取而返回403错误
-            conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
-            //得到输入流
-            InputStream inputStream = conn.getInputStream();
-            res = readInputStream(inputStream);
-        } catch (Exception e) {
-            logger.error("crawl: 通过url地址获取文本内容失败 Exception：" + e);
-        }
-        return res;
-    }
-
-    public String readInputStream(InputStream inputStream) throws IOException {
-        byte[] buffer = new byte[1024];
-        int len = 0;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        while((len = inputStream.read(buffer)) != -1) {
-            bos.write(buffer, 0, len);
-        }
-        bos.close();
-        logger.info(new String(bos.toByteArray(),"utf-8"));
-        return new String(bos.toByteArray(),"utf-8");
-    }
-
     // 获取CPU占用率
     public static double getProcessCpuLoad() throws Exception {
         OperatingSystemMXBean bean = (com.sun.management.OperatingSystemMXBean) ManagementFactory
@@ -84,15 +52,31 @@ public class distribute {
 
 
     @GetMapping("/cpu")
-    public static JSONArray monitor(HttpServletRequest request,Model model) {
+    public static String monitor(HttpServletRequest request,Model model) {
         try {
-
-            String res = String.format("[{cpu:%s,ram:%s}]", getProcessCpuLoad(), getRAMLoad());
-            System.out.println(res);
-            JSONArray jsonarray = JSONArray.parseArray(res);
-            return jsonarray;
-//            return ""+getProcessCpuLoad()+";"+generateRAM();
+            return String.format("cpu:%s,ram:%s", getProcessCpuLoad(), getRAMLoad());
         }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping("/load/{id}")
+    public static JSONArray getload(HttpServletRequest request,Model model) {
+        StringBuffer res = new StringBuffer("[");
+        try {
+            for(String id: InitailConfig.serverNode.keySet()){
+                String status = searchAPI.crawl(new URL("http://"+InitailConfig.serverNode.get(id)+"/cpu"));
+                if(res.length() > 1){
+                    res.append(",");
+                }
+                res.append(String.format("{id:\"%s\",ip:\"%s\",%s}",
+                        id, InitailConfig.serverNode.get(id),status));
+            }
+            res.append("]");
+            return JSONArray.parseArray(res.toString());
+        }catch (Exception e){
+            System.out.println(res.toString());
             e.printStackTrace();
         }
         return null;

@@ -193,7 +193,7 @@
             for(var i=0;i<server_size;i++) {
                 $.ajax({
                     url: "/cpu",
-                    async: true,
+                    async: false,
                     success: function (response) {
                         date[i].push('');
                         data[i].push(response[0]["cpu"]);
