@@ -203,6 +203,7 @@
                         data[i].push(response[0]["cpu"]);
                         $("#cpu_"+i).text(response[0]["cpu"] + "%");
                         $("#ram_"+i).text(response[0]["ram"] + "%");
+                        $("#disk_"+i).text(response[0]["disk"] + "%");
                         if(response[0]["status"] == 1){
                             $("#status_"+i).css("background" ,"#6FCE7F");
                         }else{
