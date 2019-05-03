@@ -191,85 +191,93 @@
         }
 
         // 更新回调函数
-        window.setInterval(update, 1000);
+        window.setInterval(function () {
+            update(0);
+        }, 1000);
+        window.setInterval(function () {
+            update(1);
+        }, 1000);
+        window.setInterval(function () {
+            update(2);
+        }, 1000);
 
-        function update(){
-            for(var i=0;i<server_size;i++) {
-                $.ajax({
-                    url: "/load/"+servername[i],
-                    async: false,
-                    success: function (response) {
-                        date[i].push('');
-                        data[i].push(response[0]["cpu"]);
-                        $("#cpu_"+i).text(response[0]["cpu"] + "%");
-                        $("#ram_"+i).text(response[0]["ram"] + "%");
-                        $("#disk_"+i).text(response[0]["disk"] + "%");
-                        if(response[0]["status"] == 1){
-                            $("#status_"+i).css("background" ,"#6FCE7F");
-                        }else{
-                            $("#status_"+i).css("background" ,"#ffa748");
-                        }
-                        if (date[i].length > max_size) {
-                            data[i] = data[i].slice(-max_size);
-                            date[i] = date[i].slice(-max_size);
-                        }
-
-                        cpuChart[i].setOption({
-                            xAxis: {
-                                data: date[i]
-                            },
-                            series: [{
-                                data: data[i]
-                            }],
-                            title: {
-                                left: 'center',
-                                text: servername[i] + "-" +response[0]["location"] + " CPU占有率"
-                            }
-                        });
-
-                        var ram = response[0]["ram"];
-
-                        ramChart[i].setOption(
-                            {
-                                graphic:{
-                                    style: {
-                                        text:ram + "%"
-                                    }
-                                },
-                                series : [
-                                    {
-                                        data:[
-                                            {value:ram, name:'已使用内存'},
-                                            {value:100-ram, name:'剩余内存'},
-                                        ],
-                                    }
-                                ]
-
-                            }
-                        );
-
-                    },
-                    error: function (response) {
-                        date[i].push('');
-                        data[i].push(-5);
-                        $("#cpu_"+i).text("-5%");
-                        $("#status_"+i).css("background" ,"#ffa748");
-                        if (date.length > max_size) {
-                            data[i] = data[i].slice(-max_size);
-                            date[i] = date[i].slice(-max_size);
-                        }
-                        cpuChart[i].setOption({
-                            xAxis: {
-                                data: date[i]
-                            },
-                            series: [{
-                                data: data[i]
-                            }],
-
-                        });
+        function update(i) {
+            console.log(i);
+            $.ajax({
+                url: "/load/" + servername[i],
+                async: true,
+                success: function (response) {
+                    date[i].push('');
+                    data[i].push(response[0]["cpu"]);
+                    $("#cpu_" + i).text(response[0]["cpu"] + "%");
+                    $("#ram_" + i).text(response[0]["ram"] + "%");
+                    $("#disk_" + i).text(response[0]["disk"] + "%");
+                    if (response[0]["status"] == 1) {
+                        $("#status_" + i).css("background", "#6FCE7F");
+                    } else {
+                        $("#status_" + i).css("background", "#ffa748");
                     }
-                });
-            }
+                    if (date[i].length > max_size) {
+                        data[i] = data[i].slice(-max_size);
+                        date[i] = date[i].slice(-max_size);
+                    }
+
+                    cpuChart[i].setOption({
+                        xAxis: {
+                            data: date[i]
+                        },
+                        series: [{
+                            data: data[i]
+                        }],
+                        title: {
+                            left: 'center',
+                            text: servername[i] + "-" + response[0]["location"] + " CPU占有率"
+                        }
+                    });
+
+                    var ram = response[0]["ram"];
+
+                    ramChart[i].setOption(
+                        {
+                            graphic: {
+                                style: {
+                                    text: ram + "%"
+                                }
+                            },
+                            series: [
+                                {
+                                    data: [
+                                        {value: ram, name: '已使用内存'},
+                                        {value: 100 - ram, name: '剩余内存'},
+                                    ],
+                                }
+                            ]
+
+                        }
+                    );
+
+                },
+                error: function (response) {
+                    date[i].push('');
+                    data[i].push(-5);
+                    $("#cpu_" + i).text("-5%");
+                    $("#status_" + i).css("background", "#ffa748");
+                    if (date.length > max_size) {
+                        data[i] = data[i].slice(-max_size);
+                        date[i] = date[i].slice(-max_size);
+                    }
+                    cpuChart[i].setOption({
+                        xAxis: {
+                            data: date[i]
+                        },
+                        series: [{
+                            data: data[i]
+                        }],
+
+                    });
+                }
+            });
+
         }
 
 
