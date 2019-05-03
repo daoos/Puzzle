@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class Redirect2HttpsConfig {
-    
+
     // springboot2 写法
     @Bean
     public TomcatServletWebServerFactory servletContainer() {

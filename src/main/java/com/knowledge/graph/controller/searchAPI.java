@@ -213,7 +213,14 @@ public class searchAPI {
     }
 
     public static void main(String[]args){
-        new searchAPI().NERProcessing("刘备和毛泽东率领三十万大军");
+//        new searchAPI().NERProcessing("刘备和毛泽东率领三十万大军");
+        try{
+            String s = crawl(new URL("https://dearwhy.top/cpu"));
+            System.out.println(s);
+        }catch (Exception e){
+
+        }
+
     }
 
 

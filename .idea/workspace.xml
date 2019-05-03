@@ -6,7 +6,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="" />
+    <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/httpsCrawler.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/test.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/GraduatedesignApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/GraduatedesignApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/distribute.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/distribute.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/robot.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/robot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/searchAPI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/model/Person.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/model/Person.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Redirect2HttpsConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Redirect2HttpsConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,14 +44,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="distribute.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="distribute.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="75" column="54" lean-forward="false" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="54" />
+            <state relative-caret-position="253">
+              <caret line="82" column="11" lean-forward="true" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchAPI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1481">
+              <caret line="217" column="28" lean-forward="false" selection-start-line="217" selection-start-column="23" selection-end-line="217" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,26 +93,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Redirect2HttpsConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Redirect2HttpsConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Redirect2HttpsConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="9">
-              <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#753#1261#0" expanded="true" />
-                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#749#1257#0" expanded="true" />
+                <element signature="e#1256#1257#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -86,8 +110,8 @@
       <file leaf-file-name="monitor.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/monitor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-80">
-              <caret line="127" column="62" lean-forward="false" selection-start-line="127" selection-start-column="62" selection-end-line="127" selection-end-column="62" />
+            <state relative-caret-position="-824">
+              <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -121,41 +145,23 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/chat/chat.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="122" column="9" lean-forward="true" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
+              <caret line="122" column="9" lean-forward="false" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/test.java">
+      <file leaf-file-name="httpsCrawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/httpsCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="33" column="102" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="33" selection-end-column="102" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Neo4jNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="33" />
+            <state relative-caret-position="399">
+              <caret line="102" column="36" lean-forward="true" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="robot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/robot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#804#805#0" expanded="true" />
+                <element signature="e#839#840#0" expanded="true" />
+                <element signature="e#1750#1751#0" expanded="true" />
+                <element signature="e#1793#1794#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,7 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>final_transcript</find>
       <find>audio</find>
       <find>play</find>
       <find>create_email</find>
@@ -202,6 +207,7 @@
       <find>server</find>
       <find>crawl</find>
       <find>update</find>
+      <find>http</find>
       <find>craw</find>
     </findStrings>
   </component>
@@ -236,18 +242,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/chat/chat.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/CPUMonitorCalc.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/visualization.html" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/controller.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/display.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/test.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/InitailConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/monitor.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Redirect2HttpsConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/BasicWebCrawler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/httpsCrawler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java" />
       </list>
     </option>
   </component>
@@ -533,6 +541,46 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.knowledge.graph.controller.test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="graduatedesign" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="BasicWebCrawler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.knowledge.graph.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.knowledge.graph.controller.BasicWebCrawler" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="graduatedesign" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="httpsCrawler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.knowledge.graph.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.knowledge.graph.controller.httpsCrawler" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1134,17 +1182,21 @@
       <envs />
       <method />
     </configuration>
-    <list size="4">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.GraduatedesignApplication" />
       <item index="1" class="java.lang.String" itemvalue="Application.searchAPI" />
       <item index="2" class="java.lang.String" itemvalue="Application.Neo4jNode" />
       <item index="3" class="java.lang.String" itemvalue="Application.test" />
+      <item index="4" class="java.lang.String" itemvalue="Application.BasicWebCrawler" />
+      <item index="5" class="java.lang.String" itemvalue="Application.httpsCrawler" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.test" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Neo4jNode" />
-        <item index="2" class="java.lang.String" itemvalue="Application.searchAPI" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.httpsCrawler" />
+        <item index="1" class="java.lang.String" itemvalue="Application.test" />
+        <item index="2" class="java.lang.String" itemvalue="Application.BasicWebCrawler" />
+        <item index="3" class="java.lang.String" itemvalue="Application.searchAPI" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Neo4jNode" />
       </list>
     </recent_temporary>
   </component>
@@ -1212,12 +1264,12 @@
       <workItem from="1556328128938" duration="6533000" />
       <workItem from="1556459859467" duration="323000" />
       <workItem from="1556631760917" duration="15781000" />
-      <workItem from="1556776068671" duration="18936000" />
+      <workItem from="1556776068671" duration="21556000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157939000" />
+    <option name="totallyTimeSpent" value="160559000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1257,6 +1309,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27539343" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1264,7 +1317,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1319,13 +1371,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/back/prettyPhotoaeb9.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/images/support.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1521,14 +1566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/visualization.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -1578,14 +1615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="66" column="59" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/display.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -1607,7 +1636,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="33" />
+          <caret line="20" column="33" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1622,51 +1651,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/monitor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="127" column="62" lean-forward="false" selection-start-line="127" selection-start-column="62" selection-end-line="127" selection-end-column="62" />
-          <folding>
-            <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#5;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="33" column="102" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="33" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/chat/chat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="122" column="9" lean-forward="true" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
+          <caret line="122" column="9" lean-forward="false" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="75" column="54" lean-forward="false" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1693,14 +1682,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/monitor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-824">
+          <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#5;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Redirect2HttpsConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#753#1261#0" expanded="true" />
-            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#749#1257#0" expanded="true" />
+            <element signature="e#1256#1257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/searchAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1481">
+          <caret line="217" column="28" lean-forward="false" selection-start-line="217" selection-start-column="23" selection-end-line="217" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/BasicWebCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/httpsCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="102" column="36" lean-forward="true" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#1750#1751#0" expanded="true" />
+            <element signature="e#1793#1794#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/distribute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="82" column="11" lean-forward="true" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

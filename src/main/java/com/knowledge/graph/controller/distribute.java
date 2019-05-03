@@ -73,12 +73,14 @@ public class distribute {
         StringBuilder res = new StringBuilder("[");
         String status = "";
         try {
-            status = searchAPI.crawl(new URL("https://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu"));
+            status = httpsCrawler.getByURL("http://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu");
         }
-        catch (Exception e) {}
-        if(status.equals("None")){
+        catch (Exception e) {
             status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
         }
+//        if(status.equals("None")){
+//            status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
+//        }
         res.append(String.format("{id:\"%s\",ip:\"%s\",%s,location:\"%s\"}",
         id, InitailConfig.serverNode.get(id).get_ip(),status,InitailConfig.serverNode.get(id).get_location()));
         res.append("]");
