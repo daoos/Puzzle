@@ -69,10 +69,10 @@ public class distribute {
         }
         catch (Exception e) {}
         if(status.equals("None")){
-            status = "cpu:0,ram:0,status:0";
+            status = "cpu:0,ram:0,status:0,location:\"\"";
         }
-        res.append(String.format("{id:\"%s\",ip:\"%s\",%s}",
-        id, InitailConfig.serverNode.get(id).get_ip(),status));
+        res.append(String.format("{id:\"%s\",ip:\"%s\",%s,location:\"%s\"}",
+        id, InitailConfig.serverNode.get(id).get_ip(),status,InitailConfig.serverNode.get(id).get_location()));
         res.append("]");
         System.out.println(res.toString());
         return JSONArray.parseArray(res.toString());

@@ -127,7 +127,7 @@
 
         var max_size = 100;
         var server_size = 3;
-        var servername = ["M0-深圳", "M1-洛杉矶", "M2-香港"];
+        var servername = ["M0", "M1", "M2"];
         var date = []; // 二维数组，存储cpu 时间与cpu load关系
         var data = [];
 
@@ -192,14 +192,18 @@
         function update(){
             for(var i=0;i<server_size;i++) {
                 $.ajax({
-                    url: "/cpu",
+                    url: "/load/"+servername[i],
                     async: false,
                     success: function (response) {
                         date[i].push('');
                         data[i].push(response[0]["cpu"]);
                         $("#cpu_"+i).text(response[0]["cpu"] + "%");
                         $("#ram_"+i).text(response[0]["ram"] + "%");
-                        $("#status_"+i).css("background" ,"#6FCE7F");
+                        if(response[0]["status"] == 1){
+                            $("#status_"+i).css("background" ,"#6FCE7F");
+                        }else{
+                            $("#status_"+i).css("background" ,"#ffa748");
+                        }
                         if (date[i].length > max_size) {
                             data[i] = data[i].slice(-max_size);
                             date[i] = date[i].slice(-max_size);
@@ -211,10 +215,15 @@
                             },
                             series: [{
                                 data: data[i]
-                            }]
+                            }],
+                            title: {
+                                left: 'center',
+                                text: servername[i] + "-" +response[0]["location"] + " CPU占有率"
+                            }
                         });
 
                         var ram = response[0]["ram"];
+
                         ramChart[i].setOption(
                             {
                                 graphic:{
@@ -230,6 +239,7 @@
                                         ],
                                     }
                                 ]
+
                             }
                         );
 
@@ -249,7 +259,8 @@
                             },
                             series: [{
                                 data: data[i]
-                            }]
+                            }],
+
                         });
                     }
                 });
