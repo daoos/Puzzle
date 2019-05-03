@@ -2,6 +2,7 @@ package com.knowledge.graph.controller;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -37,4 +38,8 @@ public class InitailConfig implements ApplicationRunner {
         serverNode.put("M1", new Node("35.221.173.25","台湾"));
         serverNode.put("M2", new Node("34.92.13.105", "香港"));
     }
+
+
 }
+
+
