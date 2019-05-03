@@ -71,12 +71,11 @@ public class distribute {
     @GetMapping("/load/{id}")
     public static JSONArray getload(@PathVariable String id) {
         StringBuilder res = new StringBuilder("[");
-        String status = "";
+        String status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
         try {
             status = httpsCrawler.getByURL("https://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu");
         }
         catch (Exception e) {
-            status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
         }
 //        if(status.equals("None")){
 //            status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
