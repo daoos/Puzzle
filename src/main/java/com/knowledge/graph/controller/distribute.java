@@ -73,7 +73,7 @@ public class distribute {
         StringBuilder res = new StringBuilder("[");
         String status = "";
         try {
-            status = httpsCrawler.getByURL("http://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu");
+            status = httpsCrawler.getByURL("https://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu");
         }
         catch (Exception e) {
             status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
@@ -92,6 +92,13 @@ public class distribute {
     public static JSONArray heartbeat(HttpServletRequest request,Model model) {
 
         return null;
+    }
+
+    public static void main(String[]args){
+        String address = "https://120.77.220.71/cpu";
+        //绕过Https证书方案1
+        System.out.println(httpsCrawler.getByURL(address));
+        //只要请求过程中没发生异常，就说明成功绕过Https证书问题；在上例子中红色文字部分是关键
     }
 
 }
