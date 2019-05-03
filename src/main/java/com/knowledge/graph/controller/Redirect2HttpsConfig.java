@@ -14,15 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class Redirect2HttpsConfig {
-    // 在某配置类中添加如下内容
-    // 监听的http请求的端口,需要在application配置中添加http.port=端口号  如80
-    @Value("${http.port}")
-    Integer httpPort;
-
-    //正常启用的https端口 如443
-    @Value("${server.port}")
-    Integer httpsPort;
-
+    
     // springboot2 写法
     @Bean
     public TomcatServletWebServerFactory servletContainer() {
@@ -46,10 +38,10 @@ public class Redirect2HttpsConfig {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
         //Connector监听的http的端口号
-        connector.setPort(httpPort);
+        connector.setPort(80);
         connector.setSecure(false);
         //监听到http的端口号后转向到的https的端口号
-        connector.setRedirectPort(httpsPort);
+        connector.setRedirectPort(443);
         return connector;
     }
 }
