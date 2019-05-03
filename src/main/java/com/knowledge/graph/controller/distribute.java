@@ -13,6 +13,7 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.management.ManagementFactory;
@@ -49,11 +50,18 @@ public class distribute {
         return (int)(RAM_USED_PERCENTAGE) + "";
     }
 
+    private static int getDiskusage(){
+        File file = new File("/");
+        double freesize = file.getFreeSpace() / (1024.0 * 1024 * 1024);
+        double totalsize = file.getTotalSpace() / (1024.0 * 1024 * 1024);
+        return (int)((1- freesize / totalsize)*100);
+    }
+
 
     @GetMapping("/cpu")
     public static String monitor(HttpServletRequest request,Model model) {
         try {
-            return String.format("cpu:%s,ram:%s,status:1", getProcessCpuLoad(), getRAMLoad());
+            return String.format("cpu:%s,ram:%s,disk:%d,status:1", getProcessCpuLoad(), getRAMLoad(), getDiskusage());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -69,7 +77,7 @@ public class distribute {
         }
         catch (Exception e) {}
         if(status.equals("None")){
-            status = "cpu:0,ram:0,status:0,location:\"\"";
+            status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
         }
         res.append(String.format("{id:\"%s\",ip:\"%s\",%s,location:\"%s\"}",
         id, InitailConfig.serverNode.get(id).get_ip(),status,InitailConfig.serverNode.get(id).get_location()));

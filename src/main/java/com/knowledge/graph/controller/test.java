@@ -1,6 +1,7 @@
 package com.knowledge.graph.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
@@ -28,14 +29,9 @@ public class test {
     }
 
     public static void main(String[] arg){
-        try {
-            String str = "https://api.ownthink.com/kg/knowledge?entity=" + java.net.URLEncoder.encode("刘德华", "utf-8");
-            str = new String(str.getBytes("ISO-8859-1"), "UTF-8");
-            System.out.println(str);
-        }
-        catch (Exception e){
-
-        }
+        File file = new File("/");
+        double size = file.getFreeSpace() / (1024.0 * 1024 * 1024);
+        System.out.printf( "%.3f GB, %.3f GB\n", size, file.getTotalSpace() / (1024.0 * 1024 * 1024));
     }
 
     private final static String ENCODE = "GBK";
