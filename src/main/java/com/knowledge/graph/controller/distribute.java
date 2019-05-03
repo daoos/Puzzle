@@ -5,10 +5,7 @@ import org.neo4j.cypher.internal.frontend.v2_3.ast.functions.Str;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.management.Attribute;
 import javax.management.AttributeList;
@@ -20,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
+import scala.None;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
@@ -54,7 +53,7 @@ public class distribute {
     @GetMapping("/cpu")
     public static String monitor(HttpServletRequest request,Model model) {
         try {
-            return String.format("cpu:%s,ram:%s", getProcessCpuLoad(), getRAMLoad());
+            return String.format("cpu:%s,ram:%s,status:1", getProcessCpuLoad(), getRAMLoad());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -62,24 +61,21 @@ public class distribute {
     }
 
     @GetMapping("/load/{id}")
-    public static JSONArray getload(HttpServletRequest request,Model model) {
-        StringBuffer res = new StringBuffer("[");
+    public static JSONArray getload(@PathVariable String id) {
+        StringBuilder res = new StringBuilder("[");
+        String status = "";
         try {
-            for(String id: InitailConfig.serverNode.keySet()){
-                String status = searchAPI.crawl(new URL("http://"+InitailConfig.serverNode.get(id)+"/cpu"));
-                if(res.length() > 1){
-                    res.append(",");
-                }
-                res.append(String.format("{id:\"%s\",ip:\"%s\",%s}",
-                        id, InitailConfig.serverNode.get(id),status));
-            }
-            res.append("]");
-            return JSONArray.parseArray(res.toString());
-        }catch (Exception e){
-            System.out.println(res.toString());
-            e.printStackTrace();
+            status = searchAPI.crawl(new URL("http://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu"));
         }
-        return null;
+        catch (Exception e) {}
+        if(status.equals("None")){
+            status = "cpu:0,ram:0,status:0";
+        }
+        res.append(String.format("{id:\"%s\",ip:\"%s\",%s}",
+        id, InitailConfig.serverNode.get(id).get_ip(),status));
+        res.append("]");
+        System.out.println(res.toString());
+        return JSONArray.parseArray(res.toString());
     }
 
     @GetMapping("/heartbeat")

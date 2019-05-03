@@ -127,7 +127,7 @@
 
         var max_size = 100;
         var server_size = 3;
-        var servername = ["M0-深圳 CPU占有率", "M1-洛杉矶 CPU占有率", "M2-香港 CPU占有率"];
+        var servername = ["M0-深圳", "M1-洛杉矶", "M2-香港"];
         var date = []; // 二维数组，存储cpu 时间与cpu load关系
         var data = [];
 
@@ -145,7 +145,7 @@
                 data[i].push(0);
                 date[i].push("");
             }
-            init(cpuChart[i],data[i], date[i], servername[i]); // cpu 图像初始化
+            init(cpuChart[i],data[i], date[i], servername[i]+" CPU占有率"); // cpu 图像初始化
 
             ramChart[i].setOption( // 内存图像初始化
                 {
