@@ -22,7 +22,16 @@ public class Neo4jNode {
     public JSONArray neo4jSearch(@PathVariable String keyword) throws SQLException{
 
         StringBuffer res = new StringBuffer("[");
-        Connection con = DriverManager.getConnection("jdbc:neo4j:http://120.77.220.71:7474", "neo4j", "302899");
+//        alibaba
+//        Connection con = DriverManager.getConnection("jdbc:neo4j:http://120.77.220.71:7474", "neo4j", "302899");
+
+//        hongkong
+//        Connection con = DriverManager.getConnection("jdbc:neo4j:http://34.92.13.105:7474", "neo4j", "302899");
+
+//        losangel
+        Connection con = DriverManager.getConnection("jdbc:neo4j:http://35.236.82.226:7474", "neo4j", "302899");
+
+
         // Querying
         String sql;
         try (Statement stmt = con.createStatement()) {

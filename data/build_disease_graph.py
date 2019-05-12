@@ -17,8 +17,9 @@ class DiseaseGraph:
         cur_dir = '/'.join(os.path.abspath(__file__).split('/')[:-1])
         self.data_path = os.path.join(cur_dir, './dict/medical.json')
         self.g = Graph(
-            # host="120.77.220.71",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
-            host="34.92.13.105",  # goole
+            # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            # host="120.77.220.71",  # alibaba
+            host="35.236.82.226", # losangel
             http_port=7474,        # neo4j 服务器监听的端口号
             user="neo4j",          # 数据库user name，如果没有更改过，应该是neo4j
             password="302899")
@@ -165,9 +166,12 @@ class DiseaseGraph:
     '''建立节点'''
     def create_node(self, label, nodes):
         count = 0
+        noderepeat = {}
         for node_name in nodes:
-            node = Node(label, name=node_name)
-            self.g.create(node)
+            if node_name not in noderepeat:
+                noderepeat[node_name] = 1
+                node = Node(label, name=node_name)
+                self.g.create(node)
             count += 1
             printBar(label, count, len(nodes))
         return
@@ -175,13 +179,16 @@ class DiseaseGraph:
     '''创建知识图谱中心疾病的节点'''
     def create_diseases_nodes(self, disease_infos):
         count = 0
+        disease_repeat = {}
         for disease_dict in disease_infos:
-            node = Node("Disease", name=disease_dict['name'], desc=disease_dict['desc'],
-                        prevent=disease_dict['prevent'] ,cause=disease_dict['cause'],
-                        easy_get=disease_dict['easy_get'],cure_lasttime=disease_dict['cure_lasttime'],
-                        cure_department=disease_dict['cure_department']
-                        ,cure_way=disease_dict['cure_way'] , cured_prob=disease_dict['cured_prob'])
-            self.g.create(node)
+            if disease_dict['name'] not in disease_repeat:
+                disease_repeat[disease_dict['name']] = 0
+                node = Node("Disease", name=disease_dict['name'], desc=disease_dict['desc'],
+                            prevent=disease_dict['prevent'] ,cause=disease_dict['cause'],
+                            easy_get=disease_dict['easy_get'],cure_lasttime=disease_dict['cure_lasttime'],
+                            cure_department=disease_dict['cure_department']
+                            ,cure_way=disease_dict['cure_way'] , cured_prob=disease_dict['cured_prob'])
+                self.g.create(node)
             count += 1
             printBar(disease_dict['name'],count,len(disease_infos))
         return
@@ -213,7 +220,6 @@ class DiseaseGraph:
         self.create_relationship('Disease', 'Food', rels_doeat, 'do_eat', '宜吃')
         self.create_relationship('Department', 'Department', rels_department, 'belongs_to', '属于')
         self.create_relationship('Disease', 'Drug', rels_commonddrug, 'common_drug', '常用药品')
-        # self.create_relationship('Producer', 'Drug', rels_drug_producer, 'drugs_of', '生产药品')
         self.create_relationship('Disease', 'Drug', rels_recommanddrug, 'recommand_drug', '好评药品')
         self.create_relationship('Disease', 'Check', rels_check, 'need_check', '诊断检查')
         self.create_relationship('Disease', 'Symptom', rels_symptom, 'has_symptom', '症状')
