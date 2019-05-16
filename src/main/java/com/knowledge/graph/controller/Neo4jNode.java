@@ -13,13 +13,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 @CrossOrigin
 @RestController
 public class Neo4jNode {
+    static HashMap<String, String> cache = new HashMap<String, String>();
+    static boolean cacheEnable = false;
 
     @GetMapping("/neo4j/{keyword}")
     public JSONArray neo4jSearch(@PathVariable String keyword) throws SQLException{
+        if(cacheEnable && cache.containsKey(keyword)){
+            return JSONArray.parseArray(cache.get(keyword));
+        }
 
         StringBuffer res = new StringBuffer("[");
 //        alibaba
@@ -81,6 +87,7 @@ public class Neo4jNode {
 
         res.append("]");
         System.out.println(res.toString());
+        if(cacheEnable) cache.put(keyword,res.toString());
         return JSONArray.parseArray(res.toString());
     }
 
