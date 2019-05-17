@@ -19,7 +19,7 @@ import java.util.HashMap;
 @RestController
 public class Neo4jNode {
     static HashMap<String, String> cache = new HashMap<String, String>();
-    static boolean cacheEnable = false;
+    static boolean cacheEnable = true;
 
     @GetMapping("/neo4j/{keyword}")
     public JSONArray neo4jSearch(@PathVariable String keyword) throws SQLException{
@@ -29,13 +29,13 @@ public class Neo4jNode {
 
         StringBuffer res = new StringBuffer("[");
 //        alibaba
-//        Connection con = DriverManager.getConnection("jdbc:neo4j:http://120.77.220.71:7474", "neo4j", "302899");
+        Connection con = DriverManager.getConnection("jdbc:neo4j:http://120.77.220.71:7474", "neo4j", "302899");
 
 //        hongkong
 //        Connection con = DriverManager.getConnection("jdbc:neo4j:http://34.92.13.105:7474", "neo4j", "302899");
 
 //        losangel
-        Connection con = DriverManager.getConnection("jdbc:neo4j:http://35.236.82.226:7474", "neo4j", "302899");
+//        Connection con = DriverManager.getConnection("jdbc:neo4j:http://35.236.82.226:7474", "neo4j", "302899");
 
 
         // Querying
