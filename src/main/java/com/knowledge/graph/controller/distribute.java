@@ -73,7 +73,10 @@ public class distribute {
         StringBuilder res = new StringBuilder("[");
         String status = "cpu:0,ram:0,disk:0,status:0,location:\"\"";
         try {
+            // https
             status = httpsCrawler.getByURL("https://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu");
+            // http
+//            status = httpsCrawler.getByURL("http://" + InitailConfig.serverNode.get(id).get_ip() + "/cpu");
         }
         catch (Exception e) {
         }
