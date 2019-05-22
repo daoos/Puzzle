@@ -98,7 +98,7 @@ function tts(text) {
 
     audio = btts({
         tex: text,
-        tok: "24.374a1933901f85ad20908fe3a95f9e7b.2592000.1558094039.282335-15758186",
+        tok: "24.c7d837fcdd65185ef7dceafd63e97ab0.2592000.1561133668.282335-15758186",
         spd: 5,
         pit: 5,
         vol: 15,

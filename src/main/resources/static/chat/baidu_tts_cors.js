@@ -11,9 +11,10 @@
  *           onSuccess {Function} 远程语音合成完成，并且返回音频文件后调用
  *           onError {Function}  远程语音合成完成，并且返回错误字符串后调用
  *           onTimeout {Function} 超时后调用，默认超时时间为60秒
+ *           lalalal
  */
 function btts(param, options) {
-    var url = 'http://tsn.baidu.com/text2audio';
+    var url = 'https://tsn.baidu.com/text2audio';
     var opt = options || {};
     var p = param || {};
 
