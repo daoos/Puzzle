@@ -1,0 +1,125 @@
+/* Header - Logo and Nav ---------------------------------------------------------------------------------------------*/
+
+.header-wrapper {
+    background-color: #3b4348;
+    width: 100%;
+    height: auto;
+}
+
+.header-wrapper .container {
+    position: relative;
+    min-height: 60px;
+    height: auto !important;
+    height: 60px;
+}
+
+.logo-container {
+    padding: 19px 0;
+}
+
+.logo-container img {
+    margin-right: 10px;
+}
+
+.lt-ie9 .logo-container {
+    width: 450px;
+}
+
+span.tag-line {
+    color: white;
+    font-size: 18px;
+    position: relative;
+    top: 2px;
+}
+
+.logo-heading {
+    color: #fff;
+    font-weight: 600;
+    display: inline;
+    margin-right: 15px;
+    position: relative;
+    top: 4px;
+}
+
+.logo-heading a {
+    color: #fff;
+}
+
+.logo-heading a:hover {
+    color: #eaeaea;
+}
+
+.main-nav {
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.main-nav div>ul {
+    width: auto;
+    margin: 0;
+}
+
+.main-nav div>ul>li {
+    position: relative;
+    float: left;
+    list-style: none;
+    padding: 16px 14px 18px;
+}
+
+.main-nav div>ul>li a {
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: #c1cad1;
+}
+
+.main-nav div>ul>li a:hover {
+    color: #fff;
+}
+
+.main-nav div>ul>li:hover>a {
+    color: #fff;
+}
+
+.main-nav div>ul>li:last-child {
+    padding-right: 0;
+}
+
+.main-nav div>ul li.current-menu-item a {
+    color: #fff;
+}
+
+.main-nav .sub-menu {
+    position: absolute;
+    top: 56px;
+    left: 0px;
+    list-style: none;
+    margin: 0;
+    display: none;
+}
+
+.main-nav .sub-menu li {
+    position: relative;
+    background-color: #3b4348;
+    padding: 6px 10px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.main-nav .sub-menu li:hover {
+    background-color: #292e32;
+}
+
+.main-nav .sub-menu li:hover>a {
+    color: #fff;
+}
+
+.main-nav .sub-menu .sub-menu {
+    top: 0px;
+    right: 170px;
+    left: auto;
+}
+
+.main-nav .responsive-nav {
+    display: none;
+}
