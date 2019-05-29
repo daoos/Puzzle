@@ -53,7 +53,7 @@
                     <th style="text-align:center" width="200">源节点</th>
                     <th style="text-align:center" width="200">属性</th>
                     <th style="text-align:center" width="200">目标节点</th>
-                    <th style="text-align:center" width="100">操作</th>
+                    <th class="delete" style="text-align:center" width="100">操作</th>
                 </tr>
                 <!--<tr>-->
                     <!--<td style="text-align:center; " onclick="tdclick(this)"></td>-->
@@ -72,7 +72,7 @@
 
     <div style="text-align:center; margin-top: 50px">
         <button id="upload" type="button" class="btn btn-warning">导入Excel</button>
-        <button type="button" class="btn btn-warning">导出Excel</button>
+        <button type="button" class="btn btn-warning" onclick="excel_export()">导出Excel</button>
         <button type="button" class="btn btn-primary">提交</button>
     </div>
 
@@ -226,7 +226,7 @@
                         "<td  onclick='tdclick(this)'>" +data["source"]+ "</td>" +
                         "<td  onclick='tdclick(this)'>" +data["link"]+ "</td>" +
                         "<td  onclick='tdclick(this)'>" +data["destination"]+ "</td>" +
-                        "<td  align='center' onclick='deletetr(this)'><button type='button'  class='btn btn-xs btn-link' >" + "删除" + "</button></td></tr>");
+                        "<td  class='delete' align='center' onclick='deletetr(this)'><button type='button'  class='btn btn-xs btn-link' >" + "删除" + "</button></td></tr>");
                     table.append(tr);
                 });
                 wb = null;
@@ -247,7 +247,148 @@
             o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
             return o;
         }
+
+
     </script>
+
+<script>
+    // 导出excel
+    function excel_export() {
+        var table1 = document.querySelector("#para_table");
+        var sheet = XLSX.utils.table_to_sheet(table1);//将一个table对象转换成一个sheet对象
+        openDownloadDialog(sheet2blob(sheet),'导出数据.xlsx');
+    }
+
+    // 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+    function sheet2blob(sheet, sheetName) {
+        sheetName = sheetName || 'sheet1';
+        var workbook = {
+            SheetNames: [sheetName],
+            Sheets: {}
+        };
+
+        delete_cols(sheet,3,1);
+        console.log(sheet);
+        workbook.Sheets[sheetName] = sheet; // 生成excel的配置项
+
+
+        var wopts = {
+            bookType: 'xlsx', // 要生成的文件类型
+            bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+            type: 'binary'
+        };
+        var wbout = XLSX.write(workbook, wopts);
+        var blob = new Blob([s2ab(wbout)], {
+            type: "application/octet-stream"
+        }); // 字符串转ArrayBuffer
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        return blob;
+    }
+
+    function openDownloadDialog(url, saveName) {
+        if (typeof url == 'object' && url instanceof Blob) {
+            url = URL.createObjectURL(url); // 创建blob地址
+        }
+        var aLink = document.createElement('a');
+        aLink.href = url;
+        aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+        var event;
+        if (window.MouseEvent) event = new MouseEvent('click');
+        else {
+            event = document.createEvent('MouseEvents');
+            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        }
+        aLink.dispatchEvent(event);
+    }
+
+    function clamp_range(range) {
+        if(range.e.r >= (1<<20)) range.e.r = (1<<20)-1;
+        if(range.e.c >= (1<<14)) range.e.c = (1<<14)-1;
+        return range;
+    }
+
+    var crefregex = /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)([1-9]\d{0,5}|10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6])(?![_.\(A-Za-z0-9])/g;
+
+    /*
+     deletes `ncols` cols STARTING WITH `start_col`
+     usage: delete_cols(ws, 4, 3); // deletes columns E-G and shifts everything after G to the left by 3 columns
+     */
+    function delete_cols(ws, start_col, ncols) {
+        if(!ws) throw new Error("operation expects a worksheet");
+        var dense = Array.isArray(ws);
+        if(!ncols) ncols = 1;
+        if(!start_col) start_col = 0;
+
+        /* extract original range */
+        var range = XLSX.utils.decode_range(ws["!ref"]);
+        var R = 0, C = 0;
+
+        var formula_cb = function($0, $1, $2, $3, $4, $5) {
+            var _R = XLSX.utils.decode_row($5), _C = XLSX.utils.decode_col($3);
+            if(_C >= start_col) {
+                _C -= ncols;
+                if(_C < start_col) return "#REF!";
+            }
+            return $1+($2=="$" ? $2+$3 : XLSX.utils.encode_col(_C))+($4=="$" ? $4+$5 : XLSX.utils.encode_row(_R));
+        };
+
+        var addr, naddr;
+        for(C = start_col + ncols; C <= range.e.c; ++C) {
+            for(R = range.s.r; R <= range.e.r; ++R) {
+                addr = XLSX.utils.encode_cell({r:R, c:C});
+                naddr = XLSX.utils.encode_cell({r:R, c:C - ncols});
+                if(!ws[addr]) { delete ws[naddr]; continue; }
+                if(ws[addr].f) ws[addr].f = ws[addr].f.replace(crefregex, formula_cb);
+                ws[naddr] = ws[addr];
+            }
+        }
+        for(C = range.e.c; C > range.e.c - ncols; --C) {
+            for(R = range.s.r; R <= range.e.r; ++R) {
+                addr = XLSX.utils.encode_cell({r:R, c:C});
+                delete ws[addr];
+            }
+        }
+        for(C = 0; C < start_col; ++C) {
+            for(R = range.s.r; R <= range.e.r; ++R) {
+                addr = XLSX.utils.encode_cell({r:R, c:C});
+                if(ws[addr] && ws[addr].f) ws[addr].f = ws[addr].f.replace(crefregex, formula_cb);
+            }
+        }
+
+        /* write new range */
+        range.e.c -= ncols;
+        if(range.e.c < range.s.c) range.e.c = range.s.c;
+        ws["!ref"] = XLSX.utils.encode_range(clamp_range(range));
+
+        /* merge cells */
+        if(ws["!merges"]) ws["!merges"].forEach(function(merge, idx) {
+            var mergerange;
+            switch(typeof merge) {
+                case 'string': mergerange = XLSX.utils.decode_range(merge); break;
+                case 'object': mergerange = merge; break;
+                default: throw new Error("Unexpected merge ref " + merge);
+            }
+            if(mergerange.s.c >= start_col) {
+                mergerange.s.c = Math.max(mergerange.s.c - ncols, start_col);
+                if(mergerange.e.c < start_col + ncols) { delete ws["!merges"][idx]; return; }
+                mergerange.e.c -= ncols;
+                if(mergerange.e.c < mergerange.s.c) { delete ws["!merges"][idx]; return; }
+            } else if(mergerange.e.c >= start_col) mergerange.e.c = Math.max(mergerange.e.c - ncols, start_col);
+            clamp_range(mergerange);
+            ws["!merges"][idx] = mergerange;
+        });
+        if(ws["!merges"]) ws["!merges"] = ws["!merges"].filter(function(x) { return !!x; });
+
+        /* cols */
+        if(ws["!cols"]) ws["!cols"].splice(start_col, ncols);
+    }
+
+</script>
 
 </body>
 

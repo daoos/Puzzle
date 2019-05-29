@@ -24,6 +24,31 @@ class DiseaseGraph:
             user="neo4j",          # 数据库user name，如果没有更改过，应该是neo4j
             password="302899")
 
+
+    nodes = {}
+    nodes_record = ""
+    types = ['symptom',]
+    def export_nodes(self):
+        with open("./dict/nodes_1.txt","w+") as f:
+            Drugs, Foods, Checks, Departments, Producers, Symptoms, Diseases, disease_infos,rels_check, rels_recommandeat, rels_noteat, rels_doeat, rels_department, rels_commonddrug, rels_drug_producer, rels_recommanddrug,rels_symptom, rels_acompany, rels_category = self.read_nodes()
+            for disease in disease_infos:
+                self.nodes_record += "{\"id\": \"%s\", \"type\": \"%s\", \"desc\": \"%s\" },\n" % (disease['name'], "疾病", disease['desc'].replace(' ','').replace('\n','').replace('"','').replace('\t',''))
+                self.nodes[disease['name']] = 1
+            for drug in Drugs:
+                self.nodes_record += "{\"id\": \"%s\", \"type\": \"%s\", \"desc\": \"null\" },\n" % (drug, "药品")
+                self.nodes[drug] = 1
+            # for food in Foods:
+            #     self.nodes_record += "{\"id\": \"%s\", \"type\": \"%s\", \"desc\": \"null\" },\n" % (food, "食物")
+            # for check in Checks:
+            #     self.nodes_record += "{\"id\": \"%s\", \"type\": \"%s\", \"desc\": \"null\" },\n" % (check, "检测手段")
+            # for department in Departments:
+            #     self.nodes_record += "{\"id\": \"%s\", \"type\": \"%s\", \"desc\": \"null\" },\n" % (department, "诊治科室")
+            # for symptom in Symptoms:
+            #     self.nodes_record += "{\"id\": \"%s\", \"type\": \"%s\", \"desc\": \"null\" },\n" % (symptom, "症状")
+            f.write(self.nodes_record)
+
+
+
     '''读取文件'''
     def read_nodes(self):
         # 共７类节点
@@ -226,6 +251,39 @@ class DiseaseGraph:
         self.create_relationship('Disease', 'Disease', rels_acompany, 'acompany_with', '并发症')
         self.create_relationship('Disease', 'Department', rels_category, 'belongs_to', '所属科室')
 
+    def export_graphrels(self):
+        Drugs, Foods, Checks, Departments, Producers, Symptoms, Diseases, disease_infos, rels_check, rels_recommandeat, rels_noteat, rels_doeat, rels_department, rels_commonddrug, rels_drug_producer, rels_recommanddrug,rels_symptom, rels_acompany, rels_category = self.read_nodes()
+        # self.export_relationship('Disease', 'Food', rels_recommandeat, 'recommand_eat', '推荐食谱')
+        # self.export_relationship('Disease', 'Food', rels_noteat, 'no_eat', '忌吃')
+        # self.export_relationship('Disease', 'Food', rels_doeat, 'do_eat', '宜吃')
+        # self.export_relationship('Department', 'Department', rels_department, 'belongs_to', '属于')
+        self.export_relationship('Disease', 'Drug', rels_commonddrug, 'common_drug', '常用药品')
+        self.export_relationship('Disease', 'Drug', rels_recommanddrug, 'recommand_drug', '好评药品')
+        # self.export_relationship('Disease', 'Check', rels_check, 'need_check', '诊断检查')
+        # self.export_relationship('Disease', 'Symptom', rels_symptom, 'has_symptom', '症状')
+        # self.export_relationship('Disease', 'Disease', rels_acompany, 'acompany_with', '并发症')
+        # self.export_relationship('Disease', 'Department', rels_category, 'belongs_to', '所属科室')
+        with open("./dict/links_2.txt","w+") as f:
+            f.write(self.relation_records)
+
+
+    relation_records = ""
+    '''创建实体关联边'''
+    def export_relationship(self, start_node, end_node, edges, rel_type, rel_name):
+        # 去重处理
+        print(start_node,end_node,rel_name)
+        set_edges = []
+        for edge in edges:
+            set_edges.append('###'.join(edge))
+        for edge in set(set_edges):
+            edge = edge.split('###')
+            p = edge[0]
+            q = edge[1]
+            if p in self.nodes or q in self.nodes:
+                self.relation_records += "{ \"source\": \"%s\", \"target\": \"%s\", \"description\": \"%s\" },\n"% (p,q,rel_name)
+        return
+
+
     '''创建实体关联边'''
     def create_relationship(self, start_node, end_node, edges, rel_type, rel_name):
         count = 0
@@ -284,7 +342,9 @@ class DiseaseGraph:
 
 if __name__ == '__main__':
     handler = DiseaseGraph()
-    handler.create_graphnodes()
-    handler.create_graphrels()
+    # handler.create_graphnodes()
+    # handler.create_graphrels()
+    handler.export_nodes()
+    handler.export_graphrels()
     # handler.export_data()
 
