@@ -97,6 +97,11 @@ public class Neo4jNode {
 
     @GetMapping("/neo4j/{keyword}")
     public JSONArray neo4jSearch(@PathVariable String keyword) throws SQLException{
+        return search(keyword, 0); // 为了兼容之前的代码
+    }
+
+    // 基本的搜索函数
+    private JSONArray search(String keyword, int ip) throws SQLException {
         if(cacheEnable && cache.containsKey(keyword)){
             System.out.println("Hit"+keyword);
             return JSONArray.parseArray(cache.get(keyword));
@@ -107,6 +112,31 @@ public class Neo4jNode {
         System.out.println(res);
         if(cacheEnable) cache.put(keyword,res);
         return JSONArray.parseArray(res);
+    }
+
+    @GetMapping("/export/link/{keyword}/{region}")
+    public JSONArray exportlink(@PathVariable String keyword, @PathVariable int region) throws SQLException{
+        return search(keyword, region);
+    }
+
+    @GetMapping("/export/node/{label}/{name}/{id}")
+    public JSONArray exportnode(@PathVariable String label,@PathVariable String name, @PathVariable int id) throws SQLException{
+        Connection con = DriverManager.getConnection("jdbc:neo4j:http://"+IPs[id]+":7474", "neo4j", "302899");
+        try (Statement stmt = con.createStatement()) {
+            String sql = String.format("MATCH (n:%s) where n.name=\"%s\" return n",label,name);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                String res = rs.getString(1);
+                System.out.println("["+res+"]");
+                return JSONArray.parseArray("["+res+"]");
+            }
+        }catch (Exception e){
+            System.out.println("读取异常1");
+        }
+        finally {
+            con.close();
+        }
+        return null;
     }
 
 
@@ -171,6 +201,8 @@ public class Neo4jNode {
         }
     }
 
+
+    // 支持多实体同时查询，以逗号分隔
     @GetMapping("/mapreduce/{multiword}")
     public String neo4jMultiSearchMapReduce(@PathVariable String multiword) {
         ArrayList<String> words = new ArrayList<String>();

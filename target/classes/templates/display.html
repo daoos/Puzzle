@@ -11,32 +11,14 @@
     <link rel="stylesheet" id="responsive-css-css" href="/css/back/responsive5152.css" type="text/css" media="all">
     <link rel="stylesheet" id="pretty-photo-css-css" href="/css/back/prettyPhotoaeb9.css" type="text/css" media="all">
     <link rel="stylesheet" id="main-css-css" href="/css/back/main5152.css" type="text/css" media="all">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="header-wrapper">
-        <header>
-            <div class="container">
-                <div class="logo-container">
-                    <a href="/"><span class="tag-line">知识图谱-Puzzle</span> </a>
-                </div>
-                <!-- Start of Main Navigation -->
-                <nav class="main-nav">
-                    <div class="menu-top-menu-container">
-                        <ul id="menu-top-menu" class="clearfix">
-                            <li><a href="/display">可视化</a></li>
-                            <li><a href="/3dnodes">3D视图</a></li>
-                            <li><a href="/robot">智能问答</a></li>
-                            <li><a href="/monitor">监控</a></li>
-                            <li><a href="#contact">联系</a></li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- End of Main Navigation -->
-
-            </div>
-        </header>
+        <div th:replace="nav::navbar"></div>
     </div>
     <!-- End of Header -->
 

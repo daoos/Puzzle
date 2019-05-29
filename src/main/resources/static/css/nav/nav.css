@@ -1,6 +1,12 @@
 /* Header - Logo and Nav ---------------------------------------------------------------------------------------------*/
 
-.header-wrapper {
+.header-wrapper{
+    background-color: #3b4348;
+    width: 100%;
+    height: auto;
+}
+
+.dropdown-menu{
     background-color: #3b4348;
     width: 100%;
     height: auto;
@@ -98,7 +104,7 @@ span.tag-line {
     display: none;
 }
 
-.main-nav .sub-menu li {
+.main-nav .sub-menu li  {
     position: relative;
     background-color: #3b4348;
     padding: 6px 10px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,60 +9,86 @@
 
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/manual/xlsx.full.min.js"></script>
-
     <style>
         button{
             width: 100px;
+        }
+        input{
+            width: 250px;
+        }
+
+        select.m-wrap {
+            background-color: #ffffff;
+            background-image: none !important;
+            filter: none !important;
+            border: 1px solid #e5e5e5;
+            outline: none;
+            height: 25px !important;
+            line-height: 25px;
+        }
+        .select-hide-span {
+            height: 25px;
+            position: absolute;
+            top: 0;
+            border-right: 1px solid #e5e5e5;
+            right: 0;
+            width: 20px!important;
+            z-index: 999;
+        }
+        .select-show-b {
+            border-color: #888 transparent transparent transparent;
+            border-style: solid;
+            border-width: 5px 4px 0 4px;
+            margin-left: -4px;
+            margin-top: 10px;
+            position: absolute;
         }
     </style>
 </head>
 
 
 <body>
-    <div class="header-wrapper" style="margin-bottom: 50px">
-        <header>
-            <div class="container">
-                <div class="logo-container">
-                    <a href="/"><span class="tag-line">知识图谱-Puzzle</span> </a>
-                </div>
-                <!-- Start of Main Navigation -->
-                <nav class="main-nav">
-                    <div class="menu-top-menu-container">
-                        <ul id="menu-top-menu" class="clearfix">
-                            <li><a href="/display">可视化</a></li>
-                            <li><a href="/3dnodes">3D视图</a></li>
-                            <li><a href="/robot">智能问答</a></li>
-                            <li><a href="/manual">编辑</a></li>
-                            <li><a href="#contact">联系</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
+    <div th:replace="nav::navbar"></div>
+
+    <h3 style="text-align: center; margin-bottom: 30px">创建节点信息</h3>
+
+    <div style="margin: 0 auto;text-align: center; margin-bottom: 30px">
+        <span class="setleft wid80"><span class="fyhbx"></span>选择节点 :</span>
+            <select id="region" class="m-wrap  "  style="width: 180px; padding: 2px 0;text-align: center !important;
+    text-align-last: center !important;">
+                <option value="深圳">深圳</option>
+                <option value="香港">香港</option>
+                <option value="洛杉矶">洛杉矶</option>
+                <option value="台湾">台湾</option>
+            </select>
+            <span class="select-hide-span" >
+                <b class="select-show-b"  ></b>
+            </span>
     </div>
-    <h3 style="text-align: center; margin-bottom: 40px">创建关联信息</h3>
 
     <div style="width: 70%;margin:0 auto">
         <div style="margin-top:-15px; width: 15%; float: right;">
             <button type="button" class="btn btn-xs btn-link" onclick="addtr()">添加</button>
         </div>
+
         <table class="table  table-bordered table-striped" id="para_table">
             <tbody>
                 <tr class="warning">
-                    <th style="text-align:center" width="200">源节点</th>
-                    <th style="text-align:center" width="200">属性</th>
-                    <th style="text-align:center" width="200">目标节点</th>
+                    <th style="text-align:center" width="200">节点类型</th>
+                    <th style="text-align:center" width="200">节点</th>
+                    <th style="text-align:center" width="200">属性名</th>
+                    <th style="text-align:center" width="200">属性值</th>
                     <th class="delete" style="text-align:center" width="100">操作</th>
                 </tr>
-                <!--<tr>-->
-                    <!--<td style="text-align:center; " onclick="tdclick(this)"></td>-->
-                    <!--<td style="text-align:center; " onclick="tdclick(this)"></td>-->
-                    <!--<td style="text-align:center; " onclick="tdclick(this)"></td>-->
-                    <!--<td style="text-align:center; " onclick="deletetr(this)">-->
-                        <!--<button type="button" class="btn btn-xs btn-link">删除</button>-->
-                    <!--</td>-->
-                <!--</tr>-->
+            <tr>
+                <td id='classvalue'  onclick='tdclick(this)'></td>
+                <td id='nodevalue'  onclick='tdclick(this)'></td>
+                <td>第一行只填写类型和名称</td>
+                <td></td>
+                <td  align='center' onclick='deletetr(this)'><button type='button' class='btn btn-xs btn-link' >删除</button></td>
+            </tr>
             </tbody>
         </table>
         <div style="margin-top:-15px; width: 15%; float: right;">
@@ -73,11 +99,47 @@
     <div style="text-align:center; margin-top: 50px">
         <button id="upload" type="button" class="btn btn-warning">导入Excel</button>
         <button type="button" class="btn btn-warning" onclick="excel_export()">导出Excel</button>
-        <button type="button" class="btn btn-primary">提交</button>
+        <button type="button" class="btn btn-primary" onclick="table_submit()">提交</button>
     </div>
 
 
     <div id="demo"></div>
+    
+    <script type="text/javascript">
+        function table_submit() {
+            var attrinfo = "";
+            var tableObj = document.getElementById("para_table");
+            var label = tableObj.rows[1].cells[0].innerText;
+            var name = tableObj.rows[2].cells[1].innerText;
+            for (var i = 2; i < tableObj.rows.length; i++) {    //遍历Table的所有Row
+                attrinfo += tableObj.rows[i].cells[2].innerText+",";   //获取Table中单元格的内容
+                attrinfo += tableObj.rows[i].cells[3].innerText;   //获取Table中单元格的内容
+                if(i < tableObj.rows.length - 1){
+                    attrinfo +="\n";
+                }
+            }
+            console.log(label);
+            console.log(name);
+            console.log(attrinfo);
+            var params = {};
+            params.label = label;
+            params.name = name;
+            params.attrinfo = attrinfo;
+            $.ajax({
+                url: '/uploadNodeInformation',
+                type: 'POST',
+                dataType: "json",
+                async: false,
+                data: params,
+                success: function (result) {
+                    alert(result);
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
+        }
+    </script>
 
     <script>
         $('#upload').after('<input id="load_xls" style="display: none" type="file" onchange="importf(this)" />');
@@ -89,11 +151,8 @@
 
     <script type="text/javascript">
         function save_para_table() {
-
             var tableinfo = gettableinfo();
             alert(tableinfo);
-
-
         }
         //get table infomation
         function gettableinfo() {
@@ -128,6 +187,10 @@
             tabledata = "[" + tabledata + "]";
             return tabledata;
         }
+
+        $('.nodevalue').bind('input propertychange', function() {
+            alert("change");
+        });
 
         function tdclick(tdobject) {
             var td = $(tdobject);
@@ -174,7 +237,8 @@
         function addtr() {
             var table = $("#para_table");
             var tr = $("<tr>" +
-                "<td  onclick='tdclick(this)'>" + "</td>" +
+                "<td class='classvalue'  onclick='tdclick(this)'>" +$("#classvalue").html()+ "</td>" +
+                "<td class='nodevalue'  onclick='tdclick(this)'>" +$("#nodevalue").html()+ "</td>" +
                 "<td  onclick='tdclick(this)'>" + "</td>" +
                 "<td  onclick='tdclick(this)'>" + "</td>" +
                 "<td  align='center' onclick='deletetr(this)'><button type='button'  class='btn btn-xs btn-link' >" + "删除" + "</button></td></tr>");
@@ -219,14 +283,20 @@
                 //wb.Sheets[Sheet名]获取第一个Sheet的数据
 //                document.getElementById("demo").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
                 var jsons = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+                var count = 0;
                 jsons.forEach(function (data) {
-                    console.log(data);
+                    if(count == 0){
+                        $("#classvalue").text(data["label"])
+                        $("#nodevalue").text(data["name"])
+                    }
+                    count += 1;
                     var table = $("#para_table");
                     var tr = $("<tr>" +
-                        "<td  onclick='tdclick(this)'>" +data["source"]+ "</td>" +
-                        "<td  onclick='tdclick(this)'>" +data["link"]+ "</td>" +
-                        "<td  onclick='tdclick(this)'>" +data["destination"]+ "</td>" +
-                        "<td  class='delete' align='center' onclick='deletetr(this)'><button type='button'  class='btn btn-xs btn-link' >" + "删除" + "</button></td></tr>");
+                        "<td  onclick='tdclick(this)'>" +data["label"]+ "</td>" +
+                        "<td  onclick='tdclick(this)'>" +data["name"]+ "</td>" +
+                        "<td  onclick='tdclick(this)'>" +data["attr"]+ "</td>" +
+                        "<td  onclick='tdclick(this)'>" +data["attr_value"]+ "</td>" +
+                        "<td  class='delete' align='center' onclick='deletetr(this)'><button type='button' class='btn btn-xs btn-link' >" + "删除" + "</button></td></tr>");
                     table.append(tr);
                 });
                 wb = null;
