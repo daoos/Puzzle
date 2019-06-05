@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,27 +29,8 @@
 </head>
 
 <body>
-<div class="header-wrapper">
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <a href="/"><span class="tag-line">知识图谱-Puzzle</span> </a>
-            </div>
-            <!-- Start of Main Navigation -->
-            <nav class="main-nav">
-                <div class="menu-top-menu-container">
-                    <ul id="menu-top-menu" class="clearfix">
-                        <li><a href="/display">可视化</a></li>
-                        <li><a href="/3dnodes">3D视图</a></li>
-                        <li><a href="/robot">智能问答</a></li>
-                        <li><a href="#about">论文</a></li>
-                        <li><a href="#contact">联系</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-</div>
+<div th:replace="nav::navbar"></div>
+
 <!-- End of Header -->
 
 
