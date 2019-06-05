@@ -7,25 +7,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f9926f-f386-476b-b764-1eb7388627a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_node.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/nav.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/templates/manual.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/templates/manual.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/Manual.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/Manual.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Puzzle.pptx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/build_disease_graph.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/build_doctor_graph.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/cache_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/deeppavlov.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/generate_3dgraph.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/generate_train_data.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/heat.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/heat/disease.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/heat/drug.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/map_reduce_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/performance_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/Manual.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper/3150102193-葛帅琦-基于知识图谱的领域知识建模系统设计与实现.doc" afterPath="$PROJECT_DIR$/paper/3150102193-葛帅琦-基于知识图谱的领域知识建模系统设计与实现.doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper/3150102193-葛帅琦-基于知识图谱的领域知识建模系统设计与实现.pdf" afterPath="$PROJECT_DIR$/paper/3150102193-葛帅琦-基于知识图谱的领域知识建模系统设计与实现.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper/毕业设计最终版-葛帅琦.doc" afterPath="$PROJECT_DIR$/paper/毕业设计最终版-葛帅琦.doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/Neo4jNode.class" afterPath="$PROJECT_DIR$/target/classes/com/knowledge/graph/controller/Neo4jNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/.idea/workspace.xml" afterPath="$PROJECT_DIR$/data/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/search.py" afterPath="$PROJECT_DIR$/data/search.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/nav/nav.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/nav/nav.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/display.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/css/nav/nav.css" afterPath="$PROJECT_DIR$/target/classes/static/css/nav/nav.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/manual_link.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_link.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/manual_node.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_node.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/nav.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/nav.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/chatrobot.html" afterPath="$PROJECT_DIR$/target/classes/templates/chatrobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/display.html" afterPath="$PROJECT_DIR$/target/classes/templates/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/index.html" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/manual_link.html" afterPath="$PROJECT_DIR$/target/classes/templates/manual_link.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/manual_node.html" afterPath="$PROJECT_DIR$/target/classes/templates/manual_node.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/manual_node_update.html" afterPath="$PROJECT_DIR$/target/classes/templates/manual_node_update.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/nav.html" afterPath="$PROJECT_DIR$/target/classes/templates/nav.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,17 +64,20 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="manual_node.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_node.html">
+      <file leaf-file-name="Manual.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="81" column="70" lean-forward="true" selection-start-line="78" selection-start-column="20" selection-end-line="81" selection-end-column="70" />
+            <state relative-caret-position="-542">
+              <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
               <folding>
-                <element signature="n#style#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1559143948013" expanded="true" signature="5451:5464" ph="..." />
+                <element signature="imports" expanded="true" />
+                <element signature="e#728#744#0" expanded="true" />
+                <element signature="e#1747#1763#0" expanded="true" />
+                <element signature="e#2084#2100#0" expanded="true" />
+                <element signature="e#3295#3311#0" expanded="true" />
+                <element signature="e#4389#4405#0" expanded="true" />
+                <element signature="e#5283#5299#0" expanded="true" />
+                <element signature="e#6086#6102#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,29 +86,29 @@
       <file leaf-file-name="manual_link.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_link.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="100" column="0" lean-forward="true" selection-start-line="367" selection-start-column="75" selection-end-line="367" selection-end-column="84" />
+            <state relative-caret-position="-2358">
+              <caret line="106" column="17" lean-forward="true" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#3;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1559143959441" expanded="true" signature="3548:3561" ph="..." />
+                <marker date="1559653938106" expanded="true" signature="5287:5300" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manual_node_update.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manual_node_update.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="104" column="52" lean-forward="false" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
+            <state relative-caret-position="753">
+              <caret line="98" column="39" lean-forward="true" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1559151322763" expanded="true" signature="4059:4069" ph="..." />
-                <marker date="1559151322763" expanded="true" signature="4168:4178" ph="..." />
-                <marker date="1559151322763" expanded="true" signature="4557:4570" ph="..." />
+                <marker date="1559692282484" expanded="true" signature="4083:4093" ph="..." />
+                <marker date="1559692282484" expanded="true" signature="4229:4239" ph="..." />
+                <marker date="1559692282484" expanded="true" signature="4655:4668" ph="..." />
               </folding>
             </state>
           </provider>
@@ -100,14 +117,25 @@
       <file leaf-file-name="manual_link_update.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="125" column="37" lean-forward="true" selection-start-line="116" selection-start-column="24" selection-end-line="125" selection-end-column="37" />
+            <state relative-caret-position="113">
+              <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1559147634395" expanded="true" signature="5173:5183" ph="..." />
-                <marker date="1559147634395" expanded="true" signature="5286:5296" ph="..." />
-                <marker date="1559147634395" expanded="true" signature="5729:5742" ph="..." />
+                <marker date="1559694331878" expanded="true" signature="4891:4901" ph="..." />
+                <marker date="1559694331878" expanded="true" signature="6419:6432" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manual_node.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_node.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-207">
+              <caret line="300" column="68" lean-forward="false" selection-start-line="300" selection-start-column="63" selection-end-line="300" selection-end-column="68" />
+              <folding>
+                <marker date="1559643420646" expanded="true" signature="5567:5580" ph="..." />
               </folding>
             </state>
           </provider>
@@ -116,8 +144,8 @@
       <file leaf-file-name="Neo4jNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="130" column="39" lean-forward="false" selection-start-line="130" selection-start-column="39" selection-end-line="130" selection-end-column="39" />
+            <state relative-caret-position="68">
+              <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -136,18 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>alibaba</find>
-      <find>{0}</find>
-      <find>console</find>
-      <find>ali</find>
-      <find>dom</find>
-      <find>var i</find>
-      <find>cpuChartInit</find>
-      <find>chart</find>
-      <find>neo4j</find>
-      <find>title</find>
-      <find>init</find>
-      <find>readInputStream</find>
       <find>server</find>
       <find>crawl</find>
       <find>update</find>
@@ -165,7 +181,19 @@
       <find>start_img</find>
       <find>crefregex</find>
       <find>gettableinfo</find>
+      <find>/export/node</find>
+      <find>2</find>
+      <find>2542</find>
+      <find>25421</find>
+      <find>254211</find>
+      <find>update_attr</find>
+      <find>get_node</find>
       <find>ajax</find>
+      <find>get_link</find>
+      <find>region</find>
+      <find>load_info</find>
+      <find>delete_attr</find>
+      <find>/export/link/</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -219,14 +247,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/css/nav/nav.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/display.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/chatrobot.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/nav.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/manual_node.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/manual_link.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/nav.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java" />
       </list>
     </option>
   </component>
@@ -305,237 +333,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="json" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graph" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graduatedesign" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Puzzle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graph" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1362,12 +1164,14 @@
       <workItem from="1558691423359" duration="730000" />
       <workItem from="1559047422521" duration="5762000" />
       <workItem from="1559096839719" duration="5143000" />
-      <workItem from="1559135127384" duration="13298000" />
+      <workItem from="1559135127384" duration="13569000" />
+      <workItem from="1559391772624" duration="12162000" />
+      <workItem from="1559528913575" duration="8150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209005000" />
+    <option name="totallyTimeSpent" value="229588000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1380,7 +1184,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1404,7 +1207,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25783134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34334764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1469,20 +1272,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/CPUMonitorCalc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="975" column="19" lean-forward="false" selection-start-line="975" selection-start-column="19" selection-end-line="975" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1552,13 +1341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1500">
           <caret line="100" column="67" lean-forward="false" selection-start-line="100" selection-start-column="67" selection-end-line="100" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/voice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1684,14 +1466,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/json/graph.json">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1699,7 +1481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
           <caret line="105" column="39" lean-forward="false" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1750,14 +1531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/nav/nav.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-149">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/back/page1_bg.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1767,7 +1540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="763" column="52" lean-forward="true" selection-start-line="763" selection-start-column="52" selection-end-line="763" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1775,25 +1547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chatrobot.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3720">
-          <caret line="248" column="0" lean-forward="false" selection-start-line="248" selection-start-column="0" selection-end-line="248" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#a#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="61" lean-forward="true" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1801,81 +1554,129 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="26" column="69" lean-forward="true" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-jdbc-driver/3.0.1/neo4j-jdbc-driver-3.0.1.jar!/org/neo4j/driver/v1/util/Function.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/neo4j/neo4j-jdbc-driver/3.0.1/neo4j-jdbc-driver-3.0.1.jar!/org/neo4j/driver/v1/Values.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="229" column="29" lean-forward="false" selection-start-line="229" selection-start-column="24" selection-end-line="229" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/nav/nav.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="3" column="29" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chatrobot.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        <state relative-caret-position="310">
+          <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/voice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1388">
+          <caret line="121" column="17" lean-forward="false" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
           <folding>
-            <element signature="e#567#583#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
-            <element signature="e#1223#1224#0" expanded="true" />
+            <element signature="n#style#0;n#li#3;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#li#3;n#ul#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_node.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="81" column="70" lean-forward="true" selection-start-line="78" selection-start-column="20" selection-end-line="81" selection-end-column="70" />
+        <state relative-caret-position="-207">
+          <caret line="300" column="68" lean-forward="false" selection-start-line="300" selection-start-column="63" selection-end-line="300" selection-end-column="68" />
           <folding>
-            <element signature="n#style#0;n#h3#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1559143948013" expanded="true" signature="5451:5464" ph="..." />
+            <marker date="1559643420646" expanded="true" signature="5567:5580" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_link.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="100" column="0" lean-forward="true" selection-start-line="367" selection-start-column="75" selection-end-line="367" selection-end-column="84" />
+        <state relative-caret-position="-2358">
+          <caret line="106" column="17" lean-forward="true" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#3;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1559143959441" expanded="true" signature="3548:3561" ph="..." />
+            <marker date="1559653938106" expanded="true" signature="5287:5300" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="98" column="39" lean-forward="true" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1559692282484" expanded="true" signature="4083:4093" ph="..." />
+            <marker date="1559692282484" expanded="true" signature="4229:4239" ph="..." />
+            <marker date="1559692282484" expanded="true" signature="4655:4668" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_link_update.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="125" column="37" lean-forward="true" selection-start-line="116" selection-start-column="24" selection-end-line="125" selection-end-column="37" />
+        <state relative-caret-position="113">
+          <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1559147634395" expanded="true" signature="5173:5183" ph="..." />
-            <marker date="1559147634395" expanded="true" signature="5286:5296" ph="..." />
-            <marker date="1559147634395" expanded="true" signature="5729:5742" ph="..." />
+            <marker date="1559694331878" expanded="true" signature="4891:4901" ph="..." />
+            <marker date="1559694331878" expanded="true" signature="6419:6432" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Neo4jNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="130" column="39" lean-forward="false" selection-start-line="130" selection-start-column="39" selection-end-line="130" selection-end-column="39" />
+        <state relative-caret-position="68">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/manual_node_update.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/knowledge/graph/controller/Manual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="104" column="52" lean-forward="false" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
+        <state relative-caret-position="-542">
+          <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
           <folding>
-            <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1559151322763" expanded="true" signature="4059:4069" ph="..." />
-            <marker date="1559151322763" expanded="true" signature="4168:4178" ph="..." />
-            <marker date="1559151322763" expanded="true" signature="4557:4570" ph="..." />
+            <element signature="imports" expanded="true" />
+            <element signature="e#728#744#0" expanded="true" />
+            <element signature="e#1747#1763#0" expanded="true" />
+            <element signature="e#2084#2100#0" expanded="true" />
+            <element signature="e#3295#3311#0" expanded="true" />
+            <element signature="e#4389#4405#0" expanded="true" />
+            <element signature="e#5283#5299#0" expanded="true" />
+            <element signature="e#6086#6102#0" expanded="true" />
           </folding>
         </state>
       </provider>

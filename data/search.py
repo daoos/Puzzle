@@ -235,7 +235,7 @@ class Intent_Recognization:
             question_label = 'disease_acompany'
             questionLabels.append(question_label)
 
-        # 疾病推荐因素
+        # 疾病不推荐食物
         if self.check_words(self.food_words, question) and 'disease' in labels:
             deny_status = self.check_words(self.deny_words, question)
             question_label = 'disease_not_food' if deny_status else 'disease_do_food'

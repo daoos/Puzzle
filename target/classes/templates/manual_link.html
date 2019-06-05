@@ -50,10 +50,10 @@
         <span class="setleft wid80"><span class="fyhbx"></span>选择节点 :</span>
         <select id="region" class="m-wrap  "  style="width: 180px; padding: 2px 0;text-align: center !important;
     text-align-last: center !important;">
-            <option value="深圳">深圳</option>
-            <option value="香港">香港</option>
-            <option value="洛杉矶">洛杉矶</option>
-            <option value="台湾">台湾</option>
+            <option value="0">深圳</option>
+            <option value="1">香港</option>
+            <option value="3">洛杉矶</option>
+            <option value="2">台湾</option>
         </select>
         <span class="select-hide-span" >
                 <b class="select-show-b"  ></b>
@@ -67,9 +67,9 @@
         <table class="table  table-bordered table-striped" id="para_table">
             <tbody>
                 <tr class="warning">
-                    <th style="text-align:center" width="200">源节点</th>
-                    <th style="text-align:center" width="200">属性</th>
-                    <th style="text-align:center" width="200">目标节点</th>
+                    <th style="text-align:center" width="200">source</th>
+                    <th style="text-align:center" width="200">link</th>
+                    <th style="text-align:center" width="200">destination</th>
                     <th class="delete" style="text-align:center" width="100">操作</th>
                 </tr>
             </tbody>
@@ -82,11 +82,57 @@
     <div style="text-align:center; margin-top: 50px">
         <button id="upload" type="button" class="btn btn-warning">导入Excel</button>
         <button type="button" class="btn btn-warning" onclick="excel_export()">导出Excel</button>
-        <button type="button" class="btn btn-primary">提交</button>
+        <button type="button" class="btn btn-primary" onclick="table_submit()">提交</button>
     </div>
 
 
     <div id="demo"></div>
+
+    <script type="text/javascript">
+        function table_submit() {
+            var attrinfo = "";
+            var tableObj = document.getElementById("para_table");
+            if($("para_table tr").size() == 1){ // 空表，不做任何操作
+                return;
+            }
+            var region = $("#region").val();
+            var label = tableObj.rows[1].cells[0].innerText;
+            var name = tableObj.rows[1].cells[1].innerText;
+            for (var i = 1; i < tableObj.rows.length; i++) {    //遍历Table的所有Row
+                attrinfo += tableObj.rows[i].cells[0].innerText+"###";
+                attrinfo += tableObj.rows[i].cells[1].innerText+"###";   //获取Table中单元格的内容
+                attrinfo += tableObj.rows[i].cells[2].innerText;   //获取Table中单元格的内容
+                if(i < tableObj.rows.length - 1){
+                    attrinfo +="!!!";
+                }
+            }
+
+            var params = {};
+            params.region = region;
+            params.attrinfo = attrinfo;
+            console.log(params);
+            $.ajax({
+                url: '/createLink',
+                type: 'POST',
+                dataType: "json",
+                async: true,
+                data: params,
+                success: function (result) {
+                    if(result.status == "repeat"){
+                        alert("该类型实体名称重复");
+                    }if(result.status == "succeed"){
+                        alert("构建关系成功");
+                    }
+                    else{
+                        console.log(result);
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+        }
+    </script>
 
     <script>
         $('#upload').after('<input id="load_xls" style="display: none" type="file" onchange="importf(this)" />');

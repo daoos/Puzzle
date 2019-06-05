@@ -101,7 +101,7 @@ public class Neo4jNode {
     }
 
     // 基本的搜索函数
-    private JSONArray search(String keyword, int ip) throws SQLException {
+    private static JSONArray search(String keyword, int ip) throws SQLException {
         if(cacheEnable && cache.containsKey(keyword)){
             System.out.println("Hit"+keyword);
             return JSONArray.parseArray(cache.get(keyword));
@@ -115,12 +115,12 @@ public class Neo4jNode {
     }
 
     @GetMapping("/export/link/{keyword}/{region}")
-    public JSONArray exportlink(@PathVariable String keyword, @PathVariable int region) throws SQLException{
+    public static JSONArray exportlink(@PathVariable String keyword, @PathVariable int region) throws SQLException{
         return search(keyword, region);
     }
 
     @GetMapping("/export/node/{label}/{name}/{id}")
-    public JSONArray exportnode(@PathVariable String label,@PathVariable String name, @PathVariable int id) throws SQLException{
+    public static JSONArray exportnode(@PathVariable String label,@PathVariable String name, @PathVariable int id) throws SQLException{
         Connection con = DriverManager.getConnection("jdbc:neo4j:http://"+IPs[id]+":7474", "neo4j", "302899");
         try (Statement stmt = con.createStatement()) {
             String sql = String.format("MATCH (n:%s) where n.name=\"%s\" return n",label,name);

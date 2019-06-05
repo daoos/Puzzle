@@ -77,11 +77,12 @@
 
 <div style="text-align:center; margin-top: 50px">
     <button type="button" class="btn btn-warning" onclick="excel_export()">导出Excel</button>
-    <button type="button" class="btn btn-primary">提交</button>
+    <button type="button" class="btn btn-primary" onclick="update_all()">提交</button>
 </div>
 
 
 <div id="demo"></div>
+
 
 <script>
     // 向数据库获取关联信息
@@ -107,8 +108,8 @@
                         "<td  onclick='tdclick(this)'>" +json[val]+ "</td>" +
                         "<td align='center'>"+
                         "<div>"+
-                        "<button style='width: 30%' type='button' class='btn btn-xs btn-link' >更新</button>"+
-                        "<button style='width: 30%' type='button' class='btn btn-xs btn-link' >删除</button>"+
+                        "<button style='width: 30%' type='button' class='btn btn-xs btn-link' onclick='update_attr("+line+",false)'>更新</button>"+
+                        "<button style='width: 30%' type='button' class='btn btn-xs btn-link' onclick='delete_attr("+line+",false)'>删除</button>"+
                         "</div>"+
                         "</td>");
                     table.append(tr);
@@ -126,6 +127,83 @@
     $('#upload').click(function(){
         document.getElementById("load_xls").click();
     });
+</script>
+
+<script>
+    function update_all() {
+        var lines = $("#para_table tr").size();
+        for(var i=1;i<lines;i++){
+            update_attr(i, true);
+        }
+        console.log("提交成功");
+    }
+
+    function update(params,all) {
+        console.log(params,all);
+        $.ajax({
+            url: '/updateNode',
+            type: 'POST',
+            dataType: "json",
+            async: true,
+            data: params,
+            success: function (result) {
+                if(result.status == "repeat" && all==false){
+                    alert("该类型实体名称重复");
+                }else if(result.status == "succeed" && all==false){
+                    alert("该属性更新成功");
+                }
+                else{
+                    console.log(result);
+                }
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    }
+
+    function update_attr(lineID,all) {
+        var params = {};
+        params.name = $("#entity_name").val();
+        params.label = $("#entity_label").val();
+        params.serverID = $("#region").val();
+        params.attr_name = $("#tr_"+lineID).children().eq(0).text();
+        params.attr_val = $("#tr_"+lineID).children().eq(1).text();
+        var timetr = $("#para_table tr").size()-1;
+        params.timestamp = $("#tr_"+timetr).children().eq(1).text();
+        update(params,all);
+    }
+
+    function delete_attr(lineID) {
+        var params = {};
+        params.name = $("#entity_name").val();
+        params.label = $("#entity_label").val();
+        params.serverID = $("#region").val();
+        params.attr_name = $("#tr_"+lineID).children().eq(0).text();
+        params.attr_val = $("#tr_"+lineID).children().eq(1).text();
+        var timetr = $("#para_table tr").size()-1;
+        params.timestamp = $("#tr_"+timetr).children().eq(1).text();
+        $.ajax({
+            url: '/deleteNodeAttr',
+            type: 'POST',
+            dataType: "json",
+            async: true,
+            data: params,
+            success: function (result) {
+                if(result.status == "repeat"){
+                    alert("该类型实体名称重复");
+                }if(result.status == "succeed"){
+                    alert("该属性更新成功");
+                }
+                else{
+                    console.log(result);
+                }
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    }
 </script>
 
 

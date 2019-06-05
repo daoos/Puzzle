@@ -62,9 +62,6 @@
     </div>
 
     <div style="width: 70%;margin:0 auto">
-        <div style="margin-top:-15px; width: 15%; float: right;">
-            <button type="button" class="btn btn-xs btn-link" onclick="addtr()">添加</button>
-        </div>
         <table class="table  table-bordered table-striped" id="para_table">
             <tbody>
                 <tr class="warning">
@@ -86,14 +83,12 @@
                 <!--</tr>-->
             </tbody>
         </table>
-        <div style="margin-top:-15px; width: 15%; float: right;">
-            <button type="button" class="btn btn-xs btn-link" onclick="addtr()">添加</button>
-        </div>
+
     </div>
 
     <div style="text-align:center; margin-top: 50px">
         <button type="button" class="btn btn-warning" onclick="excel_export()">导出Excel</button>
-        <button type="button" class="btn btn-primary">提交</button>
+        <!--<button type="button" class="btn btn-primary">提交</button>-->
     </div>
 
 
@@ -102,6 +97,7 @@
     <script>
         // 向数据库获取关联信息
         function get_link() {
+            $(".load_info").remove();
             var name = $("#entity_name").val();
             var serverID = $("#region").val();
             console.log(serverID);
@@ -114,14 +110,13 @@
                     datas.forEach(function (data) {
                         line += 1;
                         var table = $("#para_table");
-                        var tr = $("<tr id='tr_"+line+"'>" +
+                        var tr = $("<tr class='load_info' id='tr_"+line+"'>" +
                             "<td  onclick='tdclick(this)'>" +data["source"]+ "</td>" +
                             "<td  onclick='tdclick(this)'>" +data["rela"]+ "</td>" +
                             "<td  onclick='tdclick(this)'>" +data["target"]+ "</td>" +
                             "<td align='center'>"+
                             "<div>"+
-                            "<button style='width: 30%' type='button' class='btn btn-xs btn-link' >更新</button>"+
-                            "<button style='width: 30%' type='button' class='btn btn-xs btn-link' >删除</button>"+
+                            "<button style='width: 30%' type='button' class='btn btn-xs btn-link' onclick='delete_attr("+line+")'>删除</button>"+
                             "</div>"+
                             "</td>");
                         table.append(tr);
@@ -129,6 +124,39 @@
                 },
                 error: function (result) {
                     alert('异常错误:'+result)
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function delete_attr(lineID) {
+            var params = {};
+            params.source = $("#tr_"+lineID).children().eq(0).text();
+            params.rela = $("#tr_"+lineID).children().eq(1).text();
+            params.target = $("#tr_"+lineID).children().eq(2).text();
+            params.serverID = $("#region").val();
+            delete_commit(params);
+        }
+
+        function delete_commit(params){
+            console.log(params);
+            $.ajax({
+                url: '/deleteLink',
+                type: 'POST',
+                dataType: "json",
+                async: true,
+                data: params,
+                success: function (result) {
+                    if(result.status == "succeed"){
+                        alert("该属性更新成功");
+                    }
+                    else{
+                        console.log(result);
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
                 }
             });
         }
