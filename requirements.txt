@@ -7,4 +7,4 @@ py2neo==4.2.0
 pyahocorasick==1.4.0
 pymongo==3.7.2
 requests==2.21.0
-urllib3==1.24.1
+urllib3==1.26.5
