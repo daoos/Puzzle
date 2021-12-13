@@ -2,7 +2,7 @@ beautifulsoup4==4.7.1
 bs4==0.0.1
 Flask==1.0.2
 jieba==0.39
-lxml==4.3.1
+lxml==4.6.5
 py2neo==4.2.0
 pyahocorasick==1.4.0
 pymongo==3.7.2
